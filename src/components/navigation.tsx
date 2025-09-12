@@ -12,12 +12,12 @@ import {
 } from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
-  FilePenLine,
   ClipboardCheck,
   User,
   Sparkles,
   GraduationCap,
   LogOut,
+  FilePenLine,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -69,9 +69,8 @@ export default function Navigation() {
         <SidebarMenu>
           {menuItems.map((item) => (
              <SidebarMenuItem key={item.href}>
-              <Link href={item.href} legacyBehavior passHref>
+              <Link href={item.href}>
                 <SidebarMenuButton
-                  as="a"
                   variant="ghost"
                   isActive={pathname === item.href}
                   tooltip={item.label}
@@ -88,8 +87,8 @@ export default function Navigation() {
         <SidebarSeparator />
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/login" legacyBehavior passHref>
-              <SidebarMenuButton as="a" variant="ghost" tooltip="Logout">
+            <Link href="/login">
+              <SidebarMenuButton variant="ghost" tooltip="Logout">
                 <LogOut />
                 <span>Logout</span>
               </SidebarMenuButton>
