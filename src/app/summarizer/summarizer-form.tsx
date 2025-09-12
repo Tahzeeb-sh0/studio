@@ -9,10 +9,11 @@ import { Loader2, Sparkles, Wand2 } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { activities, student } from '@/lib/mock-data';
+import { format } from 'date-fns';
 
 const approvedActivities = activities
     .filter(act => act.status === 'Approved' && act.studentId === student.id)
-    .map(act => `- ${act.title}: ${act.description} (Completed: ${act.date.toLocaleDateString()})`)
+    .map(act => `- ${act.title}: ${act.description} (Completed: ${format(act.date, 'PPP')})`)
     .join('\n');
 
 const initialState = {

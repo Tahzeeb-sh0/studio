@@ -3,6 +3,7 @@
 import { generateInterviewQuestions, GenerateInterviewQuestionsInput } from "@/ai/flows/interview-question-generator";
 import { activities, student } from "@/lib/mock-data";
 import { z } from "zod";
+import { format } from "date-fns";
 
 const InterviewCoachSchema = z.object({
   jobDescription: z.string().min(50, "Please provide a more detailed job description."),
@@ -10,7 +11,7 @@ const InterviewCoachSchema = z.object({
 
 const approvedActivities = activities
     .filter(act => act.status === 'Approved' && act.studentId === student.id)
-    .map(act => `- ${act.title}: ${act.description} (Completed: ${act.date.toLocaleDateString()})`)
+    .map(act => `- ${act.title}: ${act.description} (Completed: ${format(act.date, 'PPP')})`)
     .join('\n');
 
 export async function generateQuestionsAction(prevState: any, formData: FormData) {

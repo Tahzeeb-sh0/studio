@@ -20,6 +20,7 @@ import { Badge } from '@/components/ui/badge';
 import { activities, student } from '@/lib/mock-data';
 import { Activity } from '@/lib/types';
 import NewActivityForm from './new-activity-form';
+import { format } from 'date-fns';
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
@@ -92,7 +93,7 @@ export default function ActivitiesPage() {
                       </TableCell>
                       <TableCell>{activity.category}</TableCell>
                       <TableCell>
-                        {activity.date.toLocaleDateString()}
+                        {format(activity.date, 'PPP')}
                       </TableCell>
                       <TableCell className="text-right">
                         <Badge variant={getStatusVariant(activity.status)}>

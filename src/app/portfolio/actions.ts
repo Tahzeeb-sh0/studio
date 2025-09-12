@@ -3,6 +3,7 @@
 import { generateCoverLetter, GenerateCoverLetterInput } from "@/ai/flows/cover-letter-generator";
 import { activities, student } from "@/lib/mock-data";
 import { z } from "zod";
+import { format } from "date-fns";
 
 const CoverLetterSchema = z.object({
   jobDescription: z.string().min(50, "Please provide a more detailed job description."),
@@ -10,7 +11,7 @@ const CoverLetterSchema = z.object({
 
 const approvedActivities = activities
     .filter(act => act.status === 'Approved' && act.studentId === student.id)
-    .map(act => `- ${act.title}: ${act.description} (Completed: ${act.date.toLocaleDateString()})`)
+    .map(act => `- ${act.title}: ${act.description} (Completed: ${format(act.date, 'PPP')})`)
     .join('\n');
 
 export async function generateCoverLetterAction(prevState: any, formData: FormData) {

@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Share2, Download, Bot } from 'lucide-react';
 import { Activity, ActivityCategory } from '@/lib/types';
 import CoverLetterGenerator from './cover-letter-generator';
+import { format } from 'date-fns';
 
 const approvedActivities = activities.filter(
   (act) => act.status === 'Approved' && act.studentId === student.id
@@ -96,7 +97,7 @@ export default function PortfolioPage() {
                             <p className="font-semibold">{act.title}</p>
                             <p className="text-sm text-muted-foreground">{act.description}</p>
                             <p className="text-xs text-muted-foreground mt-1">
-                              Completed on: {act.date.toLocaleDateString()}
+                              Completed on: {format(act.date, 'PPP')}
                             </p>
                           </li>
                         ))}

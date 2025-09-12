@@ -32,6 +32,7 @@ import {
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
 import { Award, BookOpen, CalendarClock, GraduationCap, Target } from 'lucide-react';
+import { format } from 'date-fns';
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
@@ -150,7 +151,7 @@ export default function DashboardPage() {
                     </TableCell>
                     <TableCell>{activity.category}</TableCell>
                     <TableCell>
-                      {activity.date.toLocaleDateString()}
+                      {format(activity.date, 'PPP')}
                     </TableCell>
                     <TableCell className="text-right">
                       <Badge variant={getStatusVariant(activity.status)}>

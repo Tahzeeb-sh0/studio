@@ -17,6 +17,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { activities } from '@/lib/mock-data';
 import { Check, X } from 'lucide-react';
+import { format } from 'date-fns';
 
 export default function ApprovalsPage() {
   const pendingActivities = activities.filter(
@@ -62,7 +63,7 @@ export default function ApprovalsPage() {
                   </TableCell>
                   <TableCell>{activity.title}</TableCell>
                   <TableCell>{activity.category}</TableCell>
-                  <TableCell>{activity.date.toLocaleDateString()}</TableCell>
+                  <TableCell>{format(activity.date, 'PPP')}</TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
                       <Button variant="outline" size="icon" className="h-8 w-8 text-green-600 hover:text-green-600">
