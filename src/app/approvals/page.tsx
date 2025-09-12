@@ -34,7 +34,7 @@ export default function ApprovalsPage() {
         </p>
       </div>
 
-      <Card>
+      <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
         <CardHeader>
           <CardTitle>Pending Submissions</CardTitle>
           <CardDescription>

@@ -67,7 +67,7 @@ export default function ActivitiesPage() {
 
       <div className="grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-1">
-          <Card>
+          <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
             <CardHeader>
               <CardTitle>Add New Activity</CardTitle>
               <CardDescription>
@@ -116,7 +116,7 @@ export default function ActivitiesPage() {
         </div>
 
         <div className="lg:col-span-2">
-          <Card>
+          <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
             <CardHeader>
               <CardTitle>My Submitted Activities</CardTitle>
               <CardDescription>

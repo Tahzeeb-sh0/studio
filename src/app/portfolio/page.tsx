@@ -60,7 +60,7 @@ export default function PortfolioPage() {
         </div>
       </div>
 
-      <Card className="overflow-hidden">
+      <Card className="overflow-hidden transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
         <div className="bg-muted/30 p-8">
           <div className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
             <Image
@@ -115,7 +115,7 @@ export default function PortfolioPage() {
             </section>
           </div>
           <aside className="space-y-8">
-            <Card>
+            <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
                 <CardHeader>
                     <CardTitle className="font-headline">Education</CardTitle>
                 </CardHeader>
@@ -126,7 +126,7 @@ export default function PortfolioPage() {
                     <p className="text-sm mt-2">Current GPA: {academicRecord.gpa.toFixed(2)}</p>
                 </CardContent>
             </Card>
-             <Card>
+             <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
                 <CardHeader>
                     <CardTitle className="font-headline">Skills</CardTitle>
                 </CardHeader>

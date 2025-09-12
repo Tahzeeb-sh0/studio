@@ -53,7 +53,7 @@ export default function SummarizerForm() {
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
-      <Card>
+      <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
         <CardHeader>
           <CardTitle>Your Achievements</CardTitle>
           <CardDescription>
@@ -100,7 +100,7 @@ export default function SummarizerForm() {
         </CardContent>
       </Card>
       
-      <Card className="flex flex-col">
+      <Card className="flex flex-col transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Sparkles className="text-accent" />
