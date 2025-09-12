@@ -15,8 +15,9 @@ import {
 import { student, academicRecord, activities, activityCategories } from '@/lib/mock-data';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Share2, Download } from 'lucide-react';
+import { Share2, Download, Bot } from 'lucide-react';
 import { Activity, ActivityCategory } from '@/lib/types';
+import CoverLetterGenerator from './cover-letter-generator';
 
 const approvedActivities = activities.filter(
   (act) => act.status === 'Approved' && act.studentId === student.id
@@ -104,6 +105,13 @@ export default function PortfolioPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </section>
+             <section>
+              <h3 className="flex items-center gap-2 font-headline text-2xl font-semibold mb-4 border-b pb-2">
+                <Bot />
+                AI Cover Letter Generator
+              </h3>
+              <CoverLetterGenerator />
             </section>
           </div>
           <aside className="space-y-8">
