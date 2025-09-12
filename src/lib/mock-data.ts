@@ -1,0 +1,122 @@
+import { Student, AcademicRecord, Activity, ActivityCategory } from './types';
+import { PlaceHolderImages } from './placeholder-images';
+
+const studentAvatar = PlaceHolderImages.find(img => img.id === 'student-avatar')?.imageUrl || 'https://picsum.photos/seed/student-avatar/100/100';
+
+export const student: Student = {
+  id: 'STU-001',
+  name: 'Alex Doe',
+  email: 'alex.doe@university.edu',
+  avatarUrl: studentAvatar,
+  major: 'Computer Science',
+  year: 3,
+};
+
+export const academicRecord: AcademicRecord = {
+  gpa: 3.8,
+  attendance: 95,
+  totalCredits: 120,
+  creditsEarned: 85,
+};
+
+export const activityCategories: ActivityCategory[] = [
+    'Conference',
+    'Workshop',
+    'Certification',
+    'Club Activity',
+    'Competition',
+    'Internship',
+    'Community Service',
+    'Other',
+];
+
+export const activities: Activity[] = [
+  {
+    id: 'ACT-001',
+    studentId: 'STU-001',
+    studentName: 'Alex Doe',
+    title: 'Web Development Workshop',
+    category: 'Workshop',
+    date: new Date('2023-10-15'),
+    description: 'A week-long workshop on modern web development technologies.',
+    status: 'Approved',
+    credits: 2,
+  },
+  {
+    id: 'ACT-002',
+    studentId: 'STU-001',
+    studentName: 'Alex Doe',
+    title: 'AI in Healthcare Conference',
+    category: 'Conference',
+    date: new Date('2023-11-05'),
+    description: 'Attended the annual conference on Artificial Intelligence applications in the healthcare sector.',
+    status: 'Approved',
+    credits: 1,
+  },
+  {
+    id: 'ACT-003',
+    studentId: 'STU-001',
+    studentName: 'Alex Doe',
+    title: 'Summer Internship at TechCorp',
+    category: 'Internship',
+    date: new Date('2023-08-30'),
+    description: 'Completed a 3-month summer internship as a software engineering intern.',
+    status: 'Approved',
+    credits: 5,
+  },
+  {
+    id: 'ACT-004',
+    studentId: 'STU-001',
+    studentName: 'Alex Doe',
+    title: 'Hackathon 2023',
+    category: 'Competition',
+    date: new Date('2023-09-20'),
+    description: 'Participated in the university-level hackathon and won 2nd place.',
+    status: 'Approved',
+    credits: 3,
+  },
+  {
+    id: 'ACT-005',
+    studentId: 'STU-001',
+    studentName: 'Alex Doe',
+    title: 'Google Cloud Certified',
+    category: 'Certification',
+    date: new Date('2024-01-10'),
+    description: 'Earned the Associate Cloud Engineer certification from Google Cloud.',
+    status: 'Pending',
+    credits: 4,
+  },
+  {
+    id: 'ACT-006',
+    studentId: 'STU-002',
+    studentName: 'Jane Smith',
+    title: 'Data Science Bootcamp',
+    category: 'Workshop',
+    date: new Date('2024-02-01'),
+    description: 'Intensive bootcamp on data analysis and machine learning.',
+    status: 'Pending',
+    credits: 3,
+  },
+    {
+    id: 'ACT-007',
+    studentId: 'STU-001',
+    studentName: 'Alex Doe',
+    title: 'Leadership Role in Coding Club',
+    category: 'Club Activity',
+    date: new Date('2023-05-20'),
+    description: 'Served as the president of the university coding club for the academic year 2022-2023.',
+    status: 'Approved',
+    credits: 3,
+  },
+  {
+    id: 'ACT-008',
+    studentId: 'STU-003',
+    studentName: 'Sam Wilson',
+    title: 'Community Tree Planting',
+    category: 'Community Service',
+    date: new Date('2023-04-22'),
+    description: 'Volunteered for a local environmental group to plant 100 trees.',
+    status: 'Pending',
+    credits: 1,
+  },
+];
