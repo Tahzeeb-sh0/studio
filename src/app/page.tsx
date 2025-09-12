@@ -32,7 +32,6 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
-import { CircleDot } from 'lucide-react';
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
@@ -56,6 +55,10 @@ const activityData = activities.reduce((acc, activity) => {
   }
   return acc;
 }, [] as { category: string; count: number }[]);
+
+const totalActivityCredits = activities
+  .filter((act) => act.status === 'Approved')
+  .reduce((sum, act) => sum + act.credits, 0);
 
 const chartConfig = {
   count: {
@@ -97,11 +100,22 @@ export default function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card className="col-span-1 md:col-span-2">
+        <Card>
           <CardHeader>
-            <CardTitle>Credits Earned</CardTitle>
+            <CardTitle>Total Activity Credits</CardTitle>
+            <CardDescription>Credits from approved activities.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="font-headline text-4xl font-bold text-primary">
+              {totalActivityCredits}
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Degree Credits</CardTitle>
             <CardDescription>
-              Your progress towards completing your degree.
+              Progress towards your degree.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -134,6 +148,7 @@ export default function DashboardPage() {
                 <TableRow>
                   <TableHead>Title</TableHead>
                   <TableHead>Category</TableHead>
+                  <TableHead>Date</TableHead>
                   <TableHead className="text-right">Status</TableHead>
                 </TableRow>
               </TableHeader>
@@ -144,6 +159,9 @@ export default function DashboardPage() {
                       {activity.title}
                     </TableCell>
                     <TableCell>{activity.category}</TableCell>
+                    <TableCell>
+                      {activity.date.toLocaleDateString()}
+                    </TableCell>
                     <TableCell className="text-right">
                       <Badge variant={getStatusVariant(activity.status)}>
                         {activity.status}
