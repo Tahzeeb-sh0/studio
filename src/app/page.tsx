@@ -31,7 +31,7 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
-import { Award, BookOpen, Clock, GraduationCap, Target } from 'lucide-react';
+import { Award, BookOpen, CalendarClock, GraduationCap, Target } from 'lucide-react';
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
@@ -92,7 +92,7 @@ export default function DashboardPage() {
         <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Attendance</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
+            <CalendarClock className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{academicRecord.attendance}%</div>

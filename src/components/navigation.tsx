@@ -12,9 +12,9 @@ import {
 } from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
-  FilePlus2,
+  FilePenLine,
   ClipboardCheck,
-  Contact,
+  User,
   Sparkles,
   GraduationCap,
   LogOut,
@@ -31,7 +31,7 @@ const menuItems = [
   {
     href: '/activities',
     label: 'Activity Tracker',
-    icon: FilePlus2,
+    icon: FilePenLine,
   },
   {
     href: '/approvals',
@@ -41,7 +41,7 @@ const menuItems = [
   {
     href: '/portfolio',
     label: 'My Portfolio',
-    icon: Contact,
+    icon: User,
   },
   {
     href: '/summarizer',
@@ -68,7 +68,7 @@ export default function Navigation() {
       <SidebarContent>
         <SidebarMenu>
           {menuItems.map((item) => (
-            <SidebarMenuItem key={item.href}>
+             <SidebarMenuItem key={item.href}>
               <Link href={item.href} legacyBehavior passHref>
                 <SidebarMenuButton
                   as="a"
