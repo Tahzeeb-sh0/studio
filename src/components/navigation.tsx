@@ -18,6 +18,7 @@ import {
   GraduationCap,
   LogOut,
   FilePenLine,
+  MessageCircleQuestion,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -47,6 +48,11 @@ const menuItems = [
     href: '/summarizer',
     label: 'AI Summarizer',
     icon: Sparkles,
+  },
+  {
+    href: '/interview-coach',
+    label: 'Interview Coach',
+    icon: MessageCircleQuestion,
   },
 ];
 
