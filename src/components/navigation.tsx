@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -6,6 +7,8 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarContent,
+  SidebarFooter,
+  SidebarSeparator,
 } from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
@@ -14,9 +17,9 @@ import {
   Contact,
   Sparkles,
   GraduationCap,
+  LogOut,
 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const menuItems = [
@@ -81,8 +84,19 @@ export default function Navigation() {
           ))}
         </SidebarMenu>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarSeparator />
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <Link href="/login" legacyBehavior passHref>
+              <SidebarMenuButton as="a" variant="ghost" tooltip="Logout">
+                <LogOut />
+                <span>Logout</span>
+              </SidebarMenuButton>
+            </Link>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </>
   );
 }
-
-    
