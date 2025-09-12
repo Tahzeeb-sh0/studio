@@ -5,8 +5,8 @@ const studentAvatar = PlaceHolderImages.find(img => img.id === 'student-avatar')
 
 export const student: Student = {
   id: 'STU-001',
-  name: 'Alex Doe',
-  email: 'alex.doe@university.edu',
+  name: 'Tahzeeb',
+  email: 'tahzeeb@university.edu',
   avatarUrl: studentAvatar,
   major: 'Computer Science',
   year: 3,
@@ -34,7 +34,7 @@ export const activities: Activity[] = [
   {
     id: 'ACT-001',
     studentId: 'STU-001',
-    studentName: 'Alex Doe',
+    studentName: 'Tahzeeb',
     title: 'Web Development Workshop',
     category: 'Workshop',
     date: new Date('2023-10-15'),
@@ -45,7 +45,7 @@ export const activities: Activity[] = [
   {
     id: 'ACT-002',
     studentId: 'STU-001',
-    studentName: 'Alex Doe',
+    studentName: 'Tahzeeb',
     title: 'AI in Healthcare Conference',
     category: 'Conference',
     date: new Date('2023-11-05'),
@@ -56,7 +56,7 @@ export const activities: Activity[] = [
   {
     id: 'ACT-003',
     studentId: 'STU-001',
-    studentName: 'Alex Doe',
+    studentName: 'Tahzeeb',
     title: 'Summer Internship at TechCorp',
     category: 'Internship',
     date: new Date('2023-08-30'),
@@ -67,7 +67,7 @@ export const activities: Activity[] = [
   {
     id: 'ACT-004',
     studentId: 'STU-001',
-    studentName: 'Alex Doe',
+    studentName: 'Tahzeeb',
     title: 'Hackathon 2023',
     category: 'Competition',
     date: new Date('2023-09-20'),
@@ -78,7 +78,7 @@ export const activities: Activity[] = [
   {
     id: 'ACT-005',
     studentId: 'STU-001',
-    studentName: 'Alex Doe',
+    studentName: 'Tahzeeb',
     title: 'Google Cloud Certified',
     category: 'Certification',
     date: new Date('2024-01-10'),
@@ -100,7 +100,7 @@ export const activities: Activity[] = [
     {
     id: 'ACT-007',
     studentId: 'STU-001',
-    studentName: 'Alex Doe',
+    studentName: 'Tahzeeb',
     title: 'Leadership Role in Coding Club',
     category: 'Club Activity',
     date: new Date('2023-05-20'),
