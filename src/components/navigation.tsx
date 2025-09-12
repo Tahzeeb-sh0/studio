@@ -53,11 +53,11 @@ export default function Navigation() {
   return (
     <>
       <SidebarHeader>
-        <div className="flex items-center gap-2 rounded-lg bg-primary/10 p-3">
-          <div className="rounded-md bg-primary p-2 text-primary-foreground">
+        <div className="flex items-center gap-3 p-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             <GraduationCap className="h-6 w-6" />
           </div>
-          <h2 className="font-headline text-lg font-semibold text-primary">
+          <h2 className="font-headline text-xl font-semibold text-primary-foreground group-data-[collapsible=icon]:hidden">
             AchieveMe
           </h2>
         </div>
@@ -66,7 +66,7 @@ export default function Navigation() {
         <SidebarMenu>
           {menuItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Link href={item.href} passHref>
+              <Link href={item.href}>
                 <SidebarMenuButton
                   isActive={pathname === item.href}
                   tooltip={item.label}
