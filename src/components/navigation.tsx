@@ -13,6 +13,7 @@ import {
   ClipboardCheck,
   Contact,
   Sparkles,
+  GraduationCap,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -52,14 +53,8 @@ export default function Navigation() {
   return (
     <>
       <SidebarHeader>
-        <div className="flex items-center gap-2">
-          <Image
-            src="/icon.svg"
-            alt="AchieveMe Logo"
-            width={32}
-            height={32}
-            className="rounded-lg"
-          />
+        <div className="flex items-center gap-3">
+          <GraduationCap className="h-8 w-8 text-sidebar-primary" />
           <div className="flex flex-col">
             <h2 className="font-headline text-lg font-semibold text-sidebar-primary">
               AchieveMe
@@ -70,16 +65,15 @@ export default function Navigation() {
       <SidebarContent>
         <SidebarMenu>
           {menuItems.map((item) => (
-            <SidebarMenuItem key={item.href}>
-              <Link href={item.href} legacyBehavior passHref>
-                  <SidebarMenuButton
-                    as="a"
-                    isActive={pathname === item.href}
-                    tooltip={item.label}
-                  >
-                    <item.icon />
-                    <span>{item.label}</span>
-                  </SidebarMenuButton>
+             <SidebarMenuItem key={item.href}>
+              <Link href={item.href} passHref>
+                <SidebarMenuButton
+                  isActive={pathname === item.href}
+                  tooltip={item.label}
+                >
+                  <item.icon />
+                  <span>{item.label}</span>
+                </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
           ))}

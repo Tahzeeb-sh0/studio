@@ -68,7 +68,24 @@ const ChartContainer = React.forwardRef<
 ChartContainer.displayName = "Chart"
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
-  const colorConfig = Object.entries(config).filter(
+  const { config: contextConfig } = useChart()
+
+  const finalConfig = React.useMemo(() => {
+    return Object.entries(config).reduce(
+      (acc, [key, value]) => {
+        const { color, theme } = value
+        const configColor = color || (theme ? theme.light : undefined)
+
+        return {
+          ...acc,
+          [key]: configColor ? `hsl(${configColor})` : undefined,
+        }
+      },
+      {} as Record<string, string | undefined>
+    )
+  }, [config])
+
+  const colorConfig = Object.entries(contextConfig).filter(
     ([, config]) => config.theme || config.color
   )
 
@@ -79,22 +96,13 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   return (
     <style
       dangerouslySetInnerHTML={{
-        __html: Object.entries(THEMES)
-          .map(
-            ([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
-${colorConfig
-  .map(([key, itemConfig]) => {
-    const color =
-      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
-      itemConfig.color
-    return color ? `  --color-${key}: ${color};` : null
-  })
+        __html: `
+:root {
+${Object.entries(finalConfig)
+  .map(([key, color]) => (color ? `--color-${key}: ${color};` : null))
   .join("\n")}
 }
-`
-          )
-          .join("\n"),
+`,
       }}
     />
   )
@@ -355,6 +363,25 @@ function getPayloadConfigFromPayload(
     : config[key as keyof typeof config]
 }
 
+const OriginalBar = React.forwardRef<
+  React.ElementRef<typeof RechartsPrimitive.Bar>,
+  React.ComponentProps<typeof RechartsPrimitive.Bar>
+>(({ fill, ...props }, ref) => {
+  const { config } = useChart()
+  const key = props.dataKey as string
+  const color = fill || (key && config[key]?.color)
+
+  return (
+    <RechartsPrimitive.Bar
+      ref={ref}
+      {...props}
+      fill={color ? `var(--color-${key})` : undefined}
+    />
+  )
+})
+
+OriginalBar.displayName = "Bar"
+
 export {
   ChartContainer,
   ChartTooltip,
@@ -362,4 +389,5 @@ export {
   ChartLegend,
   ChartLegendContent,
   ChartStyle,
+  OriginalBar as Bar,
 }

@@ -21,7 +21,6 @@ import { academicRecord, activities, student } from '@/lib/mock-data';
 import {
   Bar,
   BarChart,
-  CartesianGrid,
   ResponsiveContainer,
   XAxis,
   YAxis,
@@ -32,6 +31,7 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
+import { Award, BookOpen, Clock, GraduationCap, Target } from 'lucide-react';
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
@@ -63,6 +63,7 @@ const totalActivityCredits = activities
 const chartConfig = {
   count: {
     label: "Activities",
+    color: "hsl(var(--primary))",
   },
 };
 
@@ -78,64 +79,53 @@ export default function DashboardPage() {
         </p>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
-          <CardHeader>
-            <CardTitle>GPA</CardTitle>
-            <CardDescription>Your current Grade Point Average.</CardDescription>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium">GPA</CardTitle>
+            <GraduationCap className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <p className="font-headline text-4xl font-bold text-primary">
-              {academicRecord.gpa.toFixed(2)}
-            </p>
+            <div className="text-2xl font-bold">{academicRecord.gpa.toFixed(2)}</div>
+            <p className="text-xs text-muted-foreground">Your current Grade Point Average.</p>
           </CardContent>
         </Card>
-        <Card className="transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
-          <CardHeader>
-            <CardTitle>Attendance</CardTitle>
-            <CardDescription>Your overall attendance rate.</CardDescription>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium">Attendance</CardTitle>
+            <Clock className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <p className="font-headline text-4xl font-bold text-primary">
-              {academicRecord.attendance}%
-            </p>
+            <div className="text-2xl font-bold">{academicRecord.attendance}%</div>
+            <p className="text-xs text-muted-foreground">Your overall attendance rate.</p>
           </CardContent>
         </Card>
-        <Card className="transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
-          <CardHeader>
-            <CardTitle>Total Activity Credits</CardTitle>
-            <CardDescription>Credits from approved activities.</CardDescription>
+        <Card>
+           <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium">Activity Credits</CardTitle>
+            <Award className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <p className="font-headline text-4xl font-bold text-primary">
-              {totalActivityCredits}
-            </p>
+            <div className="text-2xl font-bold">{totalActivityCredits}</div>
+            <p className="text-xs text-muted-foreground">Credits from approved activities.</p>
           </CardContent>
         </Card>
-        <Card className="transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
-          <CardHeader>
-            <CardTitle>Degree Credits</CardTitle>
-            <CardDescription>
-              Progress towards your degree.
-            </CardDescription>
+        <Card>
+           <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium">Degree Progress</CardTitle>
+            <Target className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="flex items-center gap-4">
-              <Progress
-                value={
-                  (academicRecord.creditsEarned / academicRecord.totalCredits) *
-                  100
-                }
-                className="h-3"
-              />
-              <p className="font-headline text-lg font-semibold text-primary">
+            <div className="text-2xl font-bold">
                 {academicRecord.creditsEarned} / {academicRecord.totalCredits}
-              </p>
             </div>
+            <p className="text-xs text-muted-foreground">
+                {((academicRecord.creditsEarned / academicRecord.totalCredits) * 100).toFixed(0)}% towards your degree.
+            </p>
           </CardContent>
         </Card>
       </div>
       <div className="grid gap-6 lg:grid-cols-5">
-        <Card className="lg:col-span-3 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
+        <Card className="lg:col-span-3">
           <CardHeader>
             <CardTitle>Recent Activities</CardTitle>
             <CardDescription>
@@ -173,29 +163,28 @@ export default function DashboardPage() {
             </Table>
           </CardContent>
         </Card>
-        <Card className="lg:col-span-2 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
+        <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Activity Breakdown</CardTitle>
             <CardDescription>
               Your involvement across different activity types.
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pl-2">
             <ChartContainer config={chartConfig} className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={activityData}
                   layout="vertical"
-                  margin={{ left: 20, right: 20, top: 10, bottom: 10 }}
+                  margin={{ left: 10, right: 10, top: 10, bottom: 10 }}
                 >
-                  <CartesianGrid horizontal={false} />
                   <YAxis
                     dataKey="category"
                     type="category"
                     tickLine={false}
                     axisLine={false}
                     tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
-                    width={100}
+                    width={110}
                   />
                   <XAxis dataKey="count" type="number" hide />
                   <ChartTooltip
@@ -204,8 +193,7 @@ export default function DashboardPage() {
                   />
                   <Bar
                     dataKey="count"
-                    fill="hsl(var(--primary))"
-                    radius={5}
+                    radius={[0, 4, 4, 0]}
                   />
                 </BarChart>
               </ResponsiveContainer>
