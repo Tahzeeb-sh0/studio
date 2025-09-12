@@ -1,3 +1,6 @@
+// src/app/activities/page.tsx
+'use client';
+
 import {
   Card,
   CardContent,
@@ -14,27 +17,9 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
-import { activities, activityCategories, student } from '@/lib/mock-data';
-import { Activity, ActivityCategory } from '@/lib/types';
-import { CalendarIcon } from 'lucide-react';
+import { activities, student } from '@/lib/mock-data';
+import { Activity } from '@/lib/types';
+import NewActivityForm from './new-activity-form';
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
@@ -76,41 +61,7 @@ export default function ActivitiesPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="title" className="text-sm font-medium">Title</label>
-                  <Input id="title" placeholder="e.g., Hackathon 2024" />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="category" className="text-sm font-medium">Category</label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {activityCategories.map((cat) => (
-                        <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                 <div className="space-y-2">
-                  <label htmlFor="date" className="text-sm font-medium">Date of Completion</label>
-                  <Button variant="outline" className="w-full justify-start text-left font-normal">
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    Pick a date
-                  </Button>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="description" className="text-sm font-medium">Description</label>
-                  <Textarea id="description" placeholder="Briefly describe the activity and your role." />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="file" className="text-sm font-medium">Supporting Document (PDF, JPG)</label>
-                  <Input id="file" type="file" />
-                </div>
-                <Button type="submit" className="w-full">Submit for Approval</Button>
-              </form>
+              <NewActivityForm />
             </CardContent>
           </Card>
         </div>
