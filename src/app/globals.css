@@ -34,8 +34,8 @@ body {
     --chart-5: 40 70% 55%;
     --radius: 0.75rem;
 
-    --sidebar-background: var(--background);
-    --sidebar-foreground: var(--foreground);
+    --sidebar-background: var(--card);
+    --sidebar-foreground: var(--card-foreground);
     --sidebar-primary: var(--primary);
     --sidebar-primary-foreground: var(--primary-foreground);
     --sidebar-accent: var(--secondary);
@@ -70,8 +70,8 @@ body {
     --chart-4: 180 50% 55%;
     --chart-5: 40 70% 65%;
     
-    --sidebar-background: var(--background);
-    --sidebar-foreground: var(--foreground);
+    --sidebar-background: var(--card);
+    --sidebar-foreground: var(--card-foreground);
     --sidebar-primary: var(--primary);
     --sidebar-primary-foreground: var(--primary-foreground);
     --sidebar-accent: var(--secondary);
@@ -89,3 +89,5 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+    
