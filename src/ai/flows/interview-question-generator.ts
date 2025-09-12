@@ -31,7 +31,7 @@ const InterviewQuestionSchema = z.object({
 });
 
 const GenerateInterviewQuestionsOutputSchema = z.object({
-  questions: z.array(InterviewQuestionSchema).describe('A list of generated interview questions.'),
+  questions: z.array(InterviewQuestionSchema).describe('A list of exactly 10 generated interview questions.'),
 });
 export type GenerateInterviewQuestionsOutput = z.infer<typeof GenerateInterviewQuestionsOutputSchema>;
 
