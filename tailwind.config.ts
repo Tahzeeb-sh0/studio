@@ -17,7 +17,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['PT Sans', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
         headline: ['Poppins', 'sans-serif'],
         code: ['monospace'],
       },
@@ -102,5 +102,5 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require("tailwindcss-debug-screens")],
+  plugins: [require('tailwindcss-animate')],
 } satisfies Config;

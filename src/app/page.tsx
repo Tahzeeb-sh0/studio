@@ -78,7 +78,7 @@ export default function DashboardPage() {
         </p>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
           <CardHeader>
             <CardTitle>GPA</CardTitle>
             <CardDescription>Your current Grade Point Average.</CardDescription>
@@ -89,7 +89,7 @@ export default function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card className="shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
           <CardHeader>
             <CardTitle>Attendance</CardTitle>
             <CardDescription>Your overall attendance rate.</CardDescription>
@@ -100,7 +100,7 @@ export default function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card className="shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
           <CardHeader>
             <CardTitle>Total Activity Credits</CardTitle>
             <CardDescription>Credits from approved activities.</CardDescription>
@@ -111,7 +111,7 @@ export default function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card className="shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
           <CardHeader>
             <CardTitle>Degree Credits</CardTitle>
             <CardDescription>
@@ -135,7 +135,7 @@ export default function DashboardPage() {
         </Card>
       </div>
       <div className="grid gap-6 lg:grid-cols-5">
-        <Card className="lg:col-span-3 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="lg:col-span-3 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
           <CardHeader>
             <CardTitle>Recent Activities</CardTitle>
             <CardDescription>
@@ -173,7 +173,7 @@ export default function DashboardPage() {
             </Table>
           </CardContent>
         </Card>
-        <Card className="lg:col-span-2 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+        <Card className="lg:col-span-2 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
           <CardHeader>
             <CardTitle>Activity Breakdown</CardTitle>
             <CardDescription>
