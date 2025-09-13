@@ -1,4 +1,3 @@
-// src/app/activities/page.tsx
 'use client';
 
 import {
