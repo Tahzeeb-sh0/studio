@@ -2,6 +2,8 @@ import { Student, AcademicRecord, Activity, ActivityCategory } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
 const studentAvatar = PlaceHolderImages.find(img => img.id === 'student-avatar')?.imageUrl || 'https://picsum.photos/seed/student-avatar/100/100';
+const facultyAvatar = PlaceHolderImages.find(img => img.id === 'faculty-avatar')?.imageUrl || 'https://picsum.photos/seed/faculty-avatar/100/100';
+
 
 export const users: Student[] = [
   {
@@ -17,7 +19,7 @@ export const users: Student[] = [
     id: 'FAC-001',
     name: 'Shweta',
     email: 'faculty@gmail.com',
-    avatarUrl: 'https://picsum.photos/seed/faculty-avatar/100/100',
+    avatarUrl: facultyAvatar,
     major: 'Computer Science',
     year: 0, 
     role: 'faculty',

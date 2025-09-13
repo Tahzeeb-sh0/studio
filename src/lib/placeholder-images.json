@@ -5,6 +5,12 @@
       "description": "Avatar for a student profile.",
       "imageUrl": "https://picsum.photos/seed/beautiful-girl/120/120",
       "imageHint": "beautiful girl"
+    },
+    {
+      "id": "faculty-avatar",
+      "description": "Avatar for a faculty profile.",
+      "imageUrl": "https://picsum.photos/seed/faculty-woman/120/120",
+      "imageHint": "professional woman"
     }
   ]
 }
