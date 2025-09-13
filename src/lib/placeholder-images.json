@@ -3,8 +3,8 @@
     {
       "id": "student-avatar",
       "description": "Avatar for a student profile.",
-      "imageUrl": "https://picsum.photos/seed/new-student-avatar/120/120",
-      "imageHint": "portrait person"
+      "imageUrl": "https://picsum.photos/seed/beautiful-girl/120/120",
+      "imageHint": "beautiful girl"
     }
   ]
 }
