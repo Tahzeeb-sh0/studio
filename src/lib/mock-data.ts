@@ -15,7 +15,7 @@ export const users: Student[] = [
   },
   {
     id: 'FAC-001',
-    name: 'Dr. Faculty',
+    name: 'Shweta',
     email: 'faculty@gmail.com',
     avatarUrl: 'https://picsum.photos/seed/faculty-avatar/100/100',
     major: 'Computer Science',
