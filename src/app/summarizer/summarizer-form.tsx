@@ -58,7 +58,7 @@ export default function SummarizerForm() {
         <CardHeader>
           <CardTitle>Your Achievements</CardTitle>
           <CardDescription>
-            Input your achievements and the requirements for the summary.
+            Your approved activities are pre-filled below. You can add more details or edit as needed.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -113,7 +113,7 @@ export default function SummarizerForm() {
         </CardHeader>
         <CardContent className="flex-grow">
           {state.summary ? (
-            <div className="prose prose-sm dark:prose-invert max-w-none bg-muted/50 p-4 rounded-md h-full">
+            <div className="prose prose-sm dark:prose-invert max-w-none bg-muted/50 p-4 rounded-md h-full whitespace-pre-wrap">
               <p>{state.summary}</p>
             </div>
           ) : (
