@@ -24,6 +24,7 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
+  Cell
 } from 'recharts';
 import {
   ChartContainer,
@@ -67,6 +68,14 @@ const chartConfig = {
     color: "hsl(var(--primary))",
   },
 };
+
+const chartColors = [
+  "hsl(var(--chart-1))",
+  "hsl(var(--chart-2))",
+  "hsl(var(--chart-3))",
+  "hsl(var(--chart-4))",
+  "hsl(var(--chart-5))",
+];
 
 export default function DashboardPage() {
   return (
@@ -151,7 +160,7 @@ export default function DashboardPage() {
                     </TableCell>
                     <TableCell>{activity.category}</TableCell>
                     <TableCell>
-                      {format(activity.date, 'PPP')}
+                      {format(new Date(activity.date), 'PPP')}
                     </TableCell>
                     <TableCell className="text-right">
                       <Badge variant={getStatusVariant(activity.status)}>
@@ -180,20 +189,12 @@ export default function DashboardPage() {
                   margin={{ left: 10, right: 10, top: 10, bottom: 10 }}
                 >
                    <defs>
-                    <pattern
-                      id="pattern-stripes"
-                      width="8"
-                      height="8"
-                      patternUnits="userSpaceOnUse"
-                      patternTransform="rotate(45)"
-                    >
-                      <rect
-                        width="4"
-                        height="8"
-                        transform="translate(0,0)"
-                        fill="hsl(var(--primary))"
-                      ></rect>
-                    </pattern>
+                     {chartColors.map((color, index) => (
+                        <linearGradient id={`3d-gradient-${index}`} x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor={color} stopOpacity={0.7}/>
+                          <stop offset="100%" stopColor={color} stopOpacity={1}/>
+                        </linearGradient>
+                      ))}
                   </defs>
                   <YAxis
                     dataKey="category"
@@ -211,8 +212,11 @@ export default function DashboardPage() {
                   <Bar
                     dataKey="count"
                     radius={[0, 4, 4, 0]}
-                    fill="url(#pattern-stripes)"
-                  />
+                  >
+                    {activityData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={`url(#3d-gradient-${index % chartColors.length})`} />
+                    ))}
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </ChartContainer>
