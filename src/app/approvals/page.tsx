@@ -16,23 +16,62 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { activities } from '@/lib/mock-data';
-import { Check, X } from 'lucide-react';
-import { format } from 'date-fns';
+import { Check, X, ListChecks, CheckCircle2, Clock } from 'lucide-react';
+import { format, isToday } from 'date-fns';
 
 export default function ApprovalsPage() {
   const pendingActivities = activities.filter(
     (act) => act.status === 'Pending'
+  );
+  const processedActivities = activities.filter(
+    (act) => act.status === 'Approved' || act.status === 'Rejected'
+  );
+  const approvedToday = activities.filter(
+    (act) => act.status === 'Approved' && isToday(act.date)
   );
 
   return (
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="font-headline text-3xl font-bold tracking-tight">
-          Faculty Approval Panel
+          Faculty Dashboard
         </h1>
         <p className="text-muted-foreground">
-          Review and validate student-submitted activities.
+          Review student submissions and track activity trends.
         </p>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium">Pending Approvals</CardTitle>
+            <Clock className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{pendingActivities.length}</div>
+            <p className="text-xs text-muted-foreground">Activities awaiting your review.</p>
+          </CardContent>
+        </Card>
+        <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium">Total Processed</CardTitle>
+            <ListChecks className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{processedActivities.length}</div>
+            <p className="text-xs text-muted-foreground">Total activities reviewed.</p>
+          </CardContent>
+        </Card>
+        <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+           <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium">Approved Today</CardTitle>
+            <CheckCircle2 className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{approvedToday.length}</div>
+            <p className="text-xs text-muted-foreground">Activities approved today.</p>
+          </CardContent>
+        </Card>
       </div>
 
       <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
