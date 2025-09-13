@@ -1,3 +1,5 @@
+export type UserRole = 'student' | 'faculty';
+
 export type Student = {
   id: string;
   name: string;
@@ -5,6 +7,7 @@ export type Student = {
   avatarUrl: string;
   major: string;
   year: number;
+  role: UserRole;
 };
 
 export type AcademicRecord = {

@@ -20,11 +20,13 @@ import {
   FilePenLine,
   MessageCircleQuestion,
   UserPlus,
+  LogIn,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/context/auth-context';
 
-const menuItems = [
+const studentMenuItems = [
   {
     href: '/',
     label: 'Dashboard',
@@ -34,11 +36,6 @@ const menuItems = [
     href: '/activities',
     label: 'Activity Tracker',
     icon: FilePenLine,
-  },
-  {
-    href: '/approvals',
-    label: 'Faculty Approvals',
-    icon: ClipboardCheck,
   },
   {
     href: '/portfolio',
@@ -57,8 +54,19 @@ const menuItems = [
   },
 ];
 
+const facultyMenuItems = [
+  {
+    href: '/approvals',
+    label: 'Faculty Dashboard',
+    icon: ClipboardCheck,
+  },
+];
+
 export default function Navigation() {
   const pathname = usePathname();
+  const { user, logout } = useAuth();
+  
+  const menuItems = user?.role === 'faculty' ? facultyMenuItems : studentMenuItems;
 
   return (
     <>
@@ -73,42 +81,55 @@ export default function Navigation() {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarMenu>
-          {menuItems.map((item) => (
-             <SidebarMenuItem key={item.href}>
-              <Link href={item.href}>
-                <SidebarMenuButton
-                  variant="ghost"
-                  isActive={pathname === item.href}
-                  tooltip={item.label}
-                >
-                  <item.icon />
-                  <span>{item.label}</span>
-                </SidebarMenuButton>
-              </Link>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
+        {user && (
+          <SidebarMenu>
+            {menuItems.map((item) => (
+               <SidebarMenuItem key={item.href}>
+                <Link href={item.href}>
+                  <SidebarMenuButton
+                    variant="ghost"
+                    isActive={pathname === item.href}
+                    tooltip={item.label}
+                  >
+                    <item.icon />
+                    <span>{item.label}</span>
+                  </SidebarMenuButton>
+                </Link>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        )}
       </SidebarContent>
       <SidebarFooter>
         <SidebarSeparator />
         <SidebarMenu>
-          <SidebarMenuItem>
-            <Link href="/auth/signup">
-              <SidebarMenuButton variant="ghost" tooltip="Sign Up">
-                <UserPlus />
-                <span>Sign Up</span>
-              </SidebarMenuButton>
-            </Link>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <Link href="/auth/login">
-              <SidebarMenuButton variant="ghost" tooltip="Logout">
-                <LogOut />
-                <span>Login</span>
-              </SidebarMenuButton>
-            </Link>
-          </SidebarMenuItem>
+          {!user ? (
+            <>
+              <SidebarMenuItem>
+                <Link href="/auth/signup">
+                  <SidebarMenuButton variant="ghost" tooltip="Sign Up">
+                    <UserPlus />
+                    <span>Sign Up</span>
+                  </SidebarMenuButton>
+                </Link>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <Link href="/auth/login">
+                  <SidebarMenuButton variant="ghost" tooltip="Login">
+                    <LogIn />
+                    <span>Login</span>
+                  </SidebarMenuButton>
+                </Link>
+              </SidebarMenuItem>
+            </>
+          ) : (
+             <SidebarMenuItem>
+                <SidebarMenuButton variant="ghost" tooltip="Logout" onClick={logout}>
+                  <LogOut />
+                  <span>Logout</span>
+                </SidebarMenuButton>
+            </SidebarMenuItem>
+          )}
         </SidebarMenu>
       </SidebarFooter>
     </>

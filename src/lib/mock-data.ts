@@ -3,14 +3,29 @@ import { PlaceHolderImages } from './placeholder-images';
 
 const studentAvatar = PlaceHolderImages.find(img => img.id === 'student-avatar')?.imageUrl || 'https://picsum.photos/seed/student-avatar/100/100';
 
-export const student: Student = {
-  id: 'STU-001',
-  name: 'Tahzeeb',
-  email: 'tahzeeb@university.edu',
-  avatarUrl: studentAvatar,
-  major: 'Computer Science',
-  year: 3,
-};
+export const users: Student[] = [
+  {
+    id: 'STU-001',
+    name: 'Tahzeeb',
+    email: 'tahzeeb@university.edu',
+    avatarUrl: studentAvatar,
+    major: 'Computer Science',
+    year: 3,
+    role: 'student',
+  },
+  {
+    id: 'FAC-001',
+    name: 'Dr. Faculty',
+    email: 'faculty@gmail.com',
+    avatarUrl: 'https://picsum.photos/seed/faculty-avatar/100/100',
+    major: 'Computer Science',
+    year: 0, 
+    role: 'faculty',
+  },
+];
+
+export const student = users[0]; // Default to Tahzeeb for existing components that rely on a single student
+export const facultyUser = users[1];
 
 export const academicRecord: AcademicRecord = {
   gpa: 3.8,

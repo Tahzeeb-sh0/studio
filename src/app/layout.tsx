@@ -5,6 +5,7 @@ import { SidebarProvider, Sidebar, SidebarInset } from '@/components/ui/sidebar'
 import Navigation from '@/components/navigation';
 import Header from '@/components/header';
 import { cn } from '@/lib/utils';
+import { AuthProvider } from '@/context/auth-context';
 
 export const metadata: Metadata = {
   title: 'AchieveMe',
@@ -25,18 +26,20 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className={cn("font-body antialiased")}>
-        <SidebarProvider>
-          <Sidebar>
-            <Navigation />
-          </Sidebar>
-          <SidebarInset>
-            <Header />
-            <main className="min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-8">
-              {children}
-            </main>
-          </SidebarInset>
-        </SidebarProvider>
-        <Toaster />
+        <AuthProvider>
+          <SidebarProvider>
+            <Sidebar>
+              <Navigation />
+            </Sidebar>
+            <SidebarInset>
+              <Header />
+              <main className="min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-8">
+                {children}
+              </main>
+            </SidebarInset>
+          </SidebarProvider>
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,4 +1,6 @@
 
+'use client';
+
 import {
   Card,
   CardContent,
@@ -17,10 +19,36 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { activities } from '@/lib/mock-data';
-import { Check, X, ListChecks, CheckCircle2, Clock, Activity } from 'lucide-react';
+import { Check, X, ListChecks, CheckCircle2, Clock, Activity, ShieldAlert } from 'lucide-react';
 import { format, isToday } from 'date-fns';
+import { useAuth } from '@/context/auth-context';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function ApprovalsPage() {
+  const { user } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user?.role !== 'faculty') {
+      router.push('/auth/login');
+    }
+  }, [user, router]);
+
+
+  if (user?.role !== 'faculty') {
+    return (
+        <div className="flex flex-col items-center justify-center h-full text-center p-8">
+            <ShieldAlert className="h-16 w-16 text-destructive mb-4" />
+            <h1 className="text-2xl font-bold mb-2">Access Denied</h1>
+            <p className="text-muted-foreground">You do not have permission to view this page. Please log in as a faculty member.</p>
+             <Button onClick={() => router.push('/auth/login')} className="mt-6">
+                Go to Login
+            </Button>
+        </div>
+    );
+  }
+
   const pendingActivities = activities.filter(
     (act) => act.status === 'Pending'
   );
