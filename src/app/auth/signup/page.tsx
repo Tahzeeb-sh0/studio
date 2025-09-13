@@ -10,12 +10,19 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
-    <div className="flex min-h-[calc(100vh-10rem)] items-center justify-center">
+    <div className="flex min-h-full items-center justify-center">
       <Card className="w-full max-w-md transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
         <CardHeader className="text-center">
           <div className="mb-4 flex justify-center">
@@ -23,14 +30,23 @@ export default function LoginPage() {
               <GraduationCap className="h-8 w-8" />
             </div>
           </div>
-          <CardTitle className="font-headline text-3xl">Welcome Back</CardTitle>
+          <CardTitle className="font-headline text-3xl">Create an Account</CardTitle>
           <CardDescription>
-            Enter your credentials to access your account.
+            Join AchieveMe to start tracking your journey.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form className="space-y-4">
             <div className="space-y-2">
+              <Label htmlFor="fullName">Full Name</Label>
+              <Input
+                id="fullName"
+                type="text"
+                placeholder="John Doe"
+                required
+              />
+            </div>
+             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
@@ -43,21 +59,32 @@ export default function LoginPage() {
               <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" required />
             </div>
+             <div className="space-y-2">
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Input id="confirmPassword" type="password" required />
+            </div>
+             <div className="space-y-2">
+                <Label htmlFor="role">Role</Label>
+                <Select required>
+                    <SelectTrigger id="role">
+                        <SelectValue placeholder="Select your role" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="student">Student</SelectItem>
+                        <SelectItem value="faculty">Faculty</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
             <Button type="submit" className="w-full">
-              Login
+              Create Account
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex-col items-center gap-4">
-            <div className="text-sm text-muted-foreground">
-                <Link href="#" className="underline hover:text-primary">
-                    Forgot your password?
-                </Link>
-            </div>
             <div className="text-center text-sm text-muted-foreground">
-                Don&apos;t have an account?{' '}
-                <Link href="#" className="font-semibold text-primary hover:underline">
-                    Sign Up
+                Already have an account?{' '}
+                <Link href="/auth/login" className="font-semibold text-primary hover:underline">
+                    Login
                 </Link>
             </div>
         </CardFooter>

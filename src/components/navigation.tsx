@@ -19,6 +19,7 @@ import {
   LogOut,
   FilePenLine,
   MessageCircleQuestion,
+  UserPlus,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -93,10 +94,18 @@ export default function Navigation() {
         <SidebarSeparator />
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/login">
+            <Link href="/auth/signup">
+              <SidebarMenuButton variant="ghost" tooltip="Sign Up">
+                <UserPlus />
+                <span>Sign Up</span>
+              </SidebarMenuButton>
+            </Link>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <Link href="/auth/login">
               <SidebarMenuButton variant="ghost" tooltip="Logout">
                 <LogOut />
-                <span>Logout</span>
+                <span>Login</span>
               </SidebarMenuButton>
             </Link>
           </SidebarMenuItem>
