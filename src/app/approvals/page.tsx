@@ -17,7 +17,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { activities } from '@/lib/mock-data';
-import { Check, X, ListChecks, CheckCircle2, Clock } from 'lucide-react';
+import { Check, X, ListChecks, CheckCircle2, Clock, Activity } from 'lucide-react';
 import { format, isToday } from 'date-fns';
 
 export default function ApprovalsPage() {
@@ -74,54 +74,78 @@ export default function ApprovalsPage() {
           </CardContent>
         </Card>
       </div>
-
-      <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
-        <CardHeader>
-          <CardTitle>Pending Submissions</CardTitle>
-          <CardDescription>
-            {pendingActivities.length > 0
-              ? `There are ${pendingActivities.length} activities awaiting your approval.`
-              : 'There are no pending submissions at this time.'}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Student</TableHead>
-                <TableHead>Activity Title</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {pendingActivities.map((activity) => (
-                <TableRow key={activity.id}>
-                  <TableCell className="font-medium">
-                    {activity.studentName}
-                  </TableCell>
-                  <TableCell>{activity.title}</TableCell>
-                  <TableCell>{activity.category}</TableCell>
-                  <TableCell>{format(activity.date, 'PPP')}</TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex justify-end gap-2">
-                      <Button variant="outline" size="icon" className="h-8 w-8 text-green-600 hover:text-green-600">
-                        <Check className="h-4 w-4" />
-                        <span className="sr-only">Approve</span>
-                      </Button>
-                      <Button variant="outline" size="icon" className="h-8 w-8 text-red-600 hover:text-red-600">
-                        <X className="h-4 w-4" />
-                        <span className="sr-only">Reject</span>
-                      </Button>
-                    </div>
-                  </TableCell>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <Card className="lg:col-span-2 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+          <CardHeader>
+            <CardTitle>Pending Submissions</CardTitle>
+            <CardDescription>
+              {pendingActivities.length > 0
+                ? `There are ${pendingActivities.length} activities awaiting your approval.`
+                : 'There are no pending submissions at this time.'}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Student</TableHead>
+                  <TableHead>Activity Title</TableHead>
+                  <TableHead>Category</TableHead>
+                  <TableHead>Date</TableHead>
+                  <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+              </TableHeader>
+              <TableBody>
+                {pendingActivities.map((activity) => (
+                  <TableRow key={activity.id}>
+                    <TableCell className="font-medium">
+                      {activity.studentName}
+                    </TableCell>
+                    <TableCell>{activity.title}</TableCell>
+                    <TableCell>{activity.category}</TableCell>
+                    <TableCell>{format(activity.date, 'PPP')}</TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex justify-end gap-2">
+                        <Button variant="outline" size="icon" className="h-8 w-8 text-green-600 hover:text-green-600">
+                          <Check className="h-4 w-4" />
+                          <span className="sr-only">Approve</span>
+                        </Button>
+                        <Button variant="outline" size="icon" className="h-8 w-8 text-red-600 hover:text-red-600">
+                          <X className="h-4 w-4" />
+                          <span className="sr-only">Reject</span>
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+        <Card className="lg:col-span-1 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+          <CardHeader>
+            <CardTitle>Recently Processed</CardTitle>
+            <CardDescription>
+              Your most recent approvals and rejections.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {processedActivities.slice(0, 5).map((activity) => (
+              <div key={activity.id} className="flex items-center">
+                <div className="mr-4 rounded-full bg-muted p-2">
+                  <Activity className="h-5 w-5 text-muted-foreground" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium leading-none">{activity.studentName}</p>
+                  <p className="text-sm text-muted-foreground">{activity.title}</p>
+                </div>
+                <Badge variant={activity.status === 'Approved' ? 'default' : 'destructive'}>{activity.status}</Badge>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
