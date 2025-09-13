@@ -7,7 +7,7 @@ export const users: Student[] = [
   {
     id: 'STU-001',
     name: 'Tahzeeb',
-    email: 'tahzeeb@university.edu',
+    email: 'student@gmail.com',
     avatarUrl: studentAvatar,
     major: 'Computer Science',
     year: 3,

@@ -19,16 +19,25 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
   const login = (email: string, pass: string): Student => {
-    let loggedInUser: Student;
+    let loggedInUser: Student | undefined;
 
     if (email === facultyUser.email && pass === '123456') {
       loggedInUser = facultyUser;
+    } else if (email === defaultStudent.email && pass === '123456') {
+      loggedInUser = defaultStudent;
     } else {
-      // For demo, any other login is considered a student
-      // In a real app, you'd look up the user and check their password hash
-      loggedInUser = users.find(u => u.role === 'student') || defaultStudent;
+      const foundUser = users.find(u => u.email === email);
+      if (foundUser) {
+          // In a real app, you would check a hashed password.
+          // For this demo, we'll just log them in if the user exists.
+          loggedInUser = foundUser;
+      }
     }
     
+    if (!loggedInUser) {
+        throw new Error("Invalid credentials. Please try again.");
+    }
+
     setUser(loggedInUser);
     return loggedInUser;
   };
