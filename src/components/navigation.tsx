@@ -21,6 +21,7 @@ import {
   MessageCircleQuestion,
   UserPlus,
   LogIn,
+  BrainCircuit
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -52,6 +53,11 @@ const studentMenuItems = [
     label: 'Interview Coach',
     icon: MessageCircleQuestion,
   },
+  {
+    href: '/career-counselor',
+    label: 'AI Counselor',
+    icon: BrainCircuit,
+  }
 ];
 
 const facultyMenuItems = [
