@@ -179,6 +179,22 @@ export default function DashboardPage() {
                   layout="vertical"
                   margin={{ left: 10, right: 10, top: 10, bottom: 10 }}
                 >
+                   <defs>
+                    <pattern
+                      id="pattern-stripes"
+                      width="8"
+                      height="8"
+                      patternUnits="userSpaceOnUse"
+                      patternTransform="rotate(45)"
+                    >
+                      <rect
+                        width="4"
+                        height="8"
+                        transform="translate(0,0)"
+                        fill="hsl(var(--primary))"
+                      ></rect>
+                    </pattern>
+                  </defs>
                   <YAxis
                     dataKey="category"
                     type="category"
@@ -195,6 +211,7 @@ export default function DashboardPage() {
                   <Bar
                     dataKey="count"
                     radius={[0, 4, 4, 0]}
+                    fill="url(#pattern-stripes)"
                   />
                 </BarChart>
               </ResponsiveContainer>
