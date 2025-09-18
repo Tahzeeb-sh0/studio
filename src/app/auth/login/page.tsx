@@ -15,16 +15,27 @@ import { GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '@/context/auth-context';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
 export default function LoginPage() {
-  const { login } = useAuth();
+  const { user, login } = useAuth();
   const router = useRouter();
   const { toast } = useToast();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (user) {
+      if (user.role === 'faculty') {
+        router.push('/approvals');
+      } else {
+        router.push('/');
+      }
+    }
+  }, [user, router]);
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
