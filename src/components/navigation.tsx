@@ -13,6 +13,7 @@ import {
   MessageSquareHeart,
   Github,
   Bot,
+  Wallet,
 } from 'lucide-react';
 
 const studentMenuItems = [
@@ -27,9 +28,9 @@ const studentMenuItems = [
     icon: ListPlus,
   },
   {
-    href: '/portfolio',
-    label: 'My Portfolio',
-    icon: User,
+    href: '/wallet',
+    label: 'Digital Wallet',
+    icon: Wallet,
   },
    {
     href: '/ai-twin',
