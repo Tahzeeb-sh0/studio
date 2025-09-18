@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useFormState } from 'react-dom';
 import {
   Card,
   CardContent,
@@ -8,25 +9,60 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { student as defaultStudent, githubStats } from '@/lib/mock-data';
-import { BookOpen, Github, GitPullRequest, GitCommit, Link2Off } from 'lucide-react';
+import {
+  BookOpen,
+  Github,
+  GitPullRequest,
+  GitCommit,
+  Link2Off,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useAuth } from '@/context/auth-context';
+import { useToast } from '@/hooks/use-toast';
 import GithubConnectForm from './github-connect-form';
+import { verifyGithubAction } from './actions';
+
+const initialState = {
+  message: '',
+  user: null,
+  errors: null,
+};
+
+interface GithubStats {
+  username: string;
+  repositories: number;
+  commits: number;
+  pullRequests: number;
+}
 
 export default function GithubPage() {
-  const { user } = useAuth();
-  const [githubUsername, setGithubUsername] = useState(user?.githubUsername || '');
+  const [state, formAction] = useFormState(verifyGithubAction, initialState);
+  const [githubStats, setGithubStats] = useState<GithubStats | null>(null);
+  const { toast } = useToast();
 
-  const handleConnect = (username: string, email: string) => {
-    // In a real app, you'd save this to your database.
-    // For now, we'll just update the state.
-    setGithubUsername(username);
-    console.log('Connected with email:', email);
+  useEffect(() => {
+    if (state.message === 'success' && state.user) {
+      setGithubStats(state.user);
+      toast({
+        title: 'GitHub Account Connected!',
+        description: `Now displaying stats for ${state.user.username}.`,
+      });
+    } else if (state.message && state.message !== 'success') {
+      toast({
+        variant: 'destructive',
+        title: 'Verification Failed',
+        description: state.errors?.username?.[0] || 'An unknown error occurred.',
+      });
+    }
+  }, [state, toast]);
+
+  const handleDisconnect = () => {
+    setGithubStats(null);
+    // In a real app, you'd also clear this from the user's database record.
+    toast({
+      title: 'GitHub Account Disconnected',
+    });
   };
-  
-  const student = user || defaultStudent;
 
   return (
     <div className="flex flex-col gap-8">
@@ -39,16 +75,19 @@ export default function GithubPage() {
         </p>
       </div>
 
-      {!githubUsername ? (
+      {!githubStats ? (
         <Card className="max-w-lg mx-auto w-full transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
           <CardHeader>
             <CardTitle>Connect Your GitHub</CardTitle>
             <CardDescription>
-              Enter your GitHub username and email to see your activity insights.
+              Enter your GitHub username and email to see your activity
+              insights.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <GithubConnectForm onConnect={handleConnect} />
+            <form action={formAction}>
+              <GithubConnectForm errors={state.errors} />
+            </form>
           </CardContent>
         </Card>
       ) : (
@@ -58,19 +97,27 @@ export default function GithubPage() {
               <div>
                 <CardTitle className="flex items-center gap-2">
                   <Github />
-                  GitHub Activity for <span className="text-primary">{githubUsername}</span>
+                  GitHub Activity for{' '}
+                  <span className="text-primary">{githubStats.username}</span>
                 </CardTitle>
                 <CardDescription>
                   A summary of your coding contributions on GitHub.
                 </CardDescription>
               </div>
               <div className="flex gap-2 mt-4 sm:mt-0">
-                <Button onClick={() => setGithubUsername('')} variant="outline" size="sm">
-                  <Link2Off className="mr-2"/>
+                <Button
+                  onClick={handleDisconnect}
+                  variant="outline"
+                  size="sm"
+                >
+                  <Link2Off className="mr-2" />
                   Disconnect
                 </Button>
                 <Button asChild size="sm">
-                  <Link href={`https://github.com/${githubUsername}`} target="_blank">
+                  <Link
+                    href={`https://github.com/${githubStats.username}`}
+                    target="_blank"
+                  >
                     View Profile
                   </Link>
                 </Button>
@@ -80,7 +127,7 @@ export default function GithubPage() {
           <CardContent className="grid gap-6 sm:grid-cols-3">
             <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
               <div className="rounded-full bg-background p-3">
-                  <BookOpen className="h-6 w-6 text-muted-foreground" />
+                <BookOpen className="h-6 w-6 text-muted-foreground" />
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Repositories</p>
@@ -89,7 +136,7 @@ export default function GithubPage() {
             </div>
             <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
               <div className="rounded-full bg-background p-3">
-                  <GitCommit className="h-6 w-6 text-muted-foreground" />
+                <GitCommit className="h-6 w-6 text-muted-foreground" />
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Commits</p>
@@ -98,7 +145,7 @@ export default function GithubPage() {
             </div>
             <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
               <div className="rounded-full bg-background p-3">
-                  <GitPullRequest className="h-6 w-6 text-muted-foreground" />
+                <GitPullRequest className="h-6 w-6 text-muted-foreground" />
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Pull Requests</p>
