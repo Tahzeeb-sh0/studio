@@ -4,26 +4,11 @@
  * @fileOverview A Genkit flow for verifying GitHub profiles.
  *
  * - verifyGithubProfile - A function that verifies a GitHub username and retrieves basic stats.
- * - GithubProfileInput - The input type for the verifyGithubProfile function.
- * - GithubProfileOutput - The return type for the verifyGithubProfile function.
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
-
-export const GithubProfileInputSchema = z.object({
-  username: z.string().describe('The GitHub username to verify.'),
-});
-export type GithubProfileInput = z.infer<typeof GithubProfileInputSchema>;
-
-export const GithubProfileOutputSchema = z.object({
-  isValid: z.boolean().describe('Whether the GitHub user exists.'),
-  repositories: z.number().describe('The number of public repositories.'),
-  commits: z.number().describe('A realistic but random number of total commits for the last year.'),
-  pullRequests: z.number().describe('A realistic but random number of pull requests for the last year.'),
-  gists: z.number().describe('A realistic but random number of public gists.'),
-});
-export type GithubProfileOutput = z.infer<typeof GithubProfileOutputSchema>;
+import { GithubProfileInput, GithubProfileInputSchema, GithubProfileOutput, GithubProfileOutputSchema } from '@/lib/github-types';
 
 // Mock tool to simulate fetching GitHub profile data.
 const getGithubProfile = ai.defineTool(
