@@ -14,7 +14,7 @@ export const users: Student[] = [
     major: 'Computer Science',
     year: 3,
     role: 'student',
-    githubUsername: 'tahzeeb-h',
+    githubUsername: 'Tahzeeb-sh0',
   },
   {
     id: 'FAC-001',
