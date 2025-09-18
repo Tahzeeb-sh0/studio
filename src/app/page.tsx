@@ -164,7 +164,8 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
-       <Card className="lg:col-span-3 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+      <div className="grid gap-6 lg:grid-cols-5">
+        <Card className="lg:col-span-3 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -189,46 +190,6 @@ export default async function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-
-      <div className="grid gap-6 lg:grid-cols-5">
-        <Card className="lg:col-span-3 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
-          <CardHeader>
-            <CardTitle>Recent Activities</CardTitle>
-            <CardDescription>
-              A log of your most recently submitted activities.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Title</TableHead>
-                  <TableHead>Category</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead className="text-right">Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {activities.slice(0, 5).map((activity) => (
-                  <TableRow key={activity.id}>
-                    <TableCell className="font-medium">
-                      {activity.title}
-                    </TableCell>
-                    <TableCell>{activity.category}</TableCell>
-                    <TableCell>
-                      {format(new Date(activity.date), 'PPP')}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <Badge variant={getStatusVariant(activity.status)}>
-                        {activity.status}
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
         <Card className="lg:col-span-2 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
           <CardHeader>
             <CardTitle>Activity Breakdown</CardTitle>
@@ -243,6 +204,7 @@ export default async function DashboardPage() {
                   data={activityData}
                   layout="vertical"
                   margin={{ left: 10, right: 10, top: 10, bottom: 10 }}
+                  animationDuration={800}
                 >
                    <defs>
                      {chartColors.map((color, index) => (
