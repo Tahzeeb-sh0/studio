@@ -20,10 +20,13 @@ const formSchema = z.object({
   username: z.string().min(1, {
     message: 'GitHub username is required.',
   }),
+  email: z.string().email({
+    message: 'Please enter a valid email address.',
+  }),
 });
 
 interface GithubConnectFormProps {
-    onConnect: (username: string) => void;
+    onConnect: (username: string, email: string) => void;
 }
 
 export default function GithubConnectForm({ onConnect }: GithubConnectFormProps) {
@@ -32,12 +35,13 @@ export default function GithubConnectForm({ onConnect }: GithubConnectFormProps)
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: '',
+      email: '',
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    onConnect(values.username);
+    onConnect(values.username, values.email);
     toast({
       title: 'GitHub Account Connected!',
       description: `Now displaying stats for ${values.username}.`,
@@ -55,6 +59,19 @@ export default function GithubConnectForm({ onConnect }: GithubConnectFormProps)
               <FormLabel>GitHub Username</FormLabel>
               <FormControl>
                 <Input placeholder="e.g., octocat" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email Address</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="m@example.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

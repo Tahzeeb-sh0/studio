@@ -19,10 +19,11 @@ export default function GithubPage() {
   const { user } = useAuth();
   const [githubUsername, setGithubUsername] = useState(user?.githubUsername || '');
 
-  const handleConnect = (username: string) => {
+  const handleConnect = (username: string, email: string) => {
     // In a real app, you'd save this to your database.
     // For now, we'll just update the state.
     setGithubUsername(username);
+    console.log('Connected with email:', email);
   };
   
   const student = user || defaultStudent;
@@ -43,7 +44,7 @@ export default function GithubPage() {
           <CardHeader>
             <CardTitle>Connect Your GitHub</CardTitle>
             <CardDescription>
-              Enter your GitHub username to see your activity insights.
+              Enter your GitHub username and email to see your activity insights.
             </CardDescription>
           </CardHeader>
           <CardContent>
