@@ -46,11 +46,6 @@ const studentMenuItems = [
     icon: BrainCircuit,
   },
   {
-    href: '/career-counselor',
-    label: 'AI Counselor',
-    icon: MessageSquareHeart,
-  },
-  {
     href: '/github',
     label: 'GitHub',
     icon: Github,
