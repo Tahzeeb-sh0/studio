@@ -43,7 +43,7 @@ export default function GithubPage() {
     if (state.message === 'success' && state.user) {
       setGithubStats(state.user);
       toast({
-        title: 'GitHub Account Connected!',
+        title: 'GitHub Account Verified!',
         description: `Now displaying stats for ${state.user.username}.`,
       });
     } else if (state.message && state.message !== 'success' && state.errors?.username) {
@@ -55,14 +55,6 @@ export default function GithubPage() {
     }
   }, [state, toast]);
 
-  const handleDisconnect = () => {
-    setGithubStats(null);
-    // In a real app, you'd also clear this from the user's database record.
-    toast({
-      title: 'GitHub Account Disconnected',
-    });
-  };
-
   return (
     <div className="flex flex-col gap-8">
       <div>
@@ -70,26 +62,25 @@ export default function GithubPage() {
           GitHub Insights
         </h1>
         <p className="text-muted-foreground">
-          A snapshot of your coding activity on GitHub.
+          Enter a GitHub username to get a snapshot of their coding activity.
         </p>
       </div>
 
-      {!githubStats ? (
-        <Card className="max-w-lg mx-auto w-full transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
-          <CardHeader>
-            <CardTitle>Connect Your GitHub</CardTitle>
-            <CardDescription>
-              Enter your GitHub username and email to see your activity
-              insights.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form action={formAction}>
-              <GithubConnectForm errors={state.errors} />
-            </form>
-          </CardContent>
-        </Card>
-      ) : (
+      <Card className="max-w-lg mx-auto w-full transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+        <CardHeader>
+          <CardTitle>Verify GitHub Profile</CardTitle>
+          <CardDescription>
+            Enter a GitHub username to see their activity insights.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form action={formAction}>
+            <GithubConnectForm errors={state.errors} />
+          </form>
+        </CardContent>
+      </Card>
+      
+      {githubStats && (
         <Card className="lg:col-span-3 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
@@ -104,14 +95,6 @@ export default function GithubPage() {
                 </CardDescription>
               </div>
               <div className="flex gap-2 mt-4 sm:mt-0">
-                <Button
-                  onClick={handleDisconnect}
-                  variant="outline"
-                  size="sm"
-                >
-                  <Link2Off className="mr-2" />
-                  Disconnect
-                </Button>
                 <Button asChild size="sm">
                   <Link
                     href={`https://github.com/${githubStats.username}`}
