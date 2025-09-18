@@ -40,7 +40,7 @@ export default function ActivitiesPage() {
   );
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 animate-fade-in-up">
       <div>
         <h1 className="font-headline text-3xl font-bold tracking-tight">
           Activity Tracker

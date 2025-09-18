@@ -79,7 +79,7 @@ const chartColors = [
 export default async function DashboardPage() {
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 animate-fade-in-up">
       <div>
         <h1 className="font-headline text-3xl font-bold tracking-tight">
           Welcome back, {student.name.split(' ')[0]}!
@@ -268,6 +268,7 @@ export default async function DashboardPage() {
                   <Bar
                     dataKey="count"
                     radius={[0, 4, 4, 0]}
+                    animationDuration={800}
                   >
                     {activityData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={`url(#3d-gradient-${index % chartColors.length})`} />

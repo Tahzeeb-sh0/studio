@@ -40,7 +40,7 @@ const skills = [
 
 export default function PortfolioPage() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 animate-fade-in-up">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="font-headline text-3xl font-bold tracking-tight">
@@ -95,7 +95,7 @@ export default function PortfolioPage() {
           <div className="md:col-span-2 space-y-8">
             <section>
               <h3 className="font-headline text-2xl font-semibold mb-4 border-b pb-2">Verified Achievements</h3>
-              <Accordion type="multiple" defaultValue={Object.keys(groupedActivities)}>
+              <Accordion type="multiple" defaultValue={Object.keys(groupedActivities)} className="w-full">
                 {Object.entries(groupedActivities).map(([category, acts]) => (
                   <AccordionItem key={category} value={category}>
                     <AccordionTrigger className="font-headline text-lg">{category}</AccordionTrigger>
