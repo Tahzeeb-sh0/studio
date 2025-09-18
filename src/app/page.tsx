@@ -1,4 +1,3 @@
-
 import {
   Card,
   CardContent,
@@ -28,11 +27,13 @@ import {
   ChartTooltipContent
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
-import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, Github } from 'lucide-react';
+import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, Github, GitPullRequest, GitCommit } from 'lucide-react';
 import { format } from 'date-fns';
 import { getAiTwinMessageAction } from './actions';
 import Image from 'next/image';
 import { student as defaultStudent } from '@/lib/mock-data';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
@@ -111,7 +112,7 @@ export default async function DashboardPage() {
         </CardContent>
       </Card>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">GPA</CardTitle>
@@ -156,19 +157,61 @@ export default async function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
-           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">GitHub Commits</CardTitle>
-            <Github className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{githubStats.commits}</div>
-            <p className="text-xs text-muted-foreground">
-                Across {githubStats.repositories} repositories.
-            </p>
-          </CardContent>
-        </Card>
       </div>
+
+       <Card className="lg:col-span-3 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+        <CardHeader>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-2">
+                <Github />
+                GitHub Activity
+              </CardTitle>
+              <CardDescription>
+                A summary of your coding contributions on GitHub.
+              </CardDescription>
+            </div>
+             {student.githubUsername && (
+              <Button asChild variant="outline" className="mt-4 sm:mt-0">
+                <Link href={`https://github.com/${student.githubUsername}`} target="_blank">
+                  View Profile
+                </Link>
+              </Button>
+            )}
+          </div>
+        </CardHeader>
+        <CardContent className="grid gap-6 sm:grid-cols-3">
+          <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
+            <div className="rounded-full bg-background p-3">
+                <BookOpen className="h-6 w-6 text-muted-foreground" />
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground">Repositories</p>
+              <p className="text-2xl font-bold">{githubStats.repositories}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
+             <div className="rounded-full bg-background p-3">
+                <GitCommit className="h-6 w-6 text-muted-foreground" />
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground">Commits</p>
+              <p className="text-2xl font-bold">{githubStats.commits}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
+             <div className="rounded-full bg-background p-3">
+                <GitPullRequest className="h-6 w-6 text-muted-foreground" />
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground">Pull Requests</p>
+              <p className="text-2xl font-bold">{githubStats.pullRequests}</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+
       <div className="grid gap-6 lg:grid-cols-5">
         <Card className="lg:col-span-3 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
           <CardHeader>
@@ -261,5 +304,3 @@ export default async function DashboardPage() {
     </div>
   );
 }
-
-    
