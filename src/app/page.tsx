@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Card,
   CardContent,
@@ -16,7 +14,6 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import { academicRecord, activities, student } from '@/lib/mock-data';
 import {
   Bar,
@@ -32,8 +29,11 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
-import { Award, BookOpen, CalendarClock, GraduationCap, Target } from 'lucide-react';
+import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot } from 'lucide-react';
 import { format } from 'date-fns';
+import { getAiTwinMessageAction } from './actions';
+import Image from 'next/image';
+import { student as defaultStudent } from '@/lib/mock-data';
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
@@ -77,7 +77,9 @@ const chartColors = [
   "hsl(var(--chart-5))",
 ];
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+    const { message: aiTwinMessage } = await getAiTwinMessageAction();
+
   return (
     <div className="flex flex-col gap-8">
       <div>
@@ -88,6 +90,29 @@ export default function DashboardPage() {
           Here's a snapshot of your achievements and progress.
         </p>
       </div>
+
+       <Card className="w-full transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+        <CardContent className="p-6 flex flex-col sm:flex-row items-center gap-6">
+          <Image
+            src={defaultStudent.avatarUrl}
+            alt="AI Twin"
+            width={80}
+            height={80}
+            className="rounded-full border-4 border-primary/50 shadow-lg"
+            data-ai-hint="futuristic avatar"
+          />
+          <div className="text-center sm:text-left">
+            <div className="flex items-center gap-2 justify-center sm:justify-start">
+              <Bot className="h-6 w-6 text-primary"/>
+              <h3 className="text-xl font-headline font-semibold text-primary">Your AI Twin Says...</h3>
+            </div>
+            <p className="text-muted-foreground mt-2 italic">
+              "{aiTwinMessage}"
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
