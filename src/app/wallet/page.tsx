@@ -16,7 +16,7 @@ import {
 import { student, academicRecord, activities, activityCategories } from '@/lib/mock-data';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Share2, Download, Bot, Github } from 'lucide-react';
+import { Share2, Download, Bot, Github, Award } from 'lucide-react';
 import { Activity, ActivityCategory } from '@/lib/types';
 import CoverLetterGenerator from './cover-letter-generator';
 import { format } from 'date-fns';
@@ -33,6 +33,8 @@ const groupedActivities = activityCategories.reduce((acc, category) => {
     }
     return acc;
 }, {} as Record<ActivityCategory, Activity[]>);
+
+const totalActivityCredits = approvedActivities.reduce((sum, act) => sum + act.credits, 0);
 
 const skills = [
   'JavaScript', 'React', 'Node.js', 'Python', 'Data Analysis', 
@@ -135,6 +137,16 @@ export default function WalletPage() {
                     <p>Bachelor of Science in {student.major}</p>
                     <p className="text-sm text-muted-foreground">Expected Graduation: 2025</p>
                     <p className="text-sm mt-2">Current GPA: {academicRecord.gpa.toFixed(2)}</p>
+                </CardContent>
+            </Card>
+             <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                    <CardTitle className="font-headline text-lg">Activity Credits</CardTitle>
+                    <Award className="h-5 w-5 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                    <div className="text-3xl font-bold">{totalActivityCredits}</div>
+                    <p className="text-xs text-muted-foreground">Total credits from all approved activities.</p>
                 </CardContent>
             </Card>
              <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
