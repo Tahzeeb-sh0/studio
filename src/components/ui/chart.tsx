@@ -363,7 +363,7 @@ function getPayloadConfigFromPayload(
     : config[key as keyof typeof config]
 }
 
-const OriginalBar = React.forwardRef<
+const Bar = React.forwardRef<
   React.ElementRef<typeof RechartsPrimitive.Bar>,
   React.ComponentProps<typeof RechartsPrimitive.Bar>
 >(({ fill, ...props }, ref) => {
@@ -380,7 +380,44 @@ const OriginalBar = React.forwardRef<
   )
 })
 
-OriginalBar.displayName = "Bar"
+Bar.displayName = "Bar"
+
+const {
+  BarChart,
+  AreaChart,
+  LineChart,
+  ComposedChart,
+  PieChart,
+  RadarChart,
+  RadialBarChart,
+  ScatterChart,
+  FunnelChart,
+  Treemap,
+  Sankey,
+  ResponsiveContainer,
+  Legend,
+  Tooltip,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Area,
+  Line,
+  Pie,
+  Radar,
+  RadialBar,
+  Scatter,
+  Funnel,
+  Label,
+  LabelList,
+  ReferenceLine,
+  ReferenceDot,
+  ReferenceArea,
+  ZAxis,
+} = RechartsPrimitive;
 
 export {
   ChartContainer,
@@ -389,5 +426,41 @@ export {
   ChartLegend,
   ChartLegendContent,
   ChartStyle,
-  OriginalBar as Bar,
+  Bar,
+  BarChart,
+  AreaChart,
+  LineChart,
+  ComposedChart,
+  PieChart,
+  RadarChart,
+  RadialBarChart,
+  ScatterChart,
+  FunnelChart,
+  Treemap,
+  Sankey,
+  ResponsiveContainer,
+  Legend,
+  Tooltip,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Area,
+  Line,
+  Pie,
+  Radar,
+  RadialBar,
+  Scatter,
+  Funnel,
+  Label,
+  LabelList,
+  ReferenceLine,
+  ReferenceDot,
+  ReferenceArea,
+  ZAxis,
 }
+
+    

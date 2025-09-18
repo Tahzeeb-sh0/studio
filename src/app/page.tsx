@@ -1,3 +1,4 @@
+
 import {
   Card,
   CardContent,
@@ -16,17 +17,15 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { academicRecord, activities, student, githubStats } from '@/lib/mock-data';
 import {
-  Bar,
   BarChart,
   ResponsiveContainer,
   XAxis,
   YAxis,
-  Cell
-} from 'recharts';
-import {
+  Cell,
+  Bar,
   ChartContainer,
   ChartTooltip,
-  ChartTooltipContent,
+  ChartTooltipContent
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
 import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, Github } from 'lucide-react';
@@ -65,7 +64,6 @@ const totalActivityCredits = activities
 const chartConfig = {
   count: {
     label: "Activities",
-    color: "hsl(var(--primary))",
   },
 };
 
@@ -263,3 +261,5 @@ export default async function DashboardPage() {
     </div>
   );
 }
+
+    
