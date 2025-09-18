@@ -44,11 +44,6 @@ const studentMenuItems = [
     icon: User,
   },
   {
-    href: '/summarizer',
-    label: 'AI Summarizer',
-    icon: Sparkles,
-  },
-  {
     href: '/interview-coach',
     label: 'Interview Coach',
     icon: MessageCircleQuestion,
