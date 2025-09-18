@@ -15,6 +15,7 @@ import {
   User,
   BrainCircuit,
   MessageSquareHeart,
+  Github,
 } from 'lucide-react';
 
 const studentMenuItems = [
@@ -42,6 +43,11 @@ const studentMenuItems = [
     href: '/career-counselor',
     label: 'AI Counselor',
     icon: MessageSquareHeart,
+  },
+  {
+    href: '/github',
+    label: 'GitHub',
+    icon: Github,
   },
 ];
 
