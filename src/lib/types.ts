@@ -48,3 +48,13 @@ export type GithubStats = {
   pullRequests: number;
   gists: number;
 };
+
+export type GithubProject = {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  stars: number;
+  forks: number;
+  language: string;
+};

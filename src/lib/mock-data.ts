@@ -1,4 +1,4 @@
-import { Student, AcademicRecord, Activity, ActivityCategory, GithubStats } from './types';
+import { Student, AcademicRecord, Activity, ActivityCategory, GithubStats, GithubProject } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
 const studentAvatar = PlaceHolderImages.find(img => img.id === 'student-avatar')?.imageUrl || 'https://picsum.photos/seed/student-avatar/100/100';
@@ -53,6 +53,36 @@ export const activityCategories: ActivityCategory[] = [
     'Internship',
     'Community Service',
     'Other',
+];
+
+export const githubProjects: GithubProject[] = [
+  {
+    id: 'PROJ-001',
+    name: 'achieveme-app',
+    description: 'The very application you are using! A Next.js app for tracking student achievements.',
+    url: 'https://github.com/Tahzeeb-sh0/achieveme-app',
+    stars: 150,
+    forks: 30,
+    language: 'TypeScript',
+  },
+  {
+    id: 'PROJ-002',
+    name: 'portfolio-generator',
+    description: 'A tool to generate a personal portfolio website from a JSON file, built with React.',
+    url: 'https://github.com/Tahzeeb-sh0/portfolio-generator',
+    stars: 75,
+    forks: 12,
+    language: 'JavaScript',
+  },
+  {
+    id: 'PROJ-003',
+    name: 'genkit-flow-visualizer',
+    description: 'A developer tool to visualize and debug Genkit flows in real-time.',
+    url: 'https://github.com/Tahzeeb-sh0/genkit-flow-visualizer',
+    stars: 200,
+    forks: 45,
+    language: 'TypeScript',
+  },
 ];
 
 export const activities: Activity[] = [

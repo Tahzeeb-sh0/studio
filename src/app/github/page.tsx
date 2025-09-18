@@ -12,10 +12,13 @@ import {
   Github,
   GitPullRequest,
   GitCommit,
+  Star,
+  GitFork,
+  Code,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { githubStats, student } from '@/lib/mock-data';
+import { githubStats, student, githubProjects } from '@/lib/mock-data';
 
 export default function GithubPage() {
   return (
@@ -84,6 +87,48 @@ export default function GithubPage() {
           </div>
         </CardContent>
       </Card>
+
+      <div>
+        <h2 className="font-headline text-2xl font-bold tracking-tight mb-4">
+          Top Projects
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {githubProjects.map((project) => (
+                <Card key={project.id} className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl flex flex-col">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <BookOpen className="h-5 w-5 text-primary" />
+                          {project.name}
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow">
+                        <p className="text-sm text-muted-foreground">{project.description}</p>
+                    </CardContent>
+                    <div className="p-6 pt-0 flex flex-col gap-4">
+                        <div className="flex justify-between items-center text-sm text-muted-foreground">
+                            <div className="flex items-center gap-1">
+                                <Star className="h-4 w-4" />
+                                {project.stars} Stars
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <GitFork className="h-4 w-4" />
+                                {project.forks} Forks
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <Code className="h-4 w-4" />
+                                {project.language}
+                            </div>
+                        </div>
+                        <Button asChild variant="outline">
+                            <Link href={project.url} target="_blank">
+                                View on GitHub
+                            </Link>
+                        </Button>
+                    </div>
+                </Card>
+            ))}
+        </div>
+      </div>
     </div>
   );
 }
