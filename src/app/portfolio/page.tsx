@@ -15,10 +15,11 @@ import {
 import { student, academicRecord, activities, activityCategories } from '@/lib/mock-data';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Share2, Download, Bot } from 'lucide-react';
+import { Share2, Download, Bot, Github } from 'lucide-react';
 import { Activity, ActivityCategory } from '@/lib/types';
 import CoverLetterGenerator from './cover-letter-generator';
 import { format } from 'date-fns';
+import Link from 'next/link';
 
 const approvedActivities = activities.filter(
   (act) => act.status === 'Approved' && act.studentId === student.id
@@ -72,13 +73,21 @@ export default function PortfolioPage() {
               className="rounded-full border-4 border-background shadow-md"
               data-ai-hint="portrait person"
             />
-            <div>
+            <div className='flex-1'>
               <h2 className="font-headline text-4xl font-bold text-primary">
                 {student.name}
               </h2>
               <p className="text-lg font-medium">{student.major}</p>
               <p className="text-muted-foreground">{student.email}</p>
             </div>
+             {student.githubUsername && (
+              <Button asChild variant="outline">
+                <Link href={`https://github.com/${student.githubUsername}`} target="_blank">
+                  <Github className="mr-2 h-4 w-4" />
+                  View GitHub
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
 

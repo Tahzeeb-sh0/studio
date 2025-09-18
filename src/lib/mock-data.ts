@@ -1,4 +1,4 @@
-import { Student, AcademicRecord, Activity, ActivityCategory } from './types';
+import { Student, AcademicRecord, Activity, ActivityCategory, GithubStats } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
 const studentAvatar = PlaceHolderImages.find(img => img.id === 'student-avatar')?.imageUrl || 'https://picsum.photos/seed/student-avatar/100/100';
@@ -14,6 +14,7 @@ export const users: Student[] = [
     major: 'Computer Science',
     year: 3,
     role: 'student',
+    githubUsername: 'tahzeeb-h',
   },
   {
     id: 'FAC-001',
@@ -34,6 +35,13 @@ export const academicRecord: AcademicRecord = {
   attendance: 95,
   totalCredits: 120,
   creditsEarned: 85,
+};
+
+export const githubStats: GithubStats = {
+  repositories: 25,
+  commits: 531,
+  pullRequests: 42,
+  gists: 5,
 };
 
 export const activityCategories: ActivityCategory[] = [

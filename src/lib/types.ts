@@ -8,6 +8,7 @@ export type Student = {
   major: string;
   year: number;
   role: UserRole;
+  githubUsername?: string;
 };
 
 export type AcademicRecord = {
@@ -39,4 +40,11 @@ export type Activity = {
   description: string;
   status: ActivityStatus;
   credits: number;
+};
+
+export type GithubStats = {
+  repositories: number;
+  commits: number;
+  pullRequests: number;
+  gists: number;
 };

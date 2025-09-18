@@ -11,6 +11,12 @@
       "description": "Avatar for a faculty profile.",
       "imageUrl": "https://picsum.photos/seed/faculty-woman/120/120",
       "imageHint": "professional woman"
+    },
+    {
+      "id": "github-icon",
+      "description": "Icon for GitHub integration.",
+      "imageUrl": "https://picsum.photos/seed/github-logo/40/40",
+      "imageHint": "github logo"
     }
   ]
 }

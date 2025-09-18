@@ -14,7 +14,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { academicRecord, activities, student } from '@/lib/mock-data';
+import { academicRecord, activities, student, githubStats } from '@/lib/mock-data';
 import {
   Bar,
   BarChart,
@@ -29,7 +29,7 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
-import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot } from 'lucide-react';
+import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, Github } from 'lucide-react';
 import { format } from 'date-fns';
 import { getAiTwinMessageAction } from './actions';
 import Image from 'next/image';
@@ -113,7 +113,7 @@ export default async function DashboardPage() {
         </CardContent>
       </Card>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
         <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">GPA</CardTitle>
@@ -155,6 +155,18 @@ export default async function DashboardPage() {
             </div>
             <p className="text-xs text-muted-foreground">
                 {((academicRecord.creditsEarned / academicRecord.totalCredits) * 100).toFixed(0)}% towards your degree.
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+           <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium">GitHub Commits</CardTitle>
+            <Github className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{githubStats.commits}</div>
+            <p className="text-xs text-muted-foreground">
+                Across {githubStats.repositories} repositories.
             </p>
           </CardContent>
         </Card>

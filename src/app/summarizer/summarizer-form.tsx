@@ -44,7 +44,7 @@ export default function SummarizerForm() {
             title: "Summary Generated!",
             description: "Your new achievement summary is ready.",
         });
-    } else if (state.message && state.message !== 'success') {
+    } else if (state.message && state.message !== 'success' && state.message !== 'Validation failed') {
          toast({
             variant: "destructive",
             title: "An error occurred",
