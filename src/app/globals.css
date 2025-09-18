@@ -33,15 +33,6 @@ body {
     --chart-4: 157.2 91.2% 59.8%;
     --chart-5: 137.2 91.2% 59.8%;
     --radius: 0.75rem;
-
-    --sidebar-background: 222.2 84% 4.9%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: var(--primary);
-    --sidebar-primary-foreground: var(--primary-foreground);
-    --sidebar-accent: 217.2 32.6% 17.5%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217.2 32.6% 17.5%;
-    --sidebar-ring: 212.7 84.2% 56.1%;
   }
 
   .dark {
@@ -69,15 +60,6 @@ body {
     --chart-3: 177.2 91.2% 59.8%;
     --chart-4: 157.2 91.2% 59.8%;
     --chart-5: 137.2 91.2% 59.8%;
-    
-    --sidebar-background: var(--card);
-    --sidebar-foreground: var(--card-foreground);
-    --sidebar-primary: var(--primary);
-    --sidebar-primary-foreground: var(--primary-foreground);
-    --sidebar-accent: var(--secondary);
-    --sidebar-accent-foreground: var(--secondary-foreground);
-    --sidebar-border: var(--border);
-    --sidebar-ring: var(--ring);
   }
 }
 
@@ -89,5 +71,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
-    

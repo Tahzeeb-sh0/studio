@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { SidebarProvider, Sidebar, SidebarInset } from '@/components/ui/sidebar';
-import Navigation from '@/components/navigation';
 import Header from '@/components/header';
 import { cn } from '@/lib/utils';
 import { AuthProvider } from '@/context/auth-context';
@@ -27,17 +25,12 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased")}>
         <AuthProvider>
-          <SidebarProvider>
-            <Sidebar>
-              <Navigation />
-            </Sidebar>
-            <SidebarInset>
-              <Header />
-              <main className="min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-8">
-                {children}
-              </main>
-            </SidebarInset>
-          </SidebarProvider>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+              {children}
+            </main>
+          </div>
           <Toaster />
         </AuthProvider>
       </body>
