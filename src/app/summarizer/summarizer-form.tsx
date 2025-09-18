@@ -106,7 +106,7 @@ export default function SummarizerForm() {
           <CardTitle className="flex items-center gap-2">
             <Sparkles className="text-accent" />
             Generated Summary
-          </CardTitle>
+          </Title>
           <CardDescription>
             Your AI-powered summary will appear here.
           </CardDescription>
