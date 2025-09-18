@@ -15,7 +15,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { academicRecord, activities, student } from '@/lib/mock-data';
+import { academicRecord, activities, student, githubStats } from '@/lib/mock-data';
 import {
   BarChart,
   ResponsiveContainer,
@@ -159,6 +159,57 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
       </div>
+
+       <Card className="lg:col-span-3 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
+          <CardHeader>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <CardTitle className="flex items-center gap-2">
+                  <Github />
+                  GitHub Activity for{' '}
+                  <span className="text-primary">{student.githubUsername}</span>
+                </CardTitle>
+                <CardDescription>
+                  A summary of your coding contributions on GitHub.
+                </CardDescription>
+              </div>
+               <Button asChild size="sm" className="mt-4 sm:mt-0">
+                  <Link href="/github">
+                    View Details
+                  </Link>
+                </Button>
+            </div>
+          </CardHeader>
+          <CardContent className="grid gap-6 sm:grid-cols-3">
+            <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
+              <div className="rounded-full bg-background p-3">
+                <BookOpen className="h-6 w-6 text-muted-foreground" />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Repositories</p>
+                <p className="text-2xl font-bold">{githubStats.repositories}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
+              <div className="rounded-full bg-background p-3">
+                <GitCommit className="h-6 w-6 text-muted-foreground" />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Commits</p>
+                <p className="text-2xl font-bold">{githubStats.commits}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
+              <div className="rounded-full bg-background p-3">
+                <GitPullRequest className="h-6 w-6 text-muted-foreground" />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Pull Requests</p>
+                <p className="text-2xl font-bold">{githubStats.pullRequests}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
       <div className="grid gap-6 lg:grid-cols-5">
         <Card className="lg:col-span-3 transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl">
