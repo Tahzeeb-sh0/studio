@@ -101,7 +101,7 @@ export default function Chat() {
                     <AvatarImage src={student.avatarUrl} alt={student.name} />
                     <AvatarFallback>
                       {student.name.split(' ').map((n) => n[0]).join('')}
-                    </aratars>
+                    </AvatarFallback>
                   </Avatar>
                 )}
               </div>

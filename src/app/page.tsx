@@ -190,7 +190,7 @@ export default function DashboardPage() {
                 >
                    <defs>
                      {chartColors.map((color, index) => (
-                        <linearGradient id={`3d-gradient-${index}`} x1="0" y1="0" x2="0" y2="1">
+                        <linearGradient key={`3d-gradient-${index}`} id={`3d-gradient-${index}`} x1="0" y1="0" x2="0" y2="1">
                           <stop offset="0%" stopColor={color} stopOpacity={0.7}/>
                           <stop offset="100%" stopColor={color} stopOpacity={1}/>
                         </linearGradient>
