@@ -15,7 +15,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { academicRecord, activities, student, githubStats } from '@/lib/mock-data';
+import { academicRecord, activities, student } from '@/lib/mock-data';
 import {
   BarChart,
   ResponsiveContainer,
@@ -28,9 +28,8 @@ import {
   ChartTooltipContent
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
-import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, Github, GitPullRequest, GitCommit } from 'lucide-react';
+import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, MessageSquareHeart } from 'lucide-react';
 import { format } from 'date-fns';
-import { getAiTwinMessageAction } from './actions';
 import Image from 'next/image';
 import { student as defaultStudent } from '@/lib/mock-data';
 import { Button } from '@/components/ui/button';
@@ -78,7 +77,6 @@ const chartColors = [
 ];
 
 export default async function DashboardPage() {
-    const { message: aiTwinMessage } = await getAiTwinMessageAction();
 
   return (
     <div className="flex flex-col gap-8">
@@ -101,15 +99,21 @@ export default async function DashboardPage() {
             className="rounded-full border-4 border-primary/50 shadow-lg"
             data-ai-hint="futuristic avatar"
           />
-          <div className="text-center sm:text-left">
+          <div className="text-center sm:text-left flex-grow">
             <div className="flex items-center gap-2 justify-center sm:justify-start">
               <Bot className="h-6 w-6 text-primary"/>
-              <h3 className="text-xl font-headline font-semibold text-primary">Your AI Twin Says...</h3>
+              <h3 className="text-xl font-headline font-semibold text-primary">Your AI Twin</h3>
             </div>
             <p className="text-muted-foreground mt-2 italic">
-              "{aiTwinMessage}"
+              Ready to chat? I can offer personalized insights and encouragement based on your progress.
             </p>
           </div>
+            <Button asChild>
+                <Link href="/ai-twin">
+                    <MessageSquareHeart className="mr-2 h-4 w-4" />
+                    Chat with your Twin
+                </Link>
+            </Button>
         </CardContent>
       </Card>
 
@@ -165,12 +169,11 @@ export default async function DashboardPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <CardTitle className="flex items-center gap-2">
-                  <Github />
-                  GitHub Activity for{' '}
-                  <span className="text-primary">{student.githubUsername}</span>
+                  <BookOpen />
+                  Top GitHub Projects
                 </CardTitle>
                 <CardDescription>
-                  A summary of your coding contributions on GitHub.
+                  A snapshot of your top public repositories on GitHub.
                 </CardDescription>
               </div>
                <Button asChild size="sm" className="mt-4 sm:mt-0">
@@ -180,34 +183,10 @@ export default async function DashboardPage() {
                 </Button>
             </div>
           </CardHeader>
-          <CardContent className="grid gap-6 sm:grid-cols-3">
-            <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
-              <div className="rounded-full bg-background p-3">
-                <BookOpen className="h-6 w-6 text-muted-foreground" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Repositories</p>
-                <p className="text-2xl font-bold">{githubStats.repositories}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
-              <div className="rounded-full bg-background p-3">
-                <GitCommit className="h-6 w-6 text-muted-foreground" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Commits</p>
-                <p className="text-2xl font-bold">{githubStats.commits}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 rounded-lg bg-muted p-4">
-              <div className="rounded-full bg-background p-3">
-                <GitPullRequest className="h-6 w-6 text-muted-foreground" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Pull Requests</p>
-                <p className="text-2xl font-bold">{githubStats.pullRequests}</p>
-              </div>
-            </div>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              Connect your GitHub account on the GitHub page to see your projects here.
+            </p>
           </CardContent>
         </Card>
 

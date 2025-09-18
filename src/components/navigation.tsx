@@ -12,6 +12,7 @@ import {
   BrainCircuit,
   MessageSquareHeart,
   Github,
+  Bot,
 } from 'lucide-react';
 
 const studentMenuItems = [
@@ -29,6 +30,11 @@ const studentMenuItems = [
     href: '/portfolio',
     label: 'My Portfolio',
     icon: User,
+  },
+   {
+    href: '/ai-twin',
+    label: 'AI Twin',
+    icon: Bot,
   },
   {
     href: '/interview-coach',

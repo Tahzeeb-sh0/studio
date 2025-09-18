@@ -11,6 +11,11 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
+const MessageSchema = z.object({
+  role: z.enum(['user', 'model']),
+  content: z.string(),
+});
+
 const AiTwinInputSchema = z.object({
   studentName: z.string().describe("The student's name."),
   achievements: z
@@ -18,6 +23,7 @@ const AiTwinInputSchema = z.object({
     .describe("A list of the student's verified achievements."),
   gpa: z.number().describe("The student's current GPA."),
   degreeProgress: z.number().describe("The student's degree completion percentage."),
+  history: z.array(MessageSchema).describe('The conversation history.'),
 });
 export type AiTwinInput = z.infer<typeof AiTwinInputSchema>;
 
@@ -36,7 +42,7 @@ const prompt = ai.definePrompt({
   name: 'aiTwinPrompt',
   input: {schema: AiTwinInputSchema},
   output: {schema: AiTwinOutputSchema},
-  prompt: `You are an AI Twin for a university student named {{{studentName}}}. Your purpose is to provide a short, personalized, and encouraging insight based on their current progress. Be positive and forward-looking.
+  prompt: `You are an AI Twin for a university student named {{{studentName}}}. Your purpose is to provide short, personalized, and encouraging insight based on their current progress. Be positive and forward-looking. You engage in a natural, supportive, and encouraging conversation. Ask clarifying questions to better understand the student's aspirations.
 
 Here is the student's current status:
 - Achievements:
@@ -44,7 +50,11 @@ Here is the student's current status:
 - Current GPA: {{{gpa}}}
 - Degree Progress: {{{degreeProgress}}}%
 
-Based on this, generate a unique 2-3 sentence message. You could highlight a recent success, connect their achievements to their great GPA, or encourage them based on their degree progress. Address the student by name.
+Conversation History:
+{{#each history}}
+{{role}}: {{content}}
+{{/each}}
+model:
 `,
 });
 
