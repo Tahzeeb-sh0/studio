@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useFormState } from 'react-dom';
+import { useEffect, useState, useActionState } from 'react';
 import {
   Card,
   CardContent,
@@ -36,7 +35,7 @@ interface GithubStats {
 }
 
 export default function GithubPage() {
-  const [state, formAction] = useFormState(verifyGithubAction, initialState);
+  const [state, formAction] = useActionState(verifyGithubAction, initialState);
   const [githubStats, setGithubStats] = useState<GithubStats | null>(null);
   const { toast } = useToast();
 
@@ -47,11 +46,11 @@ export default function GithubPage() {
         title: 'GitHub Account Connected!',
         description: `Now displaying stats for ${state.user.username}.`,
       });
-    } else if (state.message && state.message !== 'success') {
+    } else if (state.message && state.message !== 'success' && state.errors?.username) {
       toast({
         variant: 'destructive',
         title: 'Verification Failed',
-        description: state.errors?.username?.[0] || 'An unknown error occurred.',
+        description: state.errors.username[0],
       });
     }
   }, [state, toast]);
