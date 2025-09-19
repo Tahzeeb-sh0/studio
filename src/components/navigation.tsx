@@ -8,12 +8,11 @@ import { cn } from '@/lib/utils';
 import {
   LayoutDashboard,
   ListPlus,
-  User,
   BrainCircuit,
-  MessageSquareHeart,
   Github,
   Bot,
   Wallet,
+  Trophy,
 } from 'lucide-react';
 
 const studentMenuItems = [
@@ -31,6 +30,11 @@ const studentMenuItems = [
     href: '/wallet',
     label: 'Digital Wallet',
     icon: Wallet,
+  },
+  {
+    href: '/leaderboard',
+    label: 'Leaderboard',
+    icon: Trophy,
   },
    {
     href: '/ai-twin',
