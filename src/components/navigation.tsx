@@ -27,8 +27,8 @@ const studentMenuItems = [
     icon: ListPlus,
   },
   {
-    href: '/wallet',
-    label: 'Digital Wallet',
+    href: '/portfolio',
+    label: 'Portfolio',
     icon: Wallet,
   },
   {
