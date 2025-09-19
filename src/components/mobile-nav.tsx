@@ -87,7 +87,7 @@ export default function MobileNav() {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground mr-2">
             <GraduationCap className="h-5 w-5" />
           </div>
-          <span className="font-bold">AchieveMe</span>
+          <span className="font-bold">StuVerse</span>
         </MobileLink>
         <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">

@@ -1,3 +1,4 @@
+
 import { Student, AcademicRecord, Activity, ActivityCategory, GithubStats, GithubProject } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
@@ -58,9 +59,9 @@ export const activityCategories: ActivityCategory[] = [
 export const githubProjects: GithubProject[] = [
   {
     id: 'PROJ-001',
-    name: 'achieveme-app',
+    name: 'stuverse-app',
     description: 'The very application you are using! A Next.js app for tracking student achievements.',
-    url: 'https://github.com/Tahzeeb-sh0/achieveme-app',
+    url: 'https://github.com/Tahzeeb-sh0/stuverse-app',
     stars: 150,
     forks: 30,
     language: 'TypeScript',

@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -98,7 +99,7 @@ export default function GithubPage() {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                           <BookOpen className="h-5 w-5 text-primary" />
-                          {project.name}
+                          {project.name.replace('achieveme', 'stuverse')}
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="flex-grow">
