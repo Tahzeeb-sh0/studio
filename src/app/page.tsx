@@ -88,14 +88,6 @@ export default function CompaniesPage() {
         <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
           Discover top student talent from our university. Below is a leaderboard of students ranked by their co-curricular and extra-curricular achievements.
         </p>
-         <div className="mt-6 flex justify-center gap-4">
-            <Button asChild>
-                <Link href="/auth/login">Student & Faculty Login</Link>
-            </Button>
-            <Button asChild variant="secondary">
-                 <Link href="/auth/signup">Create an Account</Link>
-            </Button>
-        </div>
       </div>
       
        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
@@ -169,3 +161,4 @@ export default function CompaniesPage() {
     </div>
   );
 }
+
