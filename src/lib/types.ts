@@ -1,3 +1,4 @@
+
 export type UserRole = 'student' | 'faculty';
 
 export type Student = {
@@ -9,6 +10,7 @@ export type Student = {
   year: number;
   role: UserRole;
   githubUsername?: string;
+  skills?: string[];
 };
 
 export type AcademicRecord = {

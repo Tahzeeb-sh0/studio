@@ -21,9 +21,15 @@ import { Activity, ActivityCategory } from '@/lib/types';
 import CoverLetterGenerator from './cover-letter-generator';
 import { format } from 'date-fns';
 import Link from 'next/link';
+import { Award } from 'lucide-react';
 
 const approvedActivities = activities.filter(
   (act) => act.status === 'Approved' && act.studentId === student.id
+);
+
+const totalActivityCredits = approvedActivities.reduce(
+  (sum, act) => sum + act.credits,
+  0
 );
 
 const groupedActivities = activityCategories.reduce((acc, category) => {
@@ -33,11 +39,6 @@ const groupedActivities = activityCategories.reduce((acc, category) => {
     }
     return acc;
 }, {} as Record<ActivityCategory, Activity[]>);
-
-const skills = [
-  'JavaScript', 'React', 'Node.js', 'Python', 'Data Analysis', 
-  'Project Management', 'Public Speaking', 'Team Leadership'
-];
 
 export default function PortfolioPage() {
   return (
@@ -143,11 +144,21 @@ export default function PortfolioPage() {
                 </CardHeader>
                 <CardContent>
                     <div className="flex flex-wrap gap-2">
-                        {skills.map(skill => (
+                        {student.skills?.map(skill => (
                             <Badge key={skill} variant="secondary">{skill}</Badge>
                         ))}
                     </div>
                 </CardContent>
+            </Card>
+             <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+              <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-sm font-medium">Activity Credits</CardTitle>
+                <Award className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{totalActivityCredits}</div>
+                <p className="text-xs text-muted-foreground">Credits from approved activities.</p>
+              </CardContent>
             </Card>
           </aside>
         </div>

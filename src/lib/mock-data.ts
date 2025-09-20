@@ -5,6 +5,11 @@ import { PlaceHolderImages } from './placeholder-images';
 const studentAvatar = PlaceHolderImages.find(img => img.id === 'student-avatar')?.imageUrl || 'https://picsum.photos/seed/student-avatar/100/100';
 const facultyAvatar = PlaceHolderImages.find(img => img.id === 'faculty-avatar')?.imageUrl || 'https://picsum.photos/seed/faculty-avatar/100/100';
 
+export const allSkills = [
+  'JavaScript', 'React', 'Node.js', 'Python', 'Data Analysis', 
+  'Project Management', 'Public Speaking', 'Team Leadership',
+  'TypeScript', 'Java', 'C++', 'AWS', 'Red Hat', 'Linux', 'Marketing', 'UI/UX Design'
+];
 
 export const users: Student[] = [
   {
@@ -16,6 +21,7 @@ export const users: Student[] = [
     year: 3,
     role: 'student',
     githubUsername: 'Tahzeeb-sh0',
+    skills: ['TypeScript', 'React', 'Node.js', 'Project Management', 'AWS']
   },
   {
     id: 'FAC-001',
@@ -35,6 +41,7 @@ export const users: Student[] = [
     year: 4,
     role: 'student',
     githubUsername: 'janesmith',
+    skills: ['Python', 'Data Analysis', 'React', 'Red Hat', 'Linux']
   },
   {
     id: 'STU-003',
@@ -44,6 +51,7 @@ export const users: Student[] = [
     major: 'Electrical Engineering',
     year: 2,
     role: 'student',
+    skills: ['C++', 'Java', 'AWS', 'Linux']
   },
    {
     id: 'STU-004',
@@ -53,6 +61,7 @@ export const users: Student[] = [
     major: 'Business Administration',
     year: 3,
     role: 'student',
+    skills: ['Marketing', 'Project Management', 'Public Speaking']
   },
   {
     id: 'STU-005',
@@ -62,6 +71,7 @@ export const users: Student[] = [
     major: 'Mechanical Engineering',
     year: 4,
     role: 'student',
+    skills: ['Project Management', 'Team Leadership']
   },
   {
     id: 'STU-006',
@@ -72,6 +82,7 @@ export const users: Student[] = [
     year: 2,
     role: 'student',
     githubUsername: 'jessgarcia',
+    skills: ['Marketing', 'Public Speaking', 'UI/UX Design']
   },
   {
     id: 'STU-007',
@@ -81,6 +92,7 @@ export const users: Student[] = [
     major: 'Physics',
     year: 3,
     role: 'student',
+    skills: ['Python', 'Data Analysis']
   },
   {
     id: 'STU-008',
@@ -90,6 +102,7 @@ export const users: Student[] = [
     major: 'Biology',
     year: 4,
     role: 'student',
+    skills: ['Team Leadership']
   },
 ];
 

@@ -1,6 +1,7 @@
 
 'use client';
 
+import * as React from 'react';
 import {
   Card,
   CardContent,
@@ -15,8 +16,18 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { users, activities } from '@/lib/mock-data';
+import { users, activities, allSkills } from '@/lib/mock-data';
 import { Student } from '@/lib/types';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { ListFilter } from 'lucide-react';
 
 interface LeaderboardEntry {
   student: Student;
@@ -64,13 +75,65 @@ const getRankColor = (rank: number) => {
 };
 
 export default function CompaniesPage() {
-  const leaderboard = calculateLeaderboard();
+  const [leaderboard, setLeaderboard] = React.useState<LeaderboardEntry[]>([]);
+  const [selectedSkills, setSelectedSkills] = React.useState<Set<string>>(new Set());
+
+  React.useEffect(() => {
+    const allStudents = calculateLeaderboard();
+    if (selectedSkills.size === 0) {
+      setLeaderboard(allStudents);
+    } else {
+      const filteredStudents = allStudents.filter(entry => 
+        entry.student.skills && Array.from(selectedSkills).every(skill => entry.student.skills?.includes(skill))
+      );
+      setLeaderboard(filteredStudents);
+    }
+  }, [selectedSkills]);
+
+  const handleSkillToggle = (skill: string) => {
+    const newSkills = new Set(selectedSkills);
+    if (newSkills.has(skill)) {
+      newSkills.delete(skill);
+    } else {
+      newSkills.add(skill);
+    }
+    setSelectedSkills(newSkills);
+  };
+
+
   const topThree = leaderboard.slice(0, 3);
   const runnersUp = leaderboard.slice(3);
 
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+       <div className="flex justify-end">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline">
+              <ListFilter className="mr-2 h-4 w-4" />
+              Filter by Skills
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="end">
+            <DropdownMenuLabel>Select Skills</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+             <div className="max-h-60 overflow-y-auto">
+              {allSkills.map((skill) => (
+                <DropdownMenuCheckboxItem
+                  key={skill}
+                  checked={selectedSkills.has(skill)}
+                  onCheckedChange={() => handleSkillToggle(skill)}
+                  onSelect={(e) => e.preventDefault()} // Prevent menu from closing
+                >
+                  {skill}
+                </DropdownMenuCheckboxItem>
+              ))}
+            </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {topThree.map((entry, index) => (
           <Card key={entry.student.id} className={`transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/20 border-2 ${
               index === 0 ? 'border-yellow-400' : index === 1 ? 'border-gray-400' : 'border-yellow-600'
@@ -101,6 +164,7 @@ export default function CompaniesPage() {
                 <TableHead className="w-[80px]">Rank</TableHead>
                 <TableHead>Student</TableHead>
                 <TableHead>Major</TableHead>
+                <TableHead>Skills</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -123,6 +187,25 @@ export default function CompaniesPage() {
                     </div>
                   </TableCell>
                   <TableCell className="text-muted-foreground">{entry.student.major}</TableCell>
+                   <TableCell>
+                     <div className="flex flex-wrap gap-1">
+                      {entry.student.skills?.slice(0,3).map(skill => (
+                        <Badge key={skill} variant="outline" className="text-xs">{skill}</Badge>
+                      ))}
+                      {entry.student.skills && entry.student.skills.length > 3 && (
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger>
+                               <Badge variant="outline" className="text-xs">+{entry.student.skills.length - 3}</Badge>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>{entry.student.skills.slice(3).join(', ')}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      )}
+                      </div>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
