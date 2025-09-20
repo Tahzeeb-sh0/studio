@@ -27,11 +27,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ListFilter } from 'lucide-react';
+import { ListFilter, Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+
 
 interface LeaderboardEntry {
   student: Student;
-  totalCredits: number;
   rank: number;
 }
 
@@ -56,7 +58,7 @@ const calculateLeaderboard = (): LeaderboardEntry[] => {
     .sort((a, b) => b.totalCredits - a.totalCredits);
 
   return sortedStudents.map((entry, index) => ({
-    ...entry,
+    student: entry.student,
     rank: index + 1,
   }));
 };
@@ -77,18 +79,26 @@ const getRankColor = (rank: number) => {
 export default function CompaniesPage() {
   const [leaderboard, setLeaderboard] = React.useState<LeaderboardEntry[]>([]);
   const [selectedSkills, setSelectedSkills] = React.useState<Set<string>>(new Set());
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   React.useEffect(() => {
     const allStudents = calculateLeaderboard();
-    if (selectedSkills.size === 0) {
-      setLeaderboard(allStudents);
-    } else {
-      const filteredStudents = allStudents.filter(entry => 
-        entry.student.skills && Array.from(selectedSkills).every(skill => entry.student.skills?.includes(skill))
-      );
-      setLeaderboard(filteredStudents);
-    }
-  }, [selectedSkills]);
+    
+    const filteredBySkill = selectedSkills.size === 0
+      ? allStudents
+      : allStudents.filter(entry => 
+          entry.student.skills && Array.from(selectedSkills).every(skill => entry.student.skills?.includes(skill))
+        );
+
+    const filteredByName = searchQuery.trim() === ''
+        ? filteredBySkill
+        : filteredBySkill.filter(entry =>
+            entry.student.name.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+
+    setLeaderboard(filteredByName);
+
+  }, [selectedSkills, searchQuery]);
 
   const handleSkillToggle = (skill: string) => {
     const newSkills = new Set(selectedSkills);
@@ -106,7 +116,16 @@ export default function CompaniesPage() {
 
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
-       <div className="flex justify-end">
+       <div className="flex flex-col sm:flex-row gap-4 justify-end">
+        <div className="relative w-full sm:w-auto sm:max-w-xs">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input
+              placeholder="Search by name..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10"
+          />
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline">
