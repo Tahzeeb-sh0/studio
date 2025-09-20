@@ -81,21 +81,23 @@ export default function CompaniesPage() {
           <Card key={entry.student.id} className={`transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/20 border-2 ${
               index === 0 ? 'border-yellow-400' : index === 1 ? 'border-gray-400' : 'border-yellow-600'
           }`}>
-            <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
+            <CardContent className="relative flex flex-row items-center gap-4 p-4">
               <div className={`absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-full border-2 text-base font-bold ${getRankColor(entry.rank)}`}>
                   {entry.rank}
               </div>
-              <Avatar className="w-20 h-20 mb-4 border-4 border-muted">
+              <Avatar className="w-20 h-20 border-4 border-muted">
                 <AvatarImage src={entry.student.avatarUrl} alt={entry.student.name} />
                 <AvatarFallback>{entry.student.name.charAt(0)}</AvatarFallback>
               </Avatar>
-              <h3 className="text-lg font-bold">{entry.student.name}</h3>
-              <p className="text-sm text-muted-foreground">{entry.student.major}</p>
-              <div className="mt-3 flex items-center gap-2 text-xl font-bold text-primary">
-                <Award className="h-5 w-5"/>
-                <span>{entry.totalCredits}</span>
+              <div className="flex flex-col">
+                <h3 className="text-lg font-bold">{entry.student.name}</h3>
+                <p className="text-sm text-muted-foreground">{entry.student.major}</p>
+                <div className="mt-2 flex items-center gap-2 text-xl font-bold text-primary">
+                  <Award className="h-5 w-5"/>
+                  <span>{entry.totalCredits}</span>
+                   <span className="text-xs text-muted-foreground font-medium">Credits</span>
+                </div>
               </div>
-               <p className="text-xs text-muted-foreground">Total Credits</p>
             </CardContent>
           </Card>
         ))}
