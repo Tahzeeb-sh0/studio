@@ -1,16 +1,47 @@
+
 {
   "placeholderImages": [
     {
       "id": "student-avatar",
-      "description": "Avatar for a student profile.",
-      "imageUrl": "https://picsum.photos/seed/beautiful-girl/120/120",
-      "imageHint": "beautiful girl"
+      "description": "Avatar for the main student profile.",
+      "imageUrl": "https://picsum.photos/seed/woman-portrait/120/120",
+      "imageHint": "woman portrait"
     },
     {
       "id": "faculty-avatar",
       "description": "Avatar for a faculty profile.",
-      "imageUrl": "https://picsum.photos/seed/faculty-woman/120/120",
+      "imageUrl": "https://picsum.photos/seed/professional-woman-portrait/120/120",
       "imageHint": "professional woman"
+    },
+    {
+      "id": "student-avatar-2",
+      "description": "Avatar for a second student profile.",
+      "imageUrl": "https://picsum.photos/seed/woman-smiling/100/100",
+      "imageHint": "smiling woman"
+    },
+    {
+      "id": "student-avatar-3",
+      "description": "Avatar for a third student profile.",
+      "imageUrl": "https://picsum.photos/seed/man-portrait/100/100",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "student-avatar-4",
+      "description": "Avatar for a fourth student profile.",
+      "imageUrl": "https://picsum.photos/seed/person-outdoors/100/100",
+      "imageHint": "person outdoors"
+    },
+    {
+      "id": "student-avatar-5",
+      "description": "Avatar for a fifth student profile.",
+      "imageUrl": "https://picsum.photos/seed/man-professional/100/100",
+      "imageHint": "professional man"
+    },
+    {
+      "id": "student-avatar-6",
+      "description": "Avatar for a sixth student profile.",
+      "imageUrl": "https://picsum.photos/seed/woman-casual/100/100",
+      "imageHint": "casual woman"
     },
     {
       "id": "github-icon",
@@ -20,3 +51,5 @@
     }
   ]
 }
+
+    
