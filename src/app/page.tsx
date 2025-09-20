@@ -76,21 +76,7 @@ export default function CompaniesPage() {
 
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
-      <div className="text-center">
-        <div className="mb-4 flex justify-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <GraduationCap className="h-10 w-10" />
-            </div>
-        </div>
-        <h1 className="font-headline text-4xl font-bold tracking-tight text-primary">
-          Welcome to StuVerse
-        </h1>
-        <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
-          Discover top student talent from our university. Below is a leaderboard of students ranked by their co-curricular and extra-curricular achievements.
-        </p>
-      </div>
-      
-       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
         {topThree.map((entry, index) => (
           <Card key={entry.student.id} className={`transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/20 border-2 ${
               index === 0 ? 'border-yellow-400' : index === 1 ? 'border-gray-400' : 'border-yellow-600'
@@ -133,7 +119,7 @@ export default function CompaniesPage() {
             </TableHeader>
             <TableBody>
               {runnersUp.map((entry) => (
-                <TableRow key={entry.student.id}>
+                <TableRow key={entry.id}>
                   <TableCell>
                      <Badge variant="secondary" className="text-lg">
                       {entry.rank}
@@ -161,4 +147,3 @@ export default function CompaniesPage() {
     </div>
   );
 }
-
