@@ -4,9 +4,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from '@/components/ui/card';
 import {
   Table,
@@ -19,10 +16,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { users, activities } from '@/lib/mock-data';
-import { Trophy, Award, GraduationCap } from 'lucide-react';
 import { Student } from '@/lib/types';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 
 interface LeaderboardEntry {
   student: Student;
@@ -100,11 +94,7 @@ export default function CompaniesPage() {
 
 
       <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
-        <CardHeader>
-          <CardTitle>All Rankings</CardTitle>
-          <CardDescription>A complete list of students ranked by their approved activity credits.</CardDescription>
-        </CardHeader>
-        <CardContent>
+        <CardContent className="p-6">
           <Table>
             <TableHeader>
               <TableRow>
