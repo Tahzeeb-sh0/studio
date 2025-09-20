@@ -92,11 +92,6 @@ export default function CompaniesPage() {
               <div className="flex flex-col">
                 <h3 className="text-lg font-bold">{entry.student.name}</h3>
                 <p className="text-sm text-muted-foreground">{entry.student.major}</p>
-                <div className="mt-2 flex items-center gap-2 text-xl font-bold text-primary">
-                  <Award className="h-5 w-5"/>
-                  <span>{entry.totalCredits}</span>
-                   <span className="text-xs text-muted-foreground font-medium">Credits</span>
-                </div>
               </div>
             </CardContent>
           </Card>
@@ -116,12 +111,11 @@ export default function CompaniesPage() {
                 <TableHead className="w-[80px]">Rank</TableHead>
                 <TableHead>Student</TableHead>
                 <TableHead>Major</TableHead>
-                <TableHead className="text-right">Credits</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {runnersUp.map((entry) => (
-                <TableRow key={entry.id}>
+                <TableRow key={entry.student.id}>
                   <TableCell>
                      <Badge variant="secondary" className="text-lg">
                       {entry.rank}
@@ -139,7 +133,6 @@ export default function CompaniesPage() {
                     </div>
                   </TableCell>
                   <TableCell className="text-muted-foreground">{entry.student.major}</TableCell>
-                  <TableCell className="text-right font-bold text-primary">{entry.totalCredits}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
