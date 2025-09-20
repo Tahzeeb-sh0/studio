@@ -31,7 +31,7 @@ export default function LoginPage() {
       if (user.role === 'faculty') {
         router.push('/approvals');
       } else {
-        router.push('/');
+        router.push('/dashboard');
       }
     }
   }, [user, router]);
@@ -49,7 +49,7 @@ export default function LoginPage() {
       if (user.role === 'faculty') {
         router.push('/approvals');
       } else {
-        router.push('/');
+        router.push('/dashboard');
       }
     } catch (err: any) {
       setError(err.message);

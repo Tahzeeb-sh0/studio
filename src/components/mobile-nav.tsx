@@ -21,7 +21,7 @@ import {
 
 const studentMenuItems = [
   {
-    href: '/',
+    href: '/dashboard',
     label: 'Dashboard',
     icon: LayoutDashboard,
   },

@@ -1,4 +1,6 @@
 
+'use client';
+
 import {
   Card,
   CardContent,
@@ -15,233 +17,155 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { academicRecord, activities, student } from '@/lib/mock-data';
-import {
-  BarChart,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-  Cell,
-  Bar,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent
-} from '@/components/ui/chart';
-import { Activity } from '@/lib/types';
-import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, MessageSquareHeart } from 'lucide-react';
-import { format } from 'date-fns';
-import Image from 'next/image';
-import { student as defaultStudent } from '@/lib/mock-data';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { users, activities } from '@/lib/mock-data';
+import { Trophy, Award, GraduationCap } from 'lucide-react';
+import { Student } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-const getStatusVariant = (status: Activity['status']) => {
-  switch (status) {
-    case 'Approved':
-      return 'default';
-    case 'Pending':
-      return 'secondary';
-    case 'Rejected':
-      return 'destructive';
+interface LeaderboardEntry {
+  student: Student;
+  totalCredits: number;
+  rank: number;
+}
+
+const calculateLeaderboard = (): LeaderboardEntry[] => {
+  const studentCredits: { [key: string]: number } = {};
+
+  activities.forEach(activity => {
+    if (activity.status === 'Approved') {
+      if (!studentCredits[activity.studentId]) {
+        studentCredits[activity.studentId] = 0;
+      }
+      studentCredits[activity.studentId] += activity.credits;
+    }
+  });
+
+  const sortedStudents = users
+    .filter(user => user.role === 'student')
+    .map(student => ({
+      student,
+      totalCredits: studentCredits[student.id] || 0,
+    }))
+    .sort((a, b) => b.totalCredits - a.totalCredits);
+
+  return sortedStudents.map((entry, index) => ({
+    ...entry,
+    rank: index + 1,
+  }));
+};
+
+const getRankColor = (rank: number) => {
+  switch (rank) {
+    case 1:
+      return 'bg-yellow-400 text-yellow-900 border-yellow-500';
+    case 2:
+      return 'bg-gray-300 text-gray-800 border-gray-400';
+    case 3:
+      return 'bg-yellow-600 text-yellow-100 border-yellow-700';
     default:
-      return 'outline';
+      return 'bg-muted text-muted-foreground';
   }
 };
 
-const activityData = activities.reduce((acc, activity) => {
-  const existing = acc.find((item) => item.category === activity.category);
-  if (existing) {
-    existing.count += 1;
-  } else {
-    acc.push({ category: activity.category, count: 1 });
-  }
-  return acc;
-}, [] as { category: string; count: number }[]);
-
-const totalActivityCredits = activities
-  .filter((act) => act.status === 'Approved')
-  .reduce((sum, act) => sum + act.credits, 0);
-
-const chartConfig = {
-  count: {
-    label: "Activities",
-  },
-};
-
-const chartColors = [
-  "hsl(var(--chart-1))",
-  "hsl(var(--chart-2))",
-  "hsl(var(--chart-3))",
-  "hsl(var(--chart-4))",
-  "hsl(var(--chart-5))",
-];
-
-export default async function DashboardPage() {
+export default function CompaniesPage() {
+  const leaderboard = calculateLeaderboard();
+  const topThree = leaderboard.slice(0, 3);
+  const runnersUp = leaderboard.slice(3);
 
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
-      <div>
-        <h1 className="font-headline text-3xl font-bold tracking-tight">
-          Welcome back, {student.name.split(' ')[0]}!
+      <div className="text-center">
+        <div className="mb-4 flex justify-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
+              <GraduationCap className="h-10 w-10" />
+            </div>
+        </div>
+        <h1 className="font-headline text-4xl font-bold tracking-tight text-primary">
+          Welcome to StuVerse
         </h1>
-        <p className="text-muted-foreground">
-          Here's a snapshot of your achievements and progress.
+        <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
+          Discover top student talent from our university. Below is a leaderboard of students ranked by their co-curricular and extra-curricular achievements.
         </p>
+         <div className="mt-6 flex justify-center gap-4">
+            <Button asChild>
+                <Link href="/auth/login">Student & Faculty Login</Link>
+            </Button>
+            <Button asChild variant="secondary">
+                 <Link href="/auth/signup">Create an Account</Link>
+            </Button>
+        </div>
+      </div>
+      
+       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+        {topThree.map((entry, index) => (
+          <Card key={entry.student.id} className={`transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/20 border-2 ${
+              index === 0 ? 'border-yellow-400' : index === 1 ? 'border-gray-400' : 'border-yellow-600'
+          }`}>
+            <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
+              <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(entry.rank)}`}>
+                  {entry.rank}
+              </div>
+              <Avatar className="w-24 h-24 mb-4 border-4 border-muted">
+                <AvatarImage src={entry.student.avatarUrl} alt={entry.student.name} />
+                <AvatarFallback>{entry.student.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <h3 className="text-xl font-bold">{entry.student.name}</h3>
+              <p className="text-sm text-muted-foreground">{entry.student.major}</p>
+              <div className="mt-4 flex items-center gap-2 text-2xl font-bold text-primary">
+                <Award className="h-6 w-6"/>
+                <span>{entry.totalCredits}</span>
+              </div>
+               <p className="text-xs text-muted-foreground">Total Credits</p>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
-       <Card className="w-full transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
-        <CardContent className="p-6 flex flex-col sm:flex-row items-center gap-6">
-          <Image
-            src={defaultStudent.avatarUrl}
-            alt="AI Twin"
-            width={80}
-            height={80}
-            className="rounded-full border-4 border-primary/50 shadow-lg"
-            data-ai-hint="futuristic avatar"
-          />
-          <div className="text-center sm:text-left flex-grow">
-            <div className="flex items-center gap-2 justify-center sm:justify-start">
-              <Bot className="h-6 w-6 text-primary"/>
-              <h3 className="text-xl font-headline font-semibold text-primary">Your AI Twin</h3>
-            </div>
-            <p className="text-muted-foreground mt-2 italic">
-              Ready to chat? I can offer personalized insights and encouragement based on your progress.
-            </p>
-          </div>
-            <Button asChild>
-                <Link href="/ai-twin">
-                    <MessageSquareHeart className="mr-2 h-4 w-4" />
-                    Chat with your Twin
-                </Link>
-            </Button>
+
+      <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <CardHeader>
+          <CardTitle>All Rankings</CardTitle>
+          <CardDescription>A complete list of students ranked by their approved activity credits.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[80px]">Rank</TableHead>
+                <TableHead>Student</TableHead>
+                <TableHead>Major</TableHead>
+                <TableHead className="text-right">Credits</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {runnersUp.map((entry) => (
+                <TableRow key={entry.student.id}>
+                  <TableCell>
+                     <Badge variant="secondary" className="text-lg">
+                      {entry.rank}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex items-center gap-4">
+                       <Avatar className="h-9 w-9">
+                        <AvatarImage src={entry.student.avatarUrl} alt={entry.student.name} />
+                        <AvatarFallback>
+                            {entry.student.name.split(' ').map((n) => n[0]).join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span className="font-medium">{entry.student.name}</span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">{entry.student.major}</TableCell>
+                  <TableCell className="text-right font-bold text-primary">{entry.totalCredits}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </CardContent>
       </Card>
-
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">GPA</CardTitle>
-            <GraduationCap className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{academicRecord.gpa.toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground">Your current Grade Point Average.</p>
-          </CardContent>
-        </Card>
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Attendance</CardTitle>
-            <CalendarClock className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{academicRecord.attendance}%</div>
-            <p className="text-xs text-muted-foreground">Your overall attendance rate.</p>
-          </CardContent>
-        </Card>
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
-           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Activity Credits</CardTitle>
-            <Award className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{totalActivityCredits}</div>
-            <p className="text-xs text-muted-foreground">Credits from approved activities.</p>
-          </CardContent>
-        </Card>
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
-           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Degree Progress</CardTitle>
-            <Target className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-                {academicRecord.creditsEarned} / {academicRecord.totalCredits}
-            </div>
-            <p className="text-xs text-muted-foreground">
-                {((academicRecord.creditsEarned / academicRecord.totalCredits) * 100).toFixed(0)}% towards your degree.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-5">
-        <Card className="lg:col-span-3 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
-          <CardHeader>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <CardTitle className="flex items-center gap-2">
-                  <BookOpen />
-                  Top GitHub Projects
-                </CardTitle>
-                <CardDescription>
-                  A snapshot of your top public repositories on GitHub.
-                </CardDescription>
-              </div>
-               <Button asChild size="sm" className="mt-4 sm:mt-0">
-                  <Link href="/github">
-                    View Details
-                  </Link>
-                </Button>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              Connect your GitHub account on the GitHub page to see your projects here.
-            </p>
-          </CardContent>
-        </Card>
-        <Card className="lg:col-span-2 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
-          <CardHeader>
-            <CardTitle>Activity Breakdown</CardTitle>
-            <CardDescription>
-              Your involvement across different activity types.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="pl-2">
-            <ChartContainer config={chartConfig} className="h-64 w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={activityData}
-                  layout="vertical"
-                  margin={{ left: 10, right: 10, top: 10, bottom: 10 }}
-                  animationDuration={800}
-                >
-                   <defs>
-                     {chartColors.map((color, index) => (
-                        <linearGradient key={`3d-gradient-${index}`} id={`3d-gradient-${index}`} x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor={color} stopOpacity={0.7}/>
-                          <stop offset="100%" stopColor={color} stopOpacity={1}/>
-                        </linearGradient>
-                      ))}
-                  </defs>
-                  <YAxis
-                    dataKey="category"
-                    type="category"
-                    tickLine={false}
-                    axisLine={false}
-                    tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
-                    width={110}
-                  />
-                  <XAxis dataKey="count" type="number" hide />
-                  <ChartTooltip
-                    cursor={{ fill: 'hsl(var(--muted))' }}
-                    content={<ChartTooltipContent />}
-                  />
-                  <Bar
-                    dataKey="count"
-                    radius={[0, 4, 4, 0]}
-                    animationDuration={800}
-                  >
-                    {activityData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={`url(#3d-gradient-${index % chartColors.length})`} />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-      </div>
     </div>
   );
 }

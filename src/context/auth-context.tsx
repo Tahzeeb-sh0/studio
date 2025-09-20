@@ -4,7 +4,7 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { Student } from '@/lib/types';
 import { users, student as defaultStudent, facultyUser } from '@/lib/mock-data';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface AuthContextType {
   user: Student | null;
@@ -17,6 +17,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<Student | null>(null);
   const router = useRouter();
+  const pathname = usePathname();
 
   const login = (email: string, pass: string): Student => {
     let loggedInUser: Student | undefined;
@@ -44,8 +45,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = () => {
     setUser(null);
-    router.push('/auth/login');
+    router.push('/');
   };
+
+  // Redirect if user is not logged in and trying to access protected routes
+  useEffect(() => {
+    const protectedRoutes = ['/dashboard', '/activities', '/portfolio', '/leaderboard', '/ai-twin', '/interview-coach', '/github', '/approvals'];
+    if (!user && protectedRoutes.includes(pathname)) {
+      router.push('/auth/login');
+    }
+  }, [user, pathname, router]);
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
