@@ -4,55 +4,55 @@
     {
       "id": "student-avatar",
       "description": "Avatar for the main student profile.",
-      "imageUrl": "https://picsum.photos/seed/1/120/120",
+      "imageUrl": "https://i.imgur.com/62fOR44.jpeg",
       "imageHint": "woman portrait"
     },
     {
       "id": "faculty-avatar",
       "description": "Avatar for a faculty profile.",
-      "imageUrl": "https://picsum.photos/seed/2/120/120",
+      "imageUrl": "https://i.imgur.com/NhB93xo.jpeg",
       "imageHint": "professional woman"
     },
     {
       "id": "student-avatar-2",
       "description": "Avatar for a second student profile.",
-      "imageUrl": "https://picsum.photos/seed/3/100/100",
+      "imageUrl": "https://i.imgur.com/A6j3k4V.jpeg",
       "imageHint": "smiling woman"
     },
     {
       "id": "student-avatar-3",
       "description": "Avatar for a third student profile.",
-      "imageUrl": "https://picsum.photos/seed/4/100/100",
+      "imageUrl": "https://i.imgur.com/uGfG5Yy.jpeg",
       "imageHint": "man portrait"
     },
     {
       "id": "student-avatar-4",
       "description": "Avatar for a fourth student profile.",
-      "imageUrl": "https://picsum.photos/seed/5/100/100",
+      "imageUrl": "https://i.imgur.com/uGfG5Yy.jpeg",
       "imageHint": "person outdoors"
     },
     {
       "id": "student-avatar-5",
       "description": "Avatar for a fifth student profile.",
-      "imageUrl": "https://picsum.photos/seed/6/100/100",
+      "imageUrl": "https://i.imgur.com/C49CVrf.jpeg",
       "imageHint": "professional man"
     },
     {
       "id": "student-avatar-6",
       "description": "Avatar for a sixth student profile.",
-      "imageUrl": "https://picsum.photos/seed/7/100/100",
+      "imageUrl": "https://i.imgur.com/A6j3k4V.jpeg",
       "imageHint": "casual woman"
     },
     {
       "id": "student-avatar-7",
       "description": "Avatar for a seventh student profile.",
-      "imageUrl": "https://picsum.photos/seed/8/100/100",
+      "imageUrl": "https://i.imgur.com/C49CVrf.jpeg",
       "imageHint": "man smiling"
     },
     {
       "id": "student-avatar-8",
       "description": "Avatar for an eighth student profile.",
-      "imageUrl": "https://picsum.photos/seed/9/100/100",
+      "imageUrl": "https://i.imgur.com/uGfG5Yy.jpeg",
       "imageHint": "woman looking"
     },
     {
@@ -63,5 +63,7 @@
     }
   ]
 }
+
+    
 
     
