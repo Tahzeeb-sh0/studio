@@ -66,19 +66,7 @@ export default function Navigation() {
   const { user } = useAuth();
 
   if (!user) {
-    return (
-       <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
-         <Link
-          href="/"
-          className={cn(
-            'transition-all duration-300 ease-in-out hover:scale-105 hover:text-primary',
-            pathname === '/' ? 'text-primary font-semibold' : 'text-foreground/70'
-          )}
-        >
-          For Companies
-        </Link>
-      </nav>
-    );
+    return null;
   }
 
   const menuItems = user.role === 'faculty' ? facultyMenuItems : studentMenuItems;

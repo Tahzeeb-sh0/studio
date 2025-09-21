@@ -66,25 +66,15 @@ const facultyMenuItems = [
   },
 ];
 
-const publicMenuItems = [
-    {
-        href: '/',
-        label: 'For Companies',
-        icon: Building2,
-    }
-];
-
 export default function MobileNav() {
   const [open, setOpen] = React.useState(false);
   const { user } = useAuth();
 
-  let menuItems;
-  if (user) {
-    menuItems = user.role === 'faculty' ? facultyMenuItems : studentMenuItems;
-  } else {
-    // Return null or an empty fragment if you don't want to show anything for logged-out users
+  if (!user) {
     return null;
   }
+
+  const menuItems = user.role === 'faculty' ? facultyMenuItems : studentMenuItems;
 
 
   return (
