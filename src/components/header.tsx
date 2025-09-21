@@ -30,10 +30,10 @@ export default function Header() {
               StuVerse
             </span>
           </Link>
-          <Navigation />
+          {user && <Navigation />}
         </div>
 
-        <MobileNav />
+        {user && <MobileNav />}
 
         <div className="flex flex-1 items-center justify-end gap-4">
           {user ? (
@@ -80,7 +80,8 @@ export default function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <div className="flex gap-2">
+            <div className="flex items-center gap-2">
+               <Navigation />
               <Button asChild variant="default" size="sm">
                 <Link href="/auth/login">Login</Link>
               </Button>

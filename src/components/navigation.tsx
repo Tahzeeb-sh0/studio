@@ -65,12 +65,9 @@ export default function Navigation() {
   const pathname = usePathname();
   const { user } = useAuth();
 
-  const menuItems =
-    user?.role === 'faculty' ? facultyMenuItems : studentMenuItems;
-
-  return (
-    <nav className="flex items-center space-x-6 text-sm font-medium">
-      {!user && (
+  if (!user) {
+    return (
+       <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
          <Link
           href="/"
           className={cn(
@@ -80,7 +77,14 @@ export default function Navigation() {
         >
           For Companies
         </Link>
-      )}
+      </nav>
+    );
+  }
+
+  const menuItems = user.role === 'faculty' ? facultyMenuItems : studentMenuItems;
+
+  return (
+    <nav className="flex items-center space-x-6 text-sm font-medium">
       {menuItems.map((item) => (
         <Link
           key={item.href}

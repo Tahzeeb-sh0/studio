@@ -77,11 +77,15 @@ const publicMenuItems = [
 export default function MobileNav() {
   const [open, setOpen] = React.useState(false);
   const { user } = useAuth();
-  const menuItems = user
-    ? user.role === 'faculty'
-      ? facultyMenuItems
-      : studentMenuItems
-    : publicMenuItems;
+
+  let menuItems;
+  if (user) {
+    menuItems = user.role === 'faculty' ? facultyMenuItems : studentMenuItems;
+  } else {
+    // Return null or an empty fragment if you don't want to show anything for logged-out users
+    return null;
+  }
+
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
