@@ -128,9 +128,6 @@ export default function LeaderboardPage() {
         <h1 className="font-headline text-3xl font-bold tracking-tight">
           Find Your Next Top Talent
         </h1>
-        <p className="text-muted-foreground">
-          Discover exceptional students from our university. Filter by skills or search by name.
-        </p>
       </div>
 
       <Card className="transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
@@ -325,5 +322,7 @@ export default function LeaderboardPage() {
     </div>
   );
 }
+
+    
 
     
