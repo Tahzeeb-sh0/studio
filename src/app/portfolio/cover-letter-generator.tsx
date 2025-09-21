@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Loader2, Sparkles, Wand2 } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
 const initialState = {
@@ -26,7 +26,7 @@ function SubmitButton() {
   );
 }
 
-export default function CoverLetterGenerator() {
+export default function CoverLetterGenerator({ studentId, studentName }: { studentId: string, studentName: string }) {
   const [state, formAction] = useFormState(generateCoverLetterAction, initialState);
   const { toast } = useToast();
 
@@ -48,6 +48,8 @@ export default function CoverLetterGenerator() {
   return (
     <div className="space-y-6">
       <form action={formAction} className="space-y-4">
+        <input type="hidden" name="studentId" value={studentId} />
+        <input type="hidden" name="studentName" value={studentName} />
         <div>
           <label htmlFor="jobDescription" className="block text-sm font-medium mb-2">
             Paste Job Description
@@ -72,7 +74,7 @@ export default function CoverLetterGenerator() {
         <Card className="flex flex-col">
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                    <Sparkles className="text-accent" />
+                    <Sparkles className="text-primary" />
                     Generated Cover Letter
                 </CardTitle>
                  <CardDescription>
@@ -89,3 +91,5 @@ export default function CoverLetterGenerator() {
     </div>
   );
 }
+
+    

@@ -4,13 +4,13 @@
     {
       "id": "student-avatar",
       "description": "Avatar for the main student profile.",
-      "imageUrl": "https://i.imgur.com/Ad618g5.jpeg",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFflR6_AHLZU-gxKZpA_7tFroS69bZk_uw_Q&s",
       "imageHint": "woman smiling"
     },
     {
       "id": "faculty-avatar",
       "description": "Avatar for a faculty profile.",
-      "imageUrl": "https://i.imgur.com/SAa2P74.jpeg",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ9MDVv40uh_jarDEdHhQq6eUz4mmmIxaZW5iq52TcvsAt2ZGECeJTCyh670EPe7E0Aek&usqp=CAU",
       "imageHint": "professional woman"
     },
     {

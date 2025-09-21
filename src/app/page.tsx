@@ -19,7 +19,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { users, activities, allSkills } from '@/lib/mock-data';
-import { Trophy, Award, Search, X as XIcon } from 'lucide-react';
+import { Search, X as XIcon } from 'lucide-react';
 import { Student } from '@/lib/types';
 import { useMemo, useState } from 'react';
 import { Input } from '@/components/ui/input';
@@ -38,6 +38,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import Link from 'next/link';
 
 interface LeaderboardEntry {
   student: Student;
@@ -132,7 +133,7 @@ export default function LeaderboardPage() {
         </p>
       </div>
 
-      <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+      <Card className="transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
         <CardContent className="p-4">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-grow">
@@ -185,41 +186,42 @@ export default function LeaderboardPage() {
         {topThree.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {topThree.map((entry, index) => (
-              <Card
-                key={entry.student.id}
-                className={`transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/20 border-2 ${
-                  index === 0
-                    ? 'border-yellow-400'
-                    : index === 1
-                    ? 'border-gray-400'
-                    : 'border-yellow-600'
-                }`}
-              >
-                <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
-                  <div
-                    className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(
-                      entry.rank
-                    )}`}
-                  >
-                    {entry.rank}
-                  </div>
-                  <Avatar className="w-24 h-24 mb-4 border-4 border-muted">
-                    <AvatarImage
-                      src={entry.student.avatarUrl}
-                      alt={entry.student.name}
-                    />
-                    <AvatarFallback>
-                      {entry.student.name.charAt(0)}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="text-center">
-                    <h3 className="text-xl font-bold">{entry.student.name}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {entry.student.major}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+              <Link key={entry.student.id} href={`/portfolio/${entry.student.id}`} className="block">
+                <Card
+                  className={`transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 border-2 h-full ${
+                    index === 0
+                      ? 'border-yellow-400'
+                      : index === 1
+                      ? 'border-gray-400'
+                      : 'border-yellow-600'
+                  }`}
+                >
+                  <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
+                    <div
+                      className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(
+                        entry.rank
+                      )}`}
+                    >
+                      {entry.rank}
+                    </div>
+                    <Avatar className="w-24 h-24 mb-4 border-4 border-muted">
+                      <AvatarImage
+                        src={entry.student.avatarUrl}
+                        alt={entry.student.name}
+                      />
+                      <AvatarFallback>
+                        {entry.student.name.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold">{entry.student.name}</h3>
+                      <p className="text-sm text-muted-foreground">
+                        {entry.student.major}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         ) : (
@@ -229,7 +231,7 @@ export default function LeaderboardPage() {
         )}
       </div>
 
-      <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+      <Card className="transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
         <CardHeader>
           <CardTitle>All Rankings</CardTitle>
           <CardDescription>
@@ -248,63 +250,71 @@ export default function LeaderboardPage() {
             </TableHeader>
             <TableBody>
               {runnersUp.map((entry) => (
-                <TableRow key={entry.student.id}>
+                <TableRow key={entry.student.id} className="cursor-pointer hover:bg-muted/50">
                   <TableCell>
-                    <Badge variant="secondary" className="text-lg">
-                      {entry.rank}
-                    </Badge>
+                     <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
+                      <Badge variant="secondary" className="text-lg">
+                        {entry.rank}
+                      </Badge>
+                     </Link>
                   </TableCell>
                   <TableCell>
-                    <div className="flex items-center gap-4">
-                      <Avatar className="h-9 w-9">
-                        <AvatarImage
-                          src={entry.student.avatarUrl}
-                          alt={entry.student.name}
-                        />
-                        <AvatarFallback>
-                          {entry.student.name
-                            .split(' ')
-                            .map((n) => n[0])
-                            .join('')}
-                        </AvatarFallback>
-                      </Avatar>
-                      <span className="font-medium">{entry.student.name}</span>
-                    </div>
+                    <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
+                      <div className="flex items-center gap-4">
+                        <Avatar className="h-9 w-9">
+                          <AvatarImage
+                            src={entry.student.avatarUrl}
+                            alt={entry.student.name}
+                          />
+                          <AvatarFallback>
+                            {entry.student.name
+                              .split(' ')
+                              .map((n) => n[0])
+                              .join('')}
+                          </AvatarFallback>
+                        </Avatar>
+                        <span className="font-medium">{entry.student.name}</span>
+                      </div>
+                    </Link>
                   </TableCell>
                   <TableCell className="text-muted-foreground">
-                    {entry.student.major}
+                    <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
+                      {entry.student.major}
+                    </Link>
                   </TableCell>
                   <TableCell>
-                    <div className="flex flex-wrap gap-1">
-                      {entry.student.skills
-                        ?.slice(0, MAX_SKILLS_DISPLAY)
-                        .map((skill) => (
-                          <Badge key={skill} variant="outline">
-                            {skill}
-                          </Badge>
-                        ))}
-                      {entry.student.skills &&
-                        entry.student.skills.length > MAX_SKILLS_DISPLAY && (
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <Badge variant="secondary">
-                                  +
-                                  {entry.student.skills.length -
-                                    MAX_SKILLS_DISPLAY}
-                                </Badge>
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>
-                                  {entry.student.skills
-                                    .slice(MAX_SKILLS_DISPLAY)
-                                    .join(', ')}
-                                </p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        )}
-                    </div>
+                    <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
+                      <div className="flex flex-wrap gap-1">
+                        {entry.student.skills
+                          ?.slice(0, MAX_SKILLS_DISPLAY)
+                          .map((skill) => (
+                            <Badge key={skill} variant="outline">
+                              {skill}
+                            </Badge>
+                          ))}
+                        {entry.student.skills &&
+                          entry.student.skills.length > MAX_SKILLS_DISPLAY && (
+                            <TooltipProvider>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <Badge variant="secondary">
+                                    +
+                                    {entry.student.skills.length -
+                                      MAX_SKILLS_DISPLAY}
+                                  </Badge>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>
+                                    {entry.student.skills
+                                      .slice(MAX_SKILLS_DISPLAY)
+                                      .join(', ')}
+                                  </p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          )}
+                      </div>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
@@ -315,3 +325,5 @@ export default function LeaderboardPage() {
     </div>
   );
 }
+
+    
