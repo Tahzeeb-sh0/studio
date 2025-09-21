@@ -17,6 +17,7 @@ import {
   Bot,
   Wallet,
   Trophy,
+  Building2,
 } from 'lucide-react';
 
 const studentMenuItems = [
@@ -65,11 +66,22 @@ const facultyMenuItems = [
   },
 ];
 
+const publicMenuItems = [
+    {
+        href: '/',
+        label: 'For Companies',
+        icon: Building2,
+    }
+];
+
 export default function MobileNav() {
   const [open, setOpen] = React.useState(false);
   const { user } = useAuth();
-  const menuItems =
-    user?.role === 'faculty' ? facultyMenuItems : studentMenuItems;
+  const menuItems = user
+    ? user.role === 'faculty'
+      ? facultyMenuItems
+      : studentMenuItems
+    : publicMenuItems;
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>

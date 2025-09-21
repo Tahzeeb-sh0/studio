@@ -21,8 +21,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+        <div className="mr-4 hidden md:flex md:items-center">
+          <Link href={user ? '/dashboard' : '/'} className="mr-6 flex items-center space-x-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
               <GraduationCap className="h-5 w-5" />
             </div>
@@ -30,10 +30,10 @@ export default function Header() {
               StuVerse
             </span>
           </Link>
-          {user && <Navigation />}
+          <Navigation />
         </div>
 
-        {user && <MobileNav />}
+        <MobileNav />
 
         <div className="flex flex-1 items-center justify-end gap-4">
           {user ? (
