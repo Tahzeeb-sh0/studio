@@ -4,56 +4,56 @@
     {
       "id": "student-avatar",
       "description": "Avatar for the main student profile.",
-      "imageUrl": "https://i.imgur.com/1bX5QH6.jpeg",
-      "imageHint": "woman portrait"
+      "imageUrl": "https://i.imgur.com/Ad618g5.jpeg",
+      "imageHint": "woman smiling"
     },
     {
       "id": "faculty-avatar",
       "description": "Avatar for a faculty profile.",
-      "imageUrl": "https://i.imgur.com/NhB93xo.jpeg",
+      "imageUrl": "https://i.imgur.com/SAa2P74.jpeg",
       "imageHint": "professional woman"
     },
     {
       "id": "student-avatar-2",
       "description": "Avatar for a second student profile.",
-      "imageUrl": "https://i.imgur.com/A6j3k4V.jpeg",
-      "imageHint": "smiling woman"
+      "imageUrl": "https://i.imgur.com/h5L4J0x.jpeg",
+      "imageHint": "woman outdoors"
     },
     {
       "id": "student-avatar-3",
       "description": "Avatar for a third student profile.",
-      "imageUrl": "https://i.imgur.com/sC4x4qu.jpeg",
-      "imageHint": "man portrait"
+      "imageUrl": "https://i.imgur.com/4l6tP5y.jpeg",
+      "imageHint": "man professional"
     },
     {
       "id": "student-avatar-4",
       "description": "Avatar for a fourth student profile.",
-      "imageUrl": "https://i.imgur.com/QyV8S5C.jpeg",
-      "imageHint": "person outdoors"
+      "imageUrl": "https://i.imgur.com/1fSzgN8.jpeg",
+      "imageHint": "woman looking"
     },
     {
       "id": "student-avatar-5",
       "description": "Avatar for a fifth student profile.",
-      "imageUrl": "https://i.imgur.com/C49CVrf.jpeg",
-      "imageHint": "professional man"
+      "imageUrl": "https://i.imgur.com/E1oQ53A.jpeg",
+      "imageHint": "man casual"
     },
     {
       "id": "student-avatar-6",
       "description": "Avatar for a sixth student profile.",
-      "imageUrl": "https://i.imgur.com/Y32s52F.jpeg",
-      "imageHint": "casual woman"
+      "imageUrl": "https://i.imgur.com/rN5MvIe.jpeg",
+      "imageHint": "woman on street"
     },
     {
       "id": "student-avatar-7",
       "description": "Avatar for a seventh student profile.",
-      "imageUrl": "https://i.imgur.com/sC4x4qu.jpeg",
-      "imageHint": "man smiling"
+      "imageUrl": "https://i.imgur.com/uDbL22n.jpeg",
+      "imageHint": "man thinking"
     },
     {
       "id": "student-avatar-8",
       "description": "Avatar for an eighth student profile.",
-      "imageUrl": "https://i.imgur.com/mYvSA5r.jpeg",
-      "imageHint": "woman looking"
+      "imageUrl": "https://i.imgur.com/I2AwVqA.jpeg",
+      "imageHint": "woman black and white"
     },
     {
       "id": "github-icon",
@@ -67,3 +67,4 @@
     
 
     
+
