@@ -95,11 +95,26 @@ export default {
                 transform: 'translateY(0)'
             },
         },
+        'spiral-rotate': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'spiral-transform': {
+          '0%, 100%': { transform: 'perspective(1000px) rotateX(80deg) scale(1)' },
+          '50%': { transform: 'perspective(1000px) rotateX(80deg) scale(1.2)' },
+        },
+        'spiral-bg-scroll': {
+          '0%': { backgroundPosition: '0 0' },
+          '100%': { backgroundPosition: '-256px -256px' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
+        'spiral-rotate': 'spiral-rotate 60s linear infinite',
+        'spiral-transform': 'spiral-transform 20s ease-in-out infinite',
+        'spiral-bg-scroll': 'spiral-bg-scroll 10s linear infinite',
       },
     },
   },
