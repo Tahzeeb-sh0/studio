@@ -1,6 +1,5 @@
 'use client';
 
-import { SpiralAnimation } from "@/components/ui/spiral-animation";
 import { useState, useEffect } from 'react';
 
 const SpiralDemo = () => {
@@ -22,11 +21,6 @@ const SpiralDemo = () => {
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden bg-black">
-      {/* Spiral Animation */}
-      <div className="absolute inset-0">
-        <SpiralAnimation />
-      </div>
-
       {/* Simple Elegant Text Button with Pulsing Effect */}
       <div
         className={`
