@@ -16,8 +16,8 @@
     {
       "id": "student-avatar-2",
       "description": "Avatar for a second student profile.",
-      "imageUrl": "https://i.imgur.com/h5L4J0x.jpeg",
-      "imageHint": "woman outdoors"
+      "imageUrl": "https://i.imgur.com/I2AwVqA.jpeg",
+      "imageHint": "woman black and white"
     },
     {
       "id": "student-avatar-3",
@@ -52,8 +52,8 @@
     {
       "id": "student-avatar-8",
       "description": "Avatar for an eighth student profile.",
-      "imageUrl": "https://i.imgur.com/I2AwVqA.jpeg",
-      "imageHint": "woman black and white"
+      "imageUrl": "https://i.imgur.com/h5L4J0x.jpeg",
+      "imageHint": "woman outdoors"
     },
     {
       "id": "github-icon",
@@ -67,4 +67,5 @@
     
 
     
+
 
