@@ -155,7 +155,10 @@ export default function LeaderboardPage() {
     setSelectedMajors([]);
   };
 
-  const showRank = selectedSkills.length <= 1 && selectedMajors.length === 0;
+  const showRank =
+    searchQuery === '' &&
+    selectedMajors.length === 0 &&
+    (selectedSkills.length === 0 || selectedSkills.length === 1);
   
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
