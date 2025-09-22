@@ -46,7 +46,7 @@ interface LeaderboardEntry {
   rank: number;
 }
 
-const calculateLeaderboard = (): LeaderboardEntry[] => {
+const calculateLeaderboard = (skillFilter: string[]): LeaderboardEntry[] => {
   const studentCredits: { [key: string]: number } = {};
 
   activities.forEach((activity) => {
@@ -58,13 +58,27 @@ const calculateLeaderboard = (): LeaderboardEntry[] => {
     }
   });
 
-  const sortedStudents = users
-    .filter((user) => user.role === 'student')
-    .map((student) => ({
-      student,
-      totalCredits: studentCredits[student.id] || 0,
-    }))
-    .sort((a, b) => b.totalCredits - a.totalCredits);
+  const studentUsers = users.filter((user) => user.role === 'student');
+
+  let sortedStudents;
+
+  if (skillFilter.length > 0) {
+    // If filtering by skill, sort by skillRank
+    sortedStudents = studentUsers
+      .map(student => ({
+        student,
+        totalCredits: studentCredits[student.id] || 0,
+      }))
+      .sort((a, b) => (a.student.skillRank || 999) - (b.student.skillRank || 999));
+  } else {
+    // Otherwise, sort by totalCredits
+    sortedStudents = studentUsers
+      .map(student => ({
+        student,
+        totalCredits: studentCredits[student.id] || 0,
+      }))
+      .sort((a, b) => b.totalCredits - a.totalCredits);
+  }
 
   return sortedStudents.map((entry, index) => ({
     ...entry,
@@ -90,7 +104,8 @@ const MAX_SKILLS_DISPLAY = 3;
 export default function LeaderboardPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
-  const leaderboard = useMemo(() => calculateLeaderboard(), []);
+  
+  const leaderboard = useMemo(() => calculateLeaderboard(selectedSkills), [selectedSkills]);
 
   const filteredLeaderboard = useMemo(() => {
     return leaderboard.filter((entry) => {

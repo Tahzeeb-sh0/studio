@@ -11,6 +11,7 @@ export type Student = {
   role: UserRole;
   githubUsername?: string;
   skills?: string[];
+  skillRank?: number;
 };
 
 export type AcademicRecord = {

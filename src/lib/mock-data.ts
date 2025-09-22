@@ -21,7 +21,8 @@ export const users: Student[] = [
     year: 3,
     role: 'student',
     githubUsername: 'Tahzeeb-sh0',
-    skills: ['TypeScript', 'React', 'Node.js', 'Project Management', 'AWS']
+    skills: ['TypeScript', 'React', 'Node.js', 'Project Management', 'AWS'],
+    skillRank: 1,
   },
   {
     id: 'FAC-001',
@@ -41,7 +42,8 @@ export const users: Student[] = [
     year: 4,
     role: 'student',
     githubUsername: 'janesmith',
-    skills: ['Python', 'Data Analysis', 'React', 'Red Hat', 'Linux']
+    skills: ['Python', 'Data Analysis', 'React', 'Red Hat', 'Linux'],
+    skillRank: 2,
   },
   {
     id: 'STU-003',
@@ -51,7 +53,8 @@ export const users: Student[] = [
     major: 'Electrical Engineering',
     year: 2,
     role: 'student',
-    skills: ['C++', 'Java', 'AWS', 'Linux']
+    skills: ['C++', 'Java', 'AWS', 'Linux'],
+    skillRank: 3,
   },
    {
     id: 'STU-004',
@@ -61,7 +64,8 @@ export const users: Student[] = [
     major: 'Business Administration',
     year: 3,
     role: 'student',
-    skills: ['Marketing', 'Project Management', 'Public Speaking']
+    skills: ['Marketing', 'Project Management', 'Public Speaking'],
+    skillRank: 4,
   },
   {
     id: 'STU-005',
@@ -71,7 +75,8 @@ export const users: Student[] = [
     major: 'Mechanical Engineering',
     year: 4,
     role: 'student',
-    skills: ['Project Management', 'Team Leadership']
+    skills: ['Project Management', 'Team Leadership'],
+    skillRank: 5,
   },
   {
     id: 'STU-006',
@@ -82,7 +87,8 @@ export const users: Student[] = [
     year: 2,
     role: 'student',
     githubUsername: 'jessgarcia',
-    skills: ['Marketing', 'Public Speaking', 'UI/UX Design']
+    skills: ['Marketing', 'Public Speaking', 'UI/UX Design'],
+    skillRank: 6,
   },
   {
     id: 'STU-007',
@@ -92,7 +98,8 @@ export const users: Student[] = [
     major: 'Physics',
     year: 3,
     role: 'student',
-    skills: ['Python', 'Data Analysis']
+    skills: ['Python', 'Data Analysis'],
+    skillRank: 7,
   },
   {
     id: 'STU-008',
@@ -102,7 +109,8 @@ export const users: Student[] = [
     major: 'Biology',
     year: 4,
     role: 'student',
-    skills: ['Team Leadership']
+    skills: ['Team Leadership'],
+    skillRank: 8,
   },
 ];
 

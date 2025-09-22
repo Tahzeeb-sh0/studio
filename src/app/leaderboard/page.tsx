@@ -86,7 +86,7 @@ export default function LeaderboardPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {topThree.map((entry, index) => (
-          <Card key={entry.student.id} className={`transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/20 border-2 ${
+          <Card key={entry.student.id} className={`transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 border-2 ${
               index === 0 ? 'border-yellow-400' : index === 1 ? 'border-gray-400' : 'border-yellow-600'
           }`}>
             <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
