@@ -109,7 +109,7 @@ const MAX_SKILLS_DISPLAY = 3;
 export default function LeaderboardPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
-  const [selectedMajors, setSelectedMajors] = useState<string[]>([]);
+  const [selectedMajors, setSelectedMajors] = useState<string[]>(['Computer Science']);
   
   const leaderboard = useMemo(() => calculateLeaderboard(selectedSkills), [selectedSkills]);
 
