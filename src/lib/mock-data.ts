@@ -11,6 +11,58 @@ export const allSkills = [
   'TypeScript', 'Java', 'C++', 'AWS', 'Red Hat', 'Linux', 'Marketing', 'UI/UX Design'
 ];
 
+const majors = [
+    'Computer Science', 'Data Science', 'Electrical Engineering', 'Business Administration', 
+    'Mechanical Engineering', 'Marketing', 'Physics', 'Biology'
+];
+
+const firstNames = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi", "Ivan", "Judy", "Mallory", "Niaj", "Olivia", "Peggy", "Quentin", "Rupert", "Sybil", "Trent", "Ulysses", "Victor", "Walter", "Xavier", "Yvonne", "Zelda"];
+const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin"];
+
+
+const skillsByMajor: { [key: string]: string[] } = {
+    'Computer Science': ['TypeScript', 'React', 'Node.js', 'AWS', 'Java', 'Python', 'Linux'],
+    'Data Science': ['Python', 'Data Analysis', 'AWS', 'React', 'Machine Learning', 'SQL'],
+    'Electrical Engineering': ['C++', 'Java', 'Linux', 'Circuit Design', 'VHDL'],
+    'Business Administration': ['Project Management', 'Public Speaking', 'Marketing', 'Finance'],
+    'Mechanical Engineering': ['CAD', 'Thermodynamics', 'Project Management', 'Matlab'],
+    'Marketing': ['Marketing', 'Public Speaking', 'UI/UX Design', 'Social Media'],
+    'Physics': ['Python', 'Data Analysis', 'Matlab', 'Quantum Mechanics'],
+    'Biology': ['Data Analysis', 'Genetics', 'Lab Techniques', 'Python']
+};
+
+const generatedUsers: Student[] = [];
+let studentIdCounter = 10; // Start after existing students
+
+majors.forEach(major => {
+    for (let i = 0; i < 100; i++) {
+        const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+        const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+        const name = `${firstName} ${lastName}`;
+        const id = `STU-${String(studentIdCounter).padStart(3, '0')}`;
+        const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${i}@example.com`;
+        const avatarId = `student-avatar-${(studentIdCounter % 18) + 2}`;
+        const avatarUrl = PlaceHolderImages.find(img => img.id === avatarId)?.imageUrl;
+        const studentSkills = skillsByMajor[major] || [];
+        const numSkills = Math.floor(Math.random() * 3) + 2; // 2 to 4 skills
+        const shuffledSkills = [...studentSkills].sort(() => 0.5 - Math.random());
+        
+        generatedUsers.push({
+            id,
+            name,
+            email,
+            avatarUrl: avatarUrl || `https://picsum.photos/seed/${id}/100/100`,
+            major,
+            year: Math.floor(Math.random() * 4) + 1,
+            role: 'student',
+            skills: shuffledSkills.slice(0, numSkills),
+            skillRank: i + 1,
+        });
+        studentIdCounter++;
+    }
+});
+
+
 export const users: Student[] = [
   {
     id: 'STU-001',
@@ -43,7 +95,7 @@ export const users: Student[] = [
     role: 'student',
     githubUsername: 'janesmith',
     skills: ['Python', 'Data Analysis', 'React', 'Red Hat', 'Linux'],
-    skillRank: 2,
+    skillRank: 1, // Rank 1 in Data Science
   },
   {
     id: 'STU-003',
@@ -54,7 +106,7 @@ export const users: Student[] = [
     year: 2,
     role: 'student',
     skills: ['C++', 'Java', 'AWS', 'Linux'],
-    skillRank: 3,
+    skillRank: 1, // Rank 1 in EE
   },
    {
     id: 'STU-004',
@@ -65,7 +117,7 @@ export const users: Student[] = [
     year: 3,
     role: 'student',
     skills: ['Marketing', 'Project Management', 'Public Speaking'],
-    skillRank: 4,
+    skillRank: 1,
   },
   {
     id: 'STU-005',
@@ -76,7 +128,7 @@ export const users: Student[] = [
     year: 4,
     role: 'student',
     skills: ['Project Management', 'Team Leadership'],
-    skillRank: 5,
+    skillRank: 1,
   },
   {
     id: 'STU-006',
@@ -88,7 +140,7 @@ export const users: Student[] = [
     role: 'student',
     githubUsername: 'jessgarcia',
     skills: ['Marketing', 'Public Speaking', 'UI/UX Design'],
-    skillRank: 6,
+    skillRank: 1,
   },
   {
     id: 'STU-007',
@@ -99,7 +151,7 @@ export const users: Student[] = [
     year: 3,
     role: 'student',
     skills: ['Python', 'Data Analysis'],
-    skillRank: 7,
+    skillRank: 1,
   },
   {
     id: 'STU-008',
@@ -110,8 +162,9 @@ export const users: Student[] = [
     year: 4,
     role: 'student',
     skills: ['Team Leadership'],
-    skillRank: 8,
+    skillRank: 1,
   },
+  ...generatedUsers,
 ];
 
 export const student = users[0]; // Default to Tahzeeb for existing components that rely on a single student
@@ -171,6 +224,25 @@ export const githubProjects: GithubProject[] = [
     language: 'TypeScript',
   },
 ];
+
+const generatedActivities: Activity[] = [];
+generatedUsers.forEach(user => {
+    const numActivities = Math.floor(Math.random() * 5) + 1; // 1 to 5 activities
+    for (let i = 0; i < numActivities; i++) {
+        const category = activityCategories[Math.floor(Math.random() * activityCategories.length)];
+        generatedActivities.push({
+            id: `ACT-${user.id}-${i}`,
+            studentId: user.id,
+            studentName: user.name,
+            title: `${category} by ${user.name}`,
+            category: category,
+            date: new Date(2023, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
+            description: `Generated activity for ${user.name} in ${category}.`,
+            status: 'Approved',
+            credits: Math.floor(Math.random() * 5) + 1, // 1 to 5 credits
+        });
+    }
+});
 
 export const activities: Activity[] = [
   {
@@ -393,8 +465,10 @@ export const activities: Activity[] = [
     status: 'Pending',
     credits: 6,
   },
+  ...generatedActivities,
 ];
 
     
 
     
+

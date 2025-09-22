@@ -16,31 +16,31 @@
     {
       "id": "student-avatar-2",
       "description": "Avatar for a second student profile.",
-      "imageUrl": "https://i.imgur.com/I2AwVqA.jpeg",
-      "imageHint": "woman black and white"
+      "imageUrl": "https://i.imgur.com/83oGq34.jpeg",
+      "imageHint": "woman smiling"
     },
     {
       "id": "student-avatar-3",
       "description": "Avatar for a third student profile.",
-      "imageUrl": "https://i.imgur.com/4l6tP5y.jpeg",
+      "imageUrl": "https://i.imgur.com/E1oQ53A.jpeg",
       "imageHint": "man professional"
     },
     {
       "id": "student-avatar-4",
       "description": "Avatar for a fourth student profile.",
-      "imageUrl": "https://i.imgur.com/1fSzgN8.jpeg",
+      "imageUrl": "https://i.imgur.com/rN5MvIe.jpeg",
       "imageHint": "woman looking"
     },
     {
       "id": "student-avatar-5",
       "description": "Avatar for a fifth student profile.",
-      "imageUrl": "https://i.imgur.com/E1oQ53A.jpeg",
+      "imageUrl": "https://i.imgur.com/4l6tP5y.jpeg",
       "imageHint": "man casual"
     },
     {
       "id": "student-avatar-6",
       "description": "Avatar for a sixth student profile.",
-      "imageUrl": "https://i.imgur.com/rN5MvIe.jpeg",
+      "imageUrl": "https://i.imgur.com/1fSzgN8.jpeg",
       "imageHint": "woman on street"
     },
     {
@@ -55,6 +55,78 @@
       "imageUrl": "https://i.imgur.com/h5L4J0x.jpeg",
       "imageHint": "woman outdoors"
     },
+     {
+      "id": "student-avatar-9",
+      "description": "Avatar for a ninth student profile.",
+      "imageUrl": "https://i.imgur.com/I2AwVqA.jpeg",
+      "imageHint": "woman black and white"
+    },
+    {
+      "id": "student-avatar-10",
+      "description": "Avatar for a tenth student profile.",
+      "imageUrl": "https://i.imgur.com/z2gs21E.jpeg",
+      "imageHint": "man smiling"
+    },
+    {
+      "id": "student-avatar-11",
+      "description": "Avatar for a eleventh student profile.",
+      "imageUrl": "https://i.imgur.com/sC56wA0.jpeg",
+      "imageHint": "woman happy"
+    },
+    {
+      "id": "student-avatar-12",
+      "description": "Avatar for a twelfth student profile.",
+      "imageUrl": "https://i.imgur.com/hP3y6x3.jpeg",
+      "imageHint": "man glasses"
+    },
+    {
+      "id": "student-avatar-13",
+      "description": "Avatar for a thirteenth student profile.",
+      "imageUrl": "https://i.imgur.com/T0S22B5.jpeg",
+      "imageHint": "woman glasses"
+    },
+    {
+      "id": "student-avatar-14",
+      "description": "Avatar for a fourteenth student profile.",
+      "imageUrl": "https://i.imgur.com/7DmGoC9.jpeg",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "student-avatar-15",
+      "description": "Avatar for a fifteenth student profile.",
+      "imageUrl": "https://i.imgur.com/w1kKON3.jpeg",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "student-avatar-16",
+      "description": "Avatar for a sixteenth student profile.",
+      "imageUrl": "https://i.imgur.com/tVw4RjS.jpeg",
+      "imageHint": "man city"
+    },
+    {
+      "id": "student-avatar-17",
+      "description": "Avatar for a seventeenth student profile.",
+      "imageUrl": "https://i.imgur.com/lIun22p.jpeg",
+      "imageHint": "woman nature"
+    },
+    {
+      "id": "student-avatar-18",
+      "description": "Avatar for an eighteenth student profile.",
+      "imageUrl": "https://i.imgur.com/zJg4A2W.jpeg",
+      "imageHint": "man suit"
+    },
+    {
+      "id": "student-avatar-19",
+      "description": "Avatar for a nineteenth student profile.",
+      "imageUrl": "https://i.imgur.com/b5sC4A1.jpeg",
+      "imageHint": "woman urban"
+    },
+    {
+      "id": "student-avatar-20",
+      "description": "Avatar for a twentieth student profile.",
+      "imageUrl": "https://i.imgur.com/N3c7p2S.jpeg",
+      "imageHint": "man serious"
+    },
     {
       "id": "github-icon",
       "description": "Icon for GitHub integration.",
@@ -67,5 +139,6 @@
     
 
     
+
 
 
