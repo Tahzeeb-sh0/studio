@@ -53,8 +53,8 @@ const createMockData = () => {
       const name = `${firstName} ${lastName}`;
       const id = `STU-${String(studentIdCounter).padStart(3, '0')}`;
       const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${i}@example.com`;
-      const avatarIndex = (studentIdCounter % 18) + 2;
-      const avatarId = `student-avatar-${avatarIndex}`;
+      const avatarIndex = (studentIdCounter % 20) + 1; // Cycle through 1-20
+      const avatarId = `student-avatar${avatarIndex > 1 ? `-${avatarIndex}`: ''}`;
       const avatarUrl = PlaceHolderImages.find(img => img.id === avatarId)?.imageUrl;
       const studentSkills = skillsByMajor[major] || [];
       const numSkills = (((studentIdCounter + i) % 3) + 2); // 2 to 4 skills
@@ -498,3 +498,6 @@ export const activities: Activity[] = [
 
     
 
+
+
+    
