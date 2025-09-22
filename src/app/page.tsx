@@ -100,11 +100,16 @@ const getRankColor = (rank: number) => {
   }
 };
 
+const allMajors = [
+  ...new Set(users.filter(u => u.role === 'student').map((u) => u.major)),
+];
+
 const MAX_SKILLS_DISPLAY = 3;
 
 export default function LeaderboardPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  const [selectedMajors, setSelectedMajors] = useState<string[]>([]);
   
   const leaderboard = useMemo(() => calculateLeaderboard(selectedSkills), [selectedSkills]);
 
@@ -118,9 +123,12 @@ export default function LeaderboardPage() {
         selectedSkills.every((skill) =>
           entry.student.skills?.includes(skill)
         );
-      return matchesSearch && matchesSkills;
+      const matchesMajors =
+        selectedMajors.length === 0 ||
+        selectedMajors.includes(entry.student.major);
+      return matchesSearch && matchesSkills && matchesMajors;
     });
-  }, [leaderboard, searchQuery, selectedSkills]);
+  }, [leaderboard, searchQuery, selectedSkills, selectedMajors]);
 
   const topThree = filteredLeaderboard.slice(0, 3);
   const runnersUp = filteredLeaderboard.slice(3);
@@ -132,13 +140,22 @@ export default function LeaderboardPage() {
         : [...prev, skill]
     );
   };
+  
+  const handleMajorToggle = (major: string) => {
+    setSelectedMajors((prev) =>
+      prev.includes(major)
+        ? prev.filter((m) => m !== major)
+        : [...prev, major]
+    );
+  };
 
   const clearFilters = () => {
     setSearchQuery('');
     setSelectedSkills([]);
+    setSelectedMajors([]);
   };
 
-  const showRank = selectedSkills.length <= 1;
+  const showRank = selectedSkills.length <= 1 && selectedMajors.length === 0;
   
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
@@ -162,6 +179,27 @@ export default function LeaderboardPage() {
               />
             </div>
             <div className="flex gap-2">
+               <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="w-full sm:w-auto">
+                    Filter by Major ({selectedMajors.length})
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel>Filter by Major</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  {allMajors.map((major) => (
+                    <DropdownMenuCheckboxItem
+                      key={major}
+                      checked={selectedMajors.includes(major)}
+                      onSelect={(e) => e.preventDefault()}
+                      onCheckedChange={() => handleMajorToggle(major)}
+                    >
+                      {major}
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="w-full sm:w-auto">
@@ -183,7 +221,7 @@ export default function LeaderboardPage() {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
-              {(searchQuery || selectedSkills.length > 0) && (
+              {(searchQuery || selectedSkills.length > 0 || selectedMajors.length > 0) && (
                 <Button variant="ghost" onClick={clearFilters}>
                   <XIcon className="mr-2 h-4 w-4" />
                   Clear
