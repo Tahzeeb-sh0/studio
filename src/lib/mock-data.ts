@@ -41,7 +41,8 @@ majors.forEach(major => {
         const name = `${firstName} ${lastName}`;
         const id = `STU-${String(studentIdCounter).padStart(3, '0')}`;
         const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${i}@example.com`;
-        const avatarId = `student-avatar-${(studentIdCounter % 18) + 2}`;
+        const avatarIndex = (studentIdCounter % 18) + 2; // Cycle through avatars 2-19
+        const avatarId = `student-avatar-${avatarIndex}`;
         const avatarUrl = PlaceHolderImages.find(img => img.id === avatarId)?.imageUrl;
         const studentSkills = skillsByMajor[major] || [];
         const numSkills = Math.floor(Math.random() * 3) + 2; // 2 to 4 skills
@@ -472,3 +473,6 @@ export const activities: Activity[] = [
 
     
 
+
+
+    
