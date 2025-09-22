@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import {
@@ -62,8 +63,8 @@ const calculateLeaderboard = (skillFilter: string[]): LeaderboardEntry[] => {
 
   let sortedStudents;
 
-  if (skillFilter.length > 0) {
-    // If filtering by skill, sort by skillRank
+  // Only sort by skillRank if a single skill is selected
+  if (skillFilter.length === 1) {
     sortedStudents = studentUsers
       .map(student => ({
         student,
@@ -71,7 +72,7 @@ const calculateLeaderboard = (skillFilter: string[]): LeaderboardEntry[] => {
       }))
       .sort((a, b) => (a.student.skillRank || 999) - (b.student.skillRank || 999));
   } else {
-    // Otherwise, sort by totalCredits
+    // Otherwise, sort by totalCredits (default)
     sortedStudents = studentUsers
       .map(student => ({
         student,
@@ -136,6 +137,8 @@ export default function LeaderboardPage() {
     setSearchQuery('');
     setSelectedSkills([]);
   };
+
+  const showRank = selectedSkills.length <= 1;
   
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
@@ -201,21 +204,25 @@ export default function LeaderboardPage() {
               <Link key={entry.student.id} href={`/portfolio/${entry.student.id}`} className="block">
                 <Card
                   className={`transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 border-2 h-full ${
-                    index === 0
+                    showRank && index === 0
                       ? 'border-yellow-400'
-                      : index === 1
+                      : showRank && index === 1
                       ? 'border-gray-400'
-                      : 'border-yellow-600'
+                      : showRank && index === 2
+                      ? 'border-yellow-600'
+                      : 'border-transparent'
                   }`}
                 >
                   <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
-                    <div
-                      className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(
-                        entry.rank
-                      )}`}
-                    >
-                      {entry.rank}
-                    </div>
+                    {showRank && (
+                        <div
+                          className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(
+                            entry.rank
+                          )}`}
+                        >
+                          {entry.rank}
+                        </div>
+                    )}
                     <Avatar className="w-24 h-24 mb-4 border-4 border-muted">
                       <AvatarImage
                         src={entry.student.avatarUrl}
@@ -247,14 +254,14 @@ export default function LeaderboardPage() {
         <CardHeader>
           <CardTitle>All Rankings</CardTitle>
           <CardDescription>
-            A complete list of students ranked by their approved activity credits.
+            A complete list of students.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[80px]">Rank</TableHead>
+                {showRank && <TableHead className="w-[80px]">Rank</TableHead>}
                 <TableHead>Student</TableHead>
                 <TableHead>Major</TableHead>
                 <TableHead>Skills</TableHead>
@@ -263,13 +270,15 @@ export default function LeaderboardPage() {
             <TableBody>
               {runnersUp.map((entry) => (
                 <TableRow key={entry.student.id} className="cursor-pointer hover:bg-muted/50">
-                  <TableCell>
-                     <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
-                      <Badge variant="secondary" className="text-lg">
-                        {entry.rank}
-                      </Badge>
-                     </Link>
-                  </TableCell>
+                   {showRank && (
+                      <TableCell>
+                         <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
+                          <Badge variant="secondary" className="text-lg">
+                            {entry.rank}
+                          </Badge>
+                         </Link>
+                      </TableCell>
+                   )}
                   <TableCell>
                     <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
                       <div className="flex items-center gap-4">
@@ -337,7 +346,3 @@ export default function LeaderboardPage() {
     </div>
   );
 }
-
-    
-
-    
