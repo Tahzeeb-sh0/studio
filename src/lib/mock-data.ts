@@ -11,6 +11,17 @@ export const allSkills = [
   'TypeScript', 'Java', 'C++', 'AWS', 'Red Hat', 'Linux', 'Marketing', 'UI/UX Design'
 ];
 
+export const activityCategories: ActivityCategory[] = [
+    'Conference',
+    'Workshop',
+    'Certification',
+    'Club Activity',
+    'Competition',
+    'Internship',
+    'Community Service',
+    'Other',
+];
+
 const majors = [
     'Computer Science', 'Data Science', 'Electrical Engineering', 'Business Administration', 
     'Mechanical Engineering', 'Marketing', 'Physics', 'Biology'
@@ -31,37 +42,76 @@ const skillsByMajor: { [key: string]: string[] } = {
     'Biology': ['Data Analysis', 'Genetics', 'Lab Techniques', 'Python']
 };
 
-const generatedUsers: Student[] = [];
-let studentIdCounter = 10; // Start after existing students
+const createMockData = () => {
+  const generatedUsers: Student[] = [];
+  let studentIdCounter = 10;
 
-majors.forEach(major => {
+  for (const major of majors) {
     for (let i = 0; i < 100; i++) {
-        const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-        const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-        const name = `${firstName} ${lastName}`;
-        const id = `STU-${String(studentIdCounter).padStart(3, '0')}`;
-        const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${i}@example.com`;
-        const avatarIndex = (studentIdCounter % 18) + 2; // Cycle through avatars 2-19
-        const avatarId = `student-avatar-${avatarIndex}`;
-        const avatarUrl = PlaceHolderImages.find(img => img.id === avatarId)?.imageUrl;
-        const studentSkills = skillsByMajor[major] || [];
-        const numSkills = Math.floor(Math.random() * 3) + 2; // 2 to 4 skills
-        const shuffledSkills = [...studentSkills].sort(() => 0.5 - Math.random());
-        
-        generatedUsers.push({
-            id,
-            name,
-            email,
-            avatarUrl: avatarUrl || `https://picsum.photos/seed/${id}/100/100`,
-            major,
-            year: Math.floor(Math.random() * 4) + 1,
-            role: 'student',
-            skills: shuffledSkills.slice(0, numSkills),
-            skillRank: i + 1,
-        });
-        studentIdCounter++;
+      const firstName = firstNames[(studentIdCounter + i) % firstNames.length];
+      const lastName = lastNames[(studentIdCounter + i) % lastNames.length];
+      const name = `${firstName} ${lastName}`;
+      const id = `STU-${String(studentIdCounter).padStart(3, '0')}`;
+      const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${i}@example.com`;
+      const avatarIndex = (studentIdCounter % 18) + 2;
+      const avatarId = `student-avatar-${avatarIndex}`;
+      const avatarUrl = PlaceHolderImages.find(img => img.id === avatarId)?.imageUrl;
+      const studentSkills = skillsByMajor[major] || [];
+      const numSkills = (((studentIdCounter + i) % 3) + 2); // 2 to 4 skills
+      
+      const shuffledSkills = [...studentSkills]
+          .sort((a, b) => (a+b).charCodeAt(0) % 2 - 0.5) // Deterministic shuffle
+          .slice(0, numSkills);
+
+      generatedUsers.push({
+        id,
+        name,
+        email,
+        avatarUrl: avatarUrl || `https://picsum.photos/seed/${id}/100/100`,
+        major,
+        year: ((i % 4) + 1),
+        role: 'student',
+        skills: shuffledSkills,
+        skillRank: i + 1,
+      });
+      studentIdCounter++;
     }
-});
+  }
+
+  const generatedActivities: Activity[] = [];
+  generatedUsers.forEach((user, userIdx) => {
+    const numActivities = (userIdx % 5) + 1; // 1 to 5 activities
+    for (let i = 0; i < numActivities; i++) {
+      const category = activityCategories[(userIdx + i) % activityCategories.length];
+      generatedActivities.push({
+        id: `ACT-${user.id}-${i}`,
+        studentId: user.id,
+        studentName: user.name,
+        title: `${category} by ${user.name}`,
+        category: category,
+        date: new Date(2023, ((userIdx + i) % 12), ((userIdx + i) % 28) + 1),
+        description: `Generated activity for ${user.name} in ${category}.`,
+        status: 'Approved',
+        credits: ((userIdx + i) % 5) + 1, // 1 to 5 credits
+      });
+    }
+  });
+
+  return { generatedUsers, generatedActivities };
+}
+
+// Memoize the generated data
+const getGeneratedData = (() => {
+  let cache: { generatedUsers: Student[], generatedActivities: Activity[] } | null = null;
+  return () => {
+    if (cache === null) {
+      cache = createMockData();
+    }
+    return cache;
+  };
+})();
+
+const { generatedUsers, generatedActivities } = getGeneratedData();
 
 
 export const users: Student[] = [
@@ -185,17 +235,6 @@ export const githubStats: GithubStats = {
   gists: 5,
 };
 
-export const activityCategories: ActivityCategory[] = [
-    'Conference',
-    'Workshop',
-    'Certification',
-    'Club Activity',
-    'Competition',
-    'Internship',
-    'Community Service',
-    'Other',
-];
-
 export const githubProjects: GithubProject[] = [
   {
     id: 'PROJ-001',
@@ -226,24 +265,6 @@ export const githubProjects: GithubProject[] = [
   },
 ];
 
-const generatedActivities: Activity[] = [];
-generatedUsers.forEach(user => {
-    const numActivities = Math.floor(Math.random() * 5) + 1; // 1 to 5 activities
-    for (let i = 0; i < numActivities; i++) {
-        const category = activityCategories[Math.floor(Math.random() * activityCategories.length)];
-        generatedActivities.push({
-            id: `ACT-${user.id}-${i}`,
-            studentId: user.id,
-            studentName: user.name,
-            title: `${category} by ${user.name}`,
-            category: category,
-            date: new Date(2023, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
-            description: `Generated activity for ${user.name} in ${category}.`,
-            status: 'Approved',
-            credits: Math.floor(Math.random() * 5) + 1, // 1 to 5 credits
-        });
-    }
-});
 
 export const activities: Activity[] = [
   {
@@ -476,3 +497,4 @@ export const activities: Activity[] = [
 
 
     
+
