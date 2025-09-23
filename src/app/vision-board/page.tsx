@@ -20,8 +20,7 @@ import {
 import { useState } from 'react';
 import { getVisionBoardSuggestionsAction } from './actions';
 import { useToast } from '@/hooks/use-toast';
-import { Badge } from '@/components/ui/badge';
-
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 type GoalCategory = 'Communication' | 'Leadership' | 'Problem Solving';
 
@@ -30,6 +29,10 @@ type Suggestion = {
   description: string;
 };
 
+const communicationImage = PlaceHolderImages.find(p => p.id === 'vision-communication');
+const leadershipImage = PlaceHolderImages.find(p => p.id === 'vision-leadership');
+const problemSolvingImage = PlaceHolderImages.find(p => p.id === 'vision-problem-solving');
+
 const goals = [
   {
     category: 'Communication' as GoalCategory,
@@ -37,7 +40,8 @@ const goals = [
     description:
       'Excel in public speaking, networking, and articulating ideas clearly.',
     icon: MessageSquare,
-    imageClass: 'bg-[url("https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800")]',
+    imageUrl: communicationImage?.imageUrl,
+    imageHint: communicationImage?.imageHint,
     prompt:
       'Suggest 3-4 specific activities or events available at a university to improve communication skills, such as debates, public speaking workshops, or networking sessions.',
   },
@@ -47,7 +51,8 @@ const goals = [
     description:
       'Take initiative, inspire others, and lead projects to success.',
     icon: Users,
-    imageClass: 'bg-[url("https://images.unsplash.com/photo-1579567761406-461487c3c3a2?w=800")]',
+    imageUrl: leadershipImage?.imageUrl,
+    imageHint: leadershipImage?.imageHint,
     prompt:
       'Suggest 3-4 specific leadership opportunities at a university, like student club roles, hackathon team lead positions, or project management workshops.',
   },
@@ -57,7 +62,8 @@ const goals = [
     description:
       'Analyze complex challenges and devise innovative solutions.',
     icon: Lightbulb,
-    imageClass: 'bg-[url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800")]',
+    imageUrl: problemSolvingImage?.imageUrl,
+    imageHint: problemSolvingImage?.imageHint,
     prompt:
       'Suggest 3-4 specific activities at a university for improving problem-solving skills, such as coding challenges, innovation contests, or case study competitions.',
   },
@@ -113,7 +119,9 @@ export default function VisionBoardPage() {
             className="flex flex-col overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
           >
             <div
-              className={`relative h-48 bg-cover bg-center ${goal.imageClass}`}
+              className="relative h-48 bg-cover bg-center"
+              style={{ backgroundImage: `url(${goal.imageUrl})` }}
+              data-ai-hint={goal.imageHint}
             >
               <div className="absolute inset-0 bg-black/50 flex flex-col justify-end p-6">
                 <div className="flex items-center gap-3">

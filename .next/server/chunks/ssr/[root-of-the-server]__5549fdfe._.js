@@ -1109,6 +1109,88 @@ const jobs = [
             'Analyze campaign performance and optimize for conversions.'
         ],
         datePosted: new Date('2024-05-08')
+    },
+    {
+        id: 'JOB-007',
+        title: 'Backend Engineer',
+        company: 'DataStream Solutions',
+        location: 'Chicago, IL',
+        type: 'Full-time',
+        tags: [
+            'Node.js',
+            'PostgreSQL',
+            'GraphQL'
+        ],
+        description: 'We are looking for a backend engineer to build and maintain the APIs that power our data platform. You will work with a modern stack and have a significant impact on our product.',
+        responsibilities: [
+            'Design and implement RESTful and GraphQL APIs.',
+            'Write clean, maintainable, and well-tested code.',
+            'Collaborate with front-end developers to integrate user-facing elements.',
+            'Manage and optimize database performance.'
+        ],
+        datePosted: new Date('2024-05-22')
+    },
+    {
+        id: 'JOB-008',
+        title: 'DevOps Engineer Intern',
+        company: 'ScaleGrid',
+        location: 'Remote',
+        type: 'Internship',
+        tags: [
+            'Docker',
+            'Kubernetes',
+            'CI/CD',
+            'Terraform'
+        ],
+        description: 'Join our infrastructure team to learn and implement DevOps best practices. This internship will provide hands-on experience with automation, containerization, and cloud infrastructure.',
+        responsibilities: [
+            'Assist in managing and improving our CI/CD pipeline.',
+            'Work with Docker and Kubernetes to containerize and orchestrate applications.',
+            'Use infrastructure-as-code tools like Terraform to manage cloud resources.',
+            'Monitor system performance and troubleshoot issues.'
+        ],
+        datePosted: new Date('2024-05-21')
+    },
+    {
+        id: 'JOB-009',
+        title: 'Product Manager (Associate)',
+        company: 'Agile Innovations',
+        location: 'Seattle, WA',
+        type: 'Full-time',
+        tags: [
+            'Product Management',
+            'Agile',
+            'JIRA'
+        ],
+        description: 'We are seeking a junior Product Manager to help define and execute the product roadmap for our flagship product. You will work closely with engineering, design, and marketing teams.',
+        responsibilities: [
+            'Gather and prioritize product and customer requirements.',
+            'Define the product vision and strategy.',
+            'Work with cross-functional teams to deliver new features and products.',
+            'Analyze market data and user feedback to inform product decisions.'
+        ],
+        datePosted: new Date('2024-05-19')
+    },
+    {
+        id: 'JOB-010',
+        title: 'Full Stack Developer',
+        company: 'NexGen Solutions',
+        location: 'Remote',
+        type: 'Part-time',
+        tags: [
+            'React',
+            'Node.js',
+            'TypeScript',
+            'MongoDB'
+        ],
+        description: 'We are looking for a versatile Full Stack Developer to join our team on a part-time basis. You will be responsible for developing both front-end and back-end components of our web applications.',
+        responsibilities: [
+            'Develop and maintain web applications using the MERN stack.',
+            'Write clean, reusable, and efficient code.',
+            'Participate in code reviews and contribute to a collaborative development environment.',
+            'Troubleshoot and debug applications.'
+        ],
+        datePosted: new Date('2024-05-17')
     }
 ];
 }}),

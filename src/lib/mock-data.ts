@@ -57,7 +57,7 @@ const createMockData = () => {
 
       const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${i}@example.com`;
       const avatarIndex = (studentIdCounter % 20);
-      const avatarId = `student-avatar-${avatarIndex + 2}`;
+      const avatarId = `student-avatar-${avatarIndex + 1}`;
       const avatarUrl = PlaceHolderImages.find(img => img.id === avatarId)?.imageUrl;
       const studentSkills = skillsByMajor[major] || [];
       const numSkills = (((studentIdCounter + i) % 3) + 2); // 2 to 4 skills
