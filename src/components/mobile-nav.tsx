@@ -18,6 +18,7 @@ import {
   Wallet,
   Trophy,
   Building2,
+  View,
 } from 'lucide-react';
 
 const studentMenuItems = [
@@ -40,6 +41,11 @@ const studentMenuItems = [
     href: '/leaderboard',
     label: 'Leaderboard',
     icon: Trophy,
+  },
+  {
+    href: '/vision-board',
+    label: 'Vision Board',
+    icon: View,
   },
   {
     href: '/ai-twin',
