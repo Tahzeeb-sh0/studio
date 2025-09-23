@@ -28,7 +28,7 @@ import {
   ChartTooltipContent
 } from '@/components/ui/chart';
 import { Activity } from '@/lib/types';
-import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, MessageSquareHeart } from 'lucide-react';
+import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, MessageSquareHeart, Briefcase } from 'lucide-react';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import { student as defaultStudent } from '@/lib/mock-data';
@@ -170,23 +170,23 @@ export default async function DashboardPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <CardTitle className="flex items-center gap-2">
-                  <BookOpen />
-                  Top GitHub Projects
+                  <Briefcase />
+                  Job Portal
                 </CardTitle>
                 <CardDescription>
-                  A snapshot of your top public repositories on GitHub.
+                  Explore internships and full-time positions from our partner companies.
                 </CardDescription>
               </div>
                <Button asChild size="sm" className="mt-4 sm:mt-0">
-                  <Link href="/github">
-                    View Details
+                  <Link href="/jobs">
+                    Browse Jobs
                   </Link>
                 </Button>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">
-              Connect your GitHub account on the GitHub page to see your projects here.
+             <p className="text-sm text-muted-foreground">
+              Your next career move is just a click away. Find opportunities that match your skills and ambitions.
             </p>
           </CardContent>
         </Card>

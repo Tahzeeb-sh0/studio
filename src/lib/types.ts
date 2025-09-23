@@ -61,3 +61,14 @@ export type GithubProject = {
   forks: number;
   language: string;
 };
+
+export type Job = {
+    id: string;
+    title: string;
+    company: string;
+    location: string;
+    type: 'Full-time' | 'Internship' | 'Part-time';
+    tags: string[];
+    description: string;
+    datePosted: Date;
+};

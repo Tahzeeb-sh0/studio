@@ -14,6 +14,7 @@ import {
   Wallet,
   Trophy,
   View,
+  Briefcase,
 } from 'lucide-react';
 
 const studentMenuItems = [
@@ -41,6 +42,11 @@ const studentMenuItems = [
     href: '/vision-board',
     label: 'Vision Board',
     icon: View,
+  },
+  {
+    href: '/jobs',
+    label: 'Job Portal',
+    icon: Briefcase,
   },
    {
     href: '/ai-twin',

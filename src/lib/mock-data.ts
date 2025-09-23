@@ -1,5 +1,5 @@
 
-import { Student, AcademicRecord, Activity, ActivityCategory, GithubStats, GithubProject } from './types';
+import { Student, AcademicRecord, Activity, ActivityCategory, GithubStats, GithubProject, Job } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
 const studentAvatar = PlaceHolderImages.find(img => img.id === 'student-avatar')?.imageUrl || 'https://picsum.photos/seed/student-avatar/100/100';
@@ -490,6 +490,68 @@ export const activities: Activity[] = [
   ...generatedActivities,
 ];
 
+export const jobs: Job[] = [
+    {
+        id: 'JOB-001',
+        title: 'Frontend Developer Intern',
+        company: 'Innovate Inc.',
+        location: 'Remote',
+        type: 'Internship',
+        tags: ['React', 'TypeScript', 'CSS'],
+        description: 'Join our team to build and improve our user-facing features. Ideal for students passionate about UI/UX.',
+        datePosted: new Date('2024-05-20'),
+    },
+    {
+        id: 'JOB-002',
+        title: 'Software Engineer (New Grad)',
+        company: 'Tech Solutions LLC',
+        location: 'New York, NY',
+        type: 'Full-time',
+        tags: ['Java', 'Python', 'AWS'],
+        description: 'Looking for recent graduates to join our backend engineering team. You will work on scalable, cloud-based services.',
+        datePosted: new Date('2024-05-18'),
+    },
+    {
+        id: 'JOB-003',
+        title: 'Data Science Intern',
+        company: 'Data Insights Co.',
+        location: 'San Francisco, CA',
+        type: 'Internship',
+        tags: ['Python', 'SQL', 'Machine Learning'],
+        description: 'Analyze large datasets to extract meaningful insights and contribute to our predictive modeling projects.',
+        datePosted: new Date('2024-05-15'),
+    },
+    {
+        id: 'JOB-004',
+        title: 'Cloud Engineer',
+        company: 'Cloudways',
+        location: 'Austin, TX',
+        type: 'Full-time',
+        tags: ['AWS', 'Linux', 'Node.js'],
+        description: 'Manage and scale our cloud infrastructure. Experience with containerization (Docker, Kubernetes) is a plus.',
+        datePosted: new Date('2024-05-12'),
+    },
+     {
+        id: 'JOB-005',
+        title: 'UI/UX Design Intern',
+        company: 'Creative Minds',
+        location: 'Remote',
+        type: 'Internship',
+        tags: ['Figma', 'UI/UX Design', 'User Research'],
+        description: 'Work alongside our design team to create wireframes, prototypes, and high-fidelity mockups for our mobile app.',
+        datePosted: new Date('2024-05-10'),
+    },
+     {
+        id: 'JOB-006',
+        title: 'Marketing Associate',
+        company: 'Growth Gurus',
+        location: 'Boston, MA',
+        type: 'Full-time',
+        tags: ['Marketing', 'Social Media', 'SEO'],
+        description: 'Develop and execute marketing campaigns across multiple channels to drive user acquisition and engagement.',
+        datePosted: new Date('2024-05-08'),
+    }
+];
     
 
     
@@ -501,3 +563,4 @@ export const activities: Activity[] = [
 
 
     
+
