@@ -232,7 +232,7 @@ export default function ApprovalsPage() {
               <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={chartData} layout="vertical" margin={{ left: 80, right: 20 }}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis type="number" dataKey="count" />
+                      <XAxis type="number" />
                       <YAxis dataKey="name" type="category" tickLine={false} axisLine={false} />
                        <ChartTooltip
                         cursor={{fill: 'hsl(var(--muted))'}}
