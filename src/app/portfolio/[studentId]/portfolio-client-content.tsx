@@ -26,6 +26,7 @@ import { useAuth } from '@/context/auth-context';
 import { academicRecord } from '@/lib/mock-data';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { useToast } from '@/hooks/use-toast';
 
 interface PortfolioClientContentProps {
     student: Student;
@@ -41,8 +42,25 @@ export default function PortfolioClientContent({
     groupedActivities,
 }: PortfolioClientContentProps) {
   const { user: loggedInUser } = useAuth();
+  const { toast } = useToast();
   const isOwner = loggedInUser && loggedInUser.id === student.id;
   const portfolioRef = useRef<HTMLDivElement>(null);
+
+  const handleShareLink = () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      toast({
+        title: 'Link Copied!',
+        description: 'The portfolio link has been copied to your clipboard.',
+      });
+    }).catch(err => {
+        console.error('Failed to copy link: ', err);
+        toast({
+            variant: 'destructive',
+            title: 'Failed to Copy',
+            description: 'Could not copy the link to your clipboard.',
+        });
+    });
+  };
 
   const handleDownloadPdf = () => {
     const input = portfolioRef.current;
@@ -115,7 +133,7 @@ export default function PortfolioClientContent({
           </p>
         </div>
         <div className='flex gap-2'>
-            <Button variant="outline">
+            <Button variant="outline" onClick={handleShareLink}>
                 <Share2 className="mr-2 h-4 w-4" />
                 Share Link
             </Button>
