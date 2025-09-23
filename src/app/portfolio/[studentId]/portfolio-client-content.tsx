@@ -191,7 +191,7 @@ export default function PortfolioClientContent({
             )}
             <Button variant="outline" onClick={handleShareLink}>
                 <Share2 className="mr-2 h-4 w-4" />
-                Share Link
+                Share
             </Button>
             <Button onClick={handleDownloadPdf}>
                 <Download className="mr-2 h-4 w-4" />
