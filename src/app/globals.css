@@ -8,26 +8,26 @@ body {
 
 @layer base {
   :root {
-    --background: 225 27% 97%; /* #F5F6FA */
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 231 48% 54%; /* #3F51B5 - Deep Blue */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 15%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 262 84% 60%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 225 27% 94%;
-    --secondary-foreground: 231 48% 54%;
-    --muted: 225 27% 94%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 170 75% 40%; /* #20B2AA - Teal */
+    --secondary: 217 32% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 222 47% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 32% 20%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 63% 40%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 231 48% 54%;
-    --chart-1: 231 48% 54%;
+    --border: 217 32% 20%;
+    --input: 217 32% 20%;
+    --ring: 262 84% 60%;
+    --chart-1: 262 84% 60%;
     --chart-2: 170 75% 40%;
     --chart-3: 45 100% 51%;
     --chart-4: 350 85% 65%;
@@ -42,20 +42,20 @@ body {
     --card-foreground: 210 40% 98%;
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 231 48% 54%;
+    --primary: 262 84% 60%;
     --primary-foreground: 210 40% 98%;
     --secondary: 217 32% 20%;
     --secondary-foreground: 210 40% 98%;
     --muted: 222 47% 15%;
     --muted-foreground: 215 20% 65%;
-    --accent: 170 75% 40%;
+    --accent: 217 32% 20%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 63% 40%;
     --destructive-foreground: 210 40% 98%;
     --border: 217 32% 20%;
     --input: 217 32% 20%;
-    --ring: 231 48% 54%;
-    --chart-1: 231 48% 54%;
+    --ring: 262 84% 60%;
+    --chart-1: 262 84% 60%;
     --chart-2: 170 75% 40%;
     --chart-3: 45 100% 51%;
     --chart-4: 350 85% 65%;
@@ -75,8 +75,5 @@ body {
 @layer components {
     .card {
         @apply transition-all duration-300 ease-in-out;
-    }
-    .card:hover {
-        @apply shadow-2xl shadow-primary/10 scale-[1.02];
     }
 }
