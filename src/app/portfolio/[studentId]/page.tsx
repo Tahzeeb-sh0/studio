@@ -1,4 +1,6 @@
 
+'use client';
+
 import Image from 'next/image';
 import {
   Card,
@@ -22,13 +24,17 @@ import CoverLetterGenerator from '../cover-letter-generator';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { useAuth } from '@/context/auth-context';
 
 export default function PortfolioPage({ params }: { params: { studentId: string } }) {
+  const { user: loggedInUser } = useAuth();
   const student = users.find(u => u.id === params.studentId);
 
   if (!student) {
     notFound();
   }
+  
+  const isOwner = loggedInUser && loggedInUser.id === student.id;
 
   const approvedActivities = activities.filter(
     (act) => act.status === 'Approved' && act.studentId === student.id
@@ -128,13 +134,15 @@ export default function PortfolioPage({ params }: { params: { studentId: string 
                 <p className="text-muted-foreground">No approved achievements yet.</p>
               )}
             </section>
-             <section>
-              <h3 className="flex items-center gap-2 font-headline text-2xl font-semibold mb-4 border-b pb-2">
-                <Bot />
-                AI Cover Letter Generator
-              </h3>
-              <CoverLetterGenerator studentId={student.id} studentName={student.name} />
-            </section>
+             {isOwner && (
+              <section>
+                <h3 className="flex items-center gap-2 font-headline text-2xl font-semibold mb-4 border-b pb-2">
+                  <Bot />
+                  AI Cover Letter Generator
+                </h3>
+                <CoverLetterGenerator studentId={student.id} studentName={student.name} />
+              </section>
+            )}
           </div>
           <aside className="space-y-8">
             <Card className="transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
@@ -177,5 +185,3 @@ export default function PortfolioPage({ params }: { params: { studentId: string 
     </div>
   );
 }
-
-    
