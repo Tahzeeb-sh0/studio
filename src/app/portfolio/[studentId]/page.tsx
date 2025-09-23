@@ -1,4 +1,5 @@
 
+'use client';
 
 import { users, activities } from '@/lib/mock-data';
 import { notFound } from 'next/navigation';
