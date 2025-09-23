@@ -6,15 +6,54 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Loader2, Send, Bot } from 'lucide-react';
-import { askAiTwinAction } from './actions';
+import { Loader2, Send, Bot, Play } from 'lucide-react';
+import { askAiTwinAction, getAiTwinAudioAction } from './actions';
 import { useAuth } from '@/context/auth-context';
 import { student as defaultStudent } from '@/lib/mock-data';
+import { useToast } from '@/hooks/use-toast';
 
 interface Message {
   role: 'user' | 'model';
   content: string;
 }
+
+function PlayAudioButton({ text }: { text: string }) {
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const { toast } = useToast();
+
+  const handlePlay = async () => {
+    if (audioUrl) {
+      const audio = new Audio(audioUrl);
+      audio.play();
+      return;
+    }
+
+    setIsGenerating(true);
+    const result = await getAiTwinAudioAction(text);
+    setIsGenerating(false);
+
+    if (result.error) {
+      toast({
+        variant: 'destructive',
+        title: 'Audio Generation Failed',
+        description: result.error,
+      });
+    } else if (result.audio) {
+      setAudioUrl(result.audio);
+      const audio = new Audio(result.audio);
+      audio.play();
+    }
+  };
+
+  return (
+    <Button variant="ghost" size="icon" onClick={handlePlay} disabled={isGenerating} className="h-8 w-8 ml-2">
+      {isGenerating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}
+      <span className="sr-only">Play audio</span>
+    </Button>
+  );
+}
+
 
 export default function Chat() {
   const { user } = useAuth();
@@ -101,7 +140,7 @@ export default function Chat() {
                   </Avatar>
                 )}
                 <div
-                  className={`max-w-[75%] rounded-xl px-4 py-3 text-sm ${
+                  className={`flex items-center max-w-[75%] rounded-xl px-4 py-3 text-sm ${
                     message.role === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-muted'
@@ -110,6 +149,7 @@ export default function Chat() {
                     <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
                         {message.content}
                     </div>
+                     {message.role === 'model' && <PlayAudioButton text={message.content} />}
                 </div>
                  {message.role === 'user' && (
                   <Avatar className="h-9 w-9">

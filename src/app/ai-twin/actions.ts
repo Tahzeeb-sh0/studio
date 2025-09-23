@@ -1,6 +1,8 @@
+
 'use server';
 
 import { generateAiTwinMessage, AiTwinInput } from "@/ai/flows/ai-twin";
+import { textToSpeech } from "@/ai/flows/text-to-speech";
 import { activities, student, academicRecord } from "@/lib/mock-data";
 import { format } from "date-fns";
 
@@ -38,4 +40,20 @@ export async function askAiTwinAction(history: AiTwinInput['history']) {
       error: "I'm having a little trouble gathering my thoughts right now. Please check back in a bit!",
     };
   }
+}
+
+export async function getAiTwinAudioAction(text: string) {
+    try {
+        const result = await textToSpeech(text);
+        return {
+            audio: result.audio,
+            error: null,
+        };
+    } catch(e) {
+        console.error("Error generating audio:", e);
+        return {
+            audio: null,
+            error: "Failed to generate audio for the message."
+        }
+    }
 }
