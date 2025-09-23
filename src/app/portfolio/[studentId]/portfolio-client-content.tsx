@@ -29,6 +29,7 @@ import html2canvas from 'html2canvas';
 import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const CoverLetterGenerator = dynamic(() => import('../cover-letter-generator'), {
     loading: () => <Skeleton className="h-64 w-full" />,
@@ -201,15 +202,10 @@ export default function PortfolioClientContent({
       <Card ref={portfolioRef} className="overflow-hidden">
         <div className="bg-muted/30 p-8">
           <div className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
-            <Image
-              src={student.avatarUrl}
-              alt={student.name}
-              width={120}
-              height={120}
-              className="rounded-full border-4 border-primary/20 shadow-md"
-              data-ai-hint="portrait person"
-              crossOrigin="anonymous"
-            />
+            <Avatar className="w-32 h-32 border-4 border-primary/20 shadow-md">
+                <AvatarImage src={student.avatarUrl} alt={student.name} />
+                <AvatarFallback>{student.name.charAt(0)}</AvatarFallback>
+            </Avatar>
             <div className='flex-1'>
               <h2 className="font-headline text-4xl font-bold text-primary">
                 {student.name}

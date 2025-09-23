@@ -34,6 +34,7 @@ import Image from 'next/image';
 import { student as defaultStudent } from '@/lib/mock-data';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
@@ -91,14 +92,10 @@ export default async function DashboardPage() {
 
        <Card>
         <CardContent className="p-6 flex flex-col sm:flex-row items-center gap-6">
-          <Image
-            src={defaultStudent.avatarUrl}
-            alt="AI Twin"
-            width={80}
-            height={80}
-            className="rounded-full border-4 border-primary/50 shadow-lg"
-            data-ai-hint="futuristic avatar"
-          />
+          <Avatar className="w-20 h-20 border-4 border-primary/50 shadow-lg">
+            <AvatarImage src={defaultStudent.avatarUrl} alt="AI Twin" />
+            <AvatarFallback>{defaultStudent.name.charAt(0)}</AvatarFallback>
+          </Avatar>
           <div className="text-center sm:text-left flex-grow">
             <div className="flex items-center gap-2 justify-center sm:justify-start">
               <Bot className="h-6 w-6 text-primary"/>
