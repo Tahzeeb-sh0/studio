@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///home/user/studio/src/app/auth/layout.tsx"],"sourcesContent":["\nexport default function AuthLayout({\n    children,\n}: {\n    children: React.ReactNode;\n}) {\n    return (\n        <div className=\"min-h-[calc(100vh-4rem)] flex items-center justify-center p-4 sm:p-6 lg:p-8\">\n            {children}\n        </div>\n    );\n}\n"],"names":[],"mappings":";;;;;AACe,SAAS,WAAW,EAC/B,QAAQ,EAGX;IACG,qBACI,8OAAC;QAAI,WAAU;kBACV;;;;;;AAGb","debugId":null}}]
+}

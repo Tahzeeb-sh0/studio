@@ -1,0 +1,16 @@
+{
+  "node": {
+    "6026730413f092a4bff56c102afea3eda21eec4ae3": {
+      "workers": {
+        "app/wallet/page": {
+          "moduleId": "[project]/.next-internal/server/app/wallet/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/wallet/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/wallet/page": "action-browser"
+      }
+    }
+  },
+  "edge": {}
+}

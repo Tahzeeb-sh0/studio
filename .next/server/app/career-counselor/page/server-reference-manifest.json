@@ -1,0 +1,16 @@
+{
+  "node": {
+    "4083f26b8a5af21b9001613c8ec316959bae0eace7": {
+      "workers": {
+        "app/career-counselor/page": {
+          "moduleId": "[project]/.next-internal/server/app/career-counselor/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/career-counselor/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/career-counselor/page": "action-browser"
+      }
+    }
+  },
+  "edge": {}
+}

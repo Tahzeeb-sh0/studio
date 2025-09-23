@@ -1,0 +1,27 @@
+{
+  "node": {
+    "4023bbf4d303a7fa9d134a6df3c8650c3dc29be0a7": {
+      "workers": {
+        "app/ai-twin/page": {
+          "moduleId": "[project]/.next-internal/server/app/ai-twin/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/ai-twin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/ai-twin/page": "action-browser"
+      }
+    },
+    "4076b38a14a02ef7e781b5d451a6b0f8e3752116ef": {
+      "workers": {
+        "app/ai-twin/page": {
+          "moduleId": "[project]/.next-internal/server/app/ai-twin/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/ai-twin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/ai-twin/page": "action-browser"
+      }
+    }
+  },
+  "edge": {}
+}
