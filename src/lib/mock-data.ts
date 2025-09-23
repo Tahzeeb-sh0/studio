@@ -487,6 +487,39 @@ export const activities: Activity[] = [
     status: 'Pending',
     credits: 6,
   },
+  {
+    id: 'ACT-021',
+    studentId: 'STU-001',
+    studentName: 'Tahzeeb',
+    title: 'Campus Cleanup Drive',
+    category: 'Community Service',
+    date: new Date('2023-10-22'),
+    description: 'Organized and participated in a campus-wide cleanup event.',
+    status: 'Approved',
+    credits: 1,
+  },
+  {
+    id: 'ACT-022',
+    studentId: 'STU-001',
+    studentName: 'Tahzeeb',
+    title: 'Peer Tutoring for Intro to CS',
+    category: 'Other',
+    date: new Date('2023-11-15'),
+    description: 'Volunteered as a peer tutor for first-year computer science students.',
+    status: 'Approved',
+    credits: 2,
+  },
+  {
+    id: 'ACT-023',
+    studentId: 'STU-001',
+    studentName: 'Tahzeeb',
+    title: 'Agile Project Management Certificate',
+    category: 'Certification',
+    date: new Date('2024-02-18'),
+    description: 'Completed an online certification course on Agile and Scrum methodologies.',
+    status: 'Approved',
+    credits: 3,
+  },
   ...generatedActivities,
 ];
 
@@ -563,5 +596,6 @@ export const jobs: Job[] = [
 
 
     
+
 
 
