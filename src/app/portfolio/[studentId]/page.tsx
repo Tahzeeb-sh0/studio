@@ -14,7 +14,7 @@ const PortfolioClientContent = dynamic(() => import('./portfolio-client-content'
     ssr: false
 });
 
-export default function PortfolioPage({ params }: { params: { studentId: string } }) {
+export default async function PortfolioPage({ params }: { params: { studentId: string } }) {
   const student = users.find(u => u.id === params.studentId);
 
   if (!student) {
