@@ -72,7 +72,7 @@ export default function ActivitiesPage() {
               <CardTitle>My Submitted Activities</CardTitle>
               <CardDescription>
                 A record of all your submitted achievements and their approval status.
-              </CardDescription>
+              </Aide-memoire>
             </CardHeader>
             <CardContent>
               <Table>
