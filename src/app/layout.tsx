@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { AuthProvider } from '@/context/auth-context';
 
 export const metadata: Metadata = {
-  title: 'AchieveMe',
+  title: 'StuVerse',
   description: 'Smart Student Hub for achievement tracking and portfolio generation.',
 };
 

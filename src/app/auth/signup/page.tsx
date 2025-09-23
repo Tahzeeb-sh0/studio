@@ -32,7 +32,7 @@ export default function SignupPage() {
           </div>
           <CardTitle className="font-headline text-3xl">Create an Account</CardTitle>
           <CardDescription>
-            Join AchieveMe to start tracking your journey.
+            Join StuVerse to start tracking your journey.
           </CardDescription>
         </CardHeader>
         <CardContent>
