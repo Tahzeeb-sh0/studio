@@ -167,6 +167,66 @@
       "description": "Image for professional networking goal.",
       "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBuZXR3b3JraW5nfGVufDB8fHx8MTc1ODYyMjI4MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "professional networking"
+    },
+    {
+      "id": "vision-financial",
+      "description": "Image for financial literacy goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1579621970795-87facc2f976d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb25leSUyMHBsYW50fGVufDB8fHx8MTc1ODg5ODQ2Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "money plant"
+    },
+    {
+      "id": "vision-wellness",
+      "description": "Image for health and wellness goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx5b2dhJTIwd29tYW58ZW58MHx8fHwxNzU4ODk4NTEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "yoga woman"
+    },
+    {
+      "id": "vision-creative",
+      "description": "Image for creative expression goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1505664163794-44a56d11f580?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwYWludGluZyUyMGVhcnRofGVufDB8fHx8MTc1ODg5ODU0N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "painting earth"
+    },
+    {
+      "id": "vision-entrepreneur",
+      "description": "Image for entrepreneurship goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzU4ODk4NTk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business meeting"
+    },
+    {
+      "id": "vision-global",
+      "description": "Image for global citizenship goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnbG9iZSUyMGZsYWdzfGVufDB8fHx8MTc1ODg5ODYyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "globe flags"
+    },
+    {
+      "id": "vision-time",
+      "description": "Image for time management goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1508921340878-ba53e1f416ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxob3VyZ2xhc3MlMjBkJTIwYmVhY2h8ZW58MHx8fHwxNzU4ODk4NjY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hourglass beach"
+    },
+    {
+      "id": "vision-branding",
+      "description": "Image for personal branding goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTg4OTg2OTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "vision-emotional",
+      "description": "Image for emotional intelligence goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1579782193232-a27d928256a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbXBhdGh5JTIwaGFuZHN8ZW58MHx8fHwxNzU4ODk4NzMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "empathy hands"
+    },
+    {
+      "id": "vision-civic",
+      "description": "Image for civic engagement goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1541845157-a6d2d100c931?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB2b2x1bnRlZXJ8ZW58MHx8fHwxNzU4ODk4NzYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "community volunteer"
+    },
+    {
+      "id": "vision-research",
+      "description": "Image for research skills goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZXNlYXJjaCUyMGxhYnxlbnwwfHx8fDE3NTg4OTg3OTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "research lab"
     }
   ]
 }
