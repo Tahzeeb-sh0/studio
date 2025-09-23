@@ -64,20 +64,40 @@ export default function PortfolioClientContent({
   const portfolioRef = useRef<HTMLDivElement>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
-  const handleShareLink = () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      toast({
-        title: 'Link Copied!',
-        description: 'The portfolio link has been copied to your clipboard.',
-      });
-    }).catch(err => {
-        console.error('Failed to copy link: ', err);
+  const handleShare = async () => {
+    const shareData = {
+      title: `${student.name}'s Digital Portfolio`,
+      text: `Check out ${student.name}'s verified achievements and portfolio.`,
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
         toast({
-            variant: 'destructive',
-            title: 'Failed to Copy',
-            description: 'Could not copy the link to your clipboard.',
+          title: 'Portfolio Shared!',
+          description: 'The portfolio was successfully shared.',
         });
-    });
+      } catch (err) {
+        console.error('Failed to share:', err);
+        // Silently fail if user cancels share dialog
+      }
+    } else {
+      // Fallback for browsers that don't support the Web Share API
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        toast({
+          title: 'Link Copied!',
+          description: 'The portfolio link has been copied to your clipboard.',
+        });
+      }).catch(err => {
+          console.error('Failed to copy link: ', err);
+          toast({
+              variant: 'destructive',
+              title: 'Failed to Copy',
+              description: 'Could not copy the link to your clipboard.',
+          });
+      });
+    }
   };
 
   const handleDownloadPdf = () => {
@@ -189,7 +209,7 @@ export default function PortfolioClientContent({
                     </DialogContent>
                 </Dialog>
             )}
-            <Button variant="outline" onClick={handleShareLink}>
+            <Button variant="outline" onClick={handleShare}>
                 <Share2 className="mr-2 h-4 w-4" />
                 Share
             </Button>
