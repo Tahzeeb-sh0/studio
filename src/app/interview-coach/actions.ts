@@ -27,6 +27,14 @@ const approvedActivities = activities
   .join('\n');
 
 export async function generateQuestionsAction(prevState: any, formData: FormData) {
+  if (!process.env.GEMINI_API_KEY) {
+    return {
+      message: 'The Interview Coach is currently offline. An API key is required.',
+      errors: {},
+      questions: [],
+    };
+  }
+
   const validatedFields = InterviewCoachSchema.safeParse({
     jobDescription: formData.get('jobDescription'),
   });
