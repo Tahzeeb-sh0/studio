@@ -52,6 +52,9 @@ const createMockData = () => {
       const lastName = lastNames[(studentIdCounter + i) % lastNames.length];
       const name = `${firstName} ${lastName}`;
       const id = `STU-${String(studentIdCounter).padStart(3, '0')}`;
+      
+      if(id === 'STU-001') continue;
+
       const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${i}@example.com`;
       const avatarIndex = (studentIdCounter % 20);
       const avatarId = `student-avatar-${avatarIndex + 2}`;
@@ -596,6 +599,7 @@ export const jobs: Job[] = [
 
 
     
+
 
 
 

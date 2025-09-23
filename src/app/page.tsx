@@ -180,7 +180,7 @@ export default function LeaderboardPage() {
                 placeholder="Search by student name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 w-full"
+                className="pl-10 w-full text-base md:text-sm"
               />
             </div>
             <div className="flex gap-2">
@@ -246,7 +246,6 @@ export default function LeaderboardPage() {
             {topThree.map((entry, index) => (
               <Link key={entry.student.id} href={`/portfolio/${entry.student.id}`} className="block">
                 <Card
-                  key={entry.student.id}
                   className={`border-2 h-full ${
                     showRank && index === 0
                       ? 'border-yellow-400'
