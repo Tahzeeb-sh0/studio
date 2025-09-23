@@ -22,7 +22,6 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
-  Tooltip,
   CartesianGrid,
   Legend,
   ChartContainer,
