@@ -232,9 +232,6 @@ export default function PortfolioClientContent({
                 <DialogContent className="sm:max-w-lg">
                     <DialogHeader>
                         <DialogTitle>Contact {student.name}</DialogTitle>
-                        <DialogDescription>
-                            Fill out the form below to reach out about an opportunity. An AI-assistant can help you draft a professional email.
-                        </DialogDescription>
                     </DialogHeader>
                     <ContactForm studentName={student.name} studentEmail={student.email} onSend={() => setIsContactDialogOpen(false)} />
                 </DialogContent>
