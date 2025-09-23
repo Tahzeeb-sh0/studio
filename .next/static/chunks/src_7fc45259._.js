@@ -436,7 +436,7 @@ function ContactForm({ studentName, studentEmail, onSend }) {
     const handleSendMessageClick = ()=>{
         const values = form.getValues();
         const subject = `Opportunity from ${values.companyName}: ${values.jobTitle}`;
-        const mailtoLink = `mailto:taizibshaikh34@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(generatedEmail)}`;
+        const mailtoLink = `mailto:${studentEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(generatedEmail)}`;
         window.location.href = mailtoLink;
         onSend();
     };

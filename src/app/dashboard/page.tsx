@@ -114,7 +114,7 @@ export default async function DashboardPage() {
         </CardContent>
       </Card>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">GPA</CardTitle>
@@ -143,20 +143,6 @@ export default async function DashboardPage() {
           <CardContent>
             <div className="text-2xl font-bold">{totalActivityCredits}</div>
             <p className="text-xs text-muted-foreground">Credits from approved activities.</p>
-          </CardContent>
-        </Card>
-        <Card>
-           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Degree Progress</CardTitle>
-            <Target className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-                {academicRecord.creditsEarned} / {academicRecord.totalCredits}
-            </div>
-            <p className="text-xs text-muted-foreground">
-                {((academicRecord.creditsEarned / academicRecord.totalCredits) * 100).toFixed(0)}% towards your degree.
-            </p>
           </CardContent>
         </Card>
       </div>

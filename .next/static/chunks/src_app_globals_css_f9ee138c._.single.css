@@ -457,6 +457,10 @@ body {
   top: 50%;
 }
 
+.left-4 {
+  left: 1rem;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -1592,6 +1596,10 @@ body {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-16 {
+  padding-top: 4rem;
 }
 
 .text-left {
