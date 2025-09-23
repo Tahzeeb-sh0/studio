@@ -885,7 +885,7 @@ const createMockData = ()=>{
     const generatedUsers = [];
     let studentIdCounter = 10;
     for (const major of allMajors){
-        for(let i = 0; i < 100; i++){
+        for(let i = 0; i < 20; i++){
             const firstName = firstNames[(studentIdCounter + i) % firstNames.length];
             const lastName = lastNames[(studentIdCounter + i) % lastNames.length];
             const name = `${firstName} ${lastName}`;
@@ -1086,7 +1086,7 @@ const users = [
     ...generatedUsers.filter((u)=>u.id !== 'STU-001')
 ];
 const student = users[0]; // Default to Tahzeeb for existing components that rely on a single student
-const facultyUser = users[1];
+const facultyUser = users.find((u)=>u.role === 'faculty');
 const academicRecord = {
     gpa: 3.8,
     attendance: 95,

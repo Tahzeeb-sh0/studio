@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import {
@@ -20,7 +19,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { users, activities, allSkills } from '@/lib/mock-data';
-import { Search, X as XIcon } from 'lucide-react';
+import { Search, X as XIcon, Crown } from 'lucide-react';
 import { Student } from '@/lib/types';
 import { useMemo, useState } from 'react';
 import { Input } from '@/components/ui/input';
@@ -111,7 +110,7 @@ export default function LeaderboardPage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
-  const [selectedMajors, setSelectedMajors] = useState<string[]>(['Computer Science']);
+  const [selectedMajors, setSelectedMajors] = useState<string[]>([]);
   
   const leaderboard = useMemo(() => calculateLeaderboard(selectedSkills), [selectedSkills]);
 
@@ -159,7 +158,7 @@ export default function LeaderboardPage() {
 
   const showRank =
     searchQuery === '' &&
-    selectedMajors.length === 0 &&
+    (selectedMajors.length === 0 || selectedMajors.length === 1) &&
     (selectedSkills.length === 0 || selectedSkills.length === 1);
   
   return (
@@ -242,49 +241,64 @@ export default function LeaderboardPage() {
           Featured Students
         </h2>
         {topThree.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {topThree.map((entry, index) => (
-              <Link key={entry.student.id} href={`/portfolio/${entry.student.id}`} className="block">
-                <Card
-                  className={`border-2 h-full ${
-                    showRank && index === 0
-                      ? 'border-yellow-400'
-                      : showRank && index === 1
-                      ? 'border-gray-400'
-                      : showRank && index === 2
-                      ? 'border-yellow-600'
-                      : 'border-transparent'
-                  }`}
-                >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+            {topThree.length > 1 && topThree[1] && (
+               <Link key={topThree[1].student.id} href={`/portfolio/${topThree[1].student.id}`} className="block">
+                <Card className="border-2 border-gray-400 relative overflow-hidden h-full">
                   <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
-                    {showRank && (
-                        <div
-                          className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(
-                            entry.rank
-                          )}`}
-                        >
-                          {entry.rank}
-                        </div>
-                    )}
+                    {showRank && <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(topThree[1].rank)}`}>
+                      {topThree[1].rank}
+                    </div>}
                     <Avatar className="w-24 h-24 mb-4 border-4 border-muted">
-                      <AvatarImage
-                        src={entry.student.avatarUrl}
-                        alt={entry.student.name}
-                      />
-                      <AvatarFallback>
-                        {entry.student.name.charAt(0)}
-                      </AvatarFallback>
+                      <AvatarImage src={topThree[1].student.avatarUrl} alt={topThree[1].student.name} />
+                      <AvatarFallback>{topThree[1].student.name.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <div className="text-center">
-                      <h3 className="text-xl font-bold">{entry.student.name}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {entry.student.major}
-                      </p>
-                    </div>
+                    <h3 className="text-xl font-bold">{topThree[1].student.name}</h3>
+                    <p className="text-sm text-muted-foreground">{topThree[1].student.major}</p>
                   </CardContent>
                 </Card>
               </Link>
-            ))}
+            )}
+
+            {topThree[0] && (
+               <Link key={topThree[0].student.id} href={`/portfolio/${topThree[0].student.id}`} className="block">
+                <Card className="border-2 border-yellow-400 relative overflow-hidden transform md:scale-110 bg-gradient-to-br from-card to-yellow-400/10 h-full">
+                  <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
+                    {showRank && <Crown className="absolute -top-1 left-1/2 -translate-x-1/2 h-10 w-10 text-yellow-400 -rotate-12" />}
+                    {showRank && <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(topThree[0].rank)}`}>
+                      {topThree[0].rank}
+                    </div>}
+                    <Avatar className="w-28 h-28 mb-4 border-4 border-yellow-400/50">
+                      <AvatarImage src={topThree[0].student.avatarUrl} alt={topThree[0].student.name} />
+                      <AvatarFallback>{topThree[0].student.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <h3 className="text-2xl font-bold">{topThree[0].student.name}</h3>
+                    <p className="text-sm text-muted-foreground">{topThree[0].student.major}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            )}
+
+            {topThree.length > 2 && topThree[2] && (
+              <Link key={topThree[2].student.id} href={`/portfolio/${topThree[2].student.id}`} className="block">
+                <Card className="border-2 border-yellow-600 relative overflow-hidden h-full">
+                  <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
+                    {showRank && <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(topThree[2].rank)}`}>
+                      {topThree[2].rank}
+                    </div>}
+                    <Avatar className="w-24 h-24 mb-4 border-4 border-muted">
+                      <AvatarImage src={topThree[2].student.avatarUrl} alt={topThree[2].student.name} />
+                      <AvatarFallback>{topThree[2].student.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <h3 className="text-xl font-bold">{topThree[2].student.name}</h3>
+                    <p className="text-sm text-muted-foreground">{topThree[2].student.major}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            )}
+            
+            { topThree.length === 1 && !topThree[0] && <p>No featured students.</p>}
+
           </div>
         ) : (
           <p className="text-muted-foreground text-center py-8">

@@ -47,7 +47,7 @@ const createMockData = () => {
   let studentIdCounter = 10;
 
   for (const major of allMajors) {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 20; i++) {
       const firstName = firstNames[(studentIdCounter + i) % firstNames.length];
       const lastName = lastNames[(studentIdCounter + i) % lastNames.length];
       const name = `${firstName} ${lastName}`;
@@ -222,7 +222,7 @@ export const users: Student[] = [
 ];
 
 export const student = users[0]; // Default to Tahzeeb for existing components that rely on a single student
-export const facultyUser = users[1];
+export const facultyUser = users.find(u => u.role === 'faculty') as Student;
 
 export const academicRecord: AcademicRecord = {
   gpa: 3.8,
@@ -699,22 +699,3 @@ export const jobs: Job[] = [
         datePosted: new Date('2024-05-17'),
     }
 ];
-    
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-
-
-
-
-    
