@@ -2,7 +2,6 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   Card,
@@ -18,7 +17,7 @@ import {
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Bot, Award, Share2, Download, Github, Edit } from 'lucide-react';
+import { Bot, Award, Share2, Download, Github, Edit, Mail } from 'lucide-react';
 import { Activity, Student } from '@/lib/types';
 import dynamic from 'next/dynamic';
 import { format } from 'date-fns';
@@ -33,6 +32,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const CoverLetterGenerator = dynamic(() => import('../cover-letter-generator'), {
     loading: () => <Skeleton className="h-64 w-full" />,
+    ssr: false,
 });
 
 const ProfileEditForm = dynamic(() => import('./profile-edit-form'), {
@@ -41,7 +41,18 @@ const ProfileEditForm = dynamic(() => import('./profile-edit-form'), {
         <Skeleton className="h-10 w-full" />
         <Skeleton className="h-10 w-full" />
         <Skeleton className="h-24 w-full" />
-    </div>
+    </div>,
+    ssr: false,
+});
+
+const ContactForm = dynamic(() => import('../contact-form'), {
+    loading: () => <div className="space-y-4 p-4">
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-20 w-full" />
+        <Skeleton className="h-10 w-1/2 ml-auto" />
+    </div>,
+    ssr: false,
 });
 
 interface PortfolioClientContentProps {
@@ -63,6 +74,7 @@ export default function PortfolioClientContent({
   const isOwner = loggedInUser && loggedInUser.id === student.id;
   const portfolioRef = useRef<HTMLDivElement>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
 
   const handleShare = async () => {
     const shareData = {
@@ -79,7 +91,6 @@ export default function PortfolioClientContent({
           description: 'The portfolio was successfully shared.',
         });
       } catch (err: any) {
-        // Silently fail if user cancels share dialog
         if (err.name !== 'AbortError') {
             console.error('Failed to share:', err);
             toast({
@@ -90,7 +101,6 @@ export default function PortfolioClientContent({
         }
       }
     } else {
-      // Fallback for browsers that don't support the Web Share API
       navigator.clipboard.writeText(window.location.href).then(() => {
         toast({
           title: 'Link Copied!',
@@ -111,21 +121,18 @@ export default function PortfolioClientContent({
     const input = portfolioRef.current;
     if (!input) return;
 
-    // Temporarily remove owner-only elements for PDF generation
     const elementsToHide = input.querySelectorAll('[data-pdf-hide="true"]');
     elementsToHide.forEach(el => (el as HTMLElement).style.display = 'none');
 
     html2canvas(input, {
-      scale: 2, // Higher scale for better quality
+      scale: 2,
       useCORS: true,
       onclone: (document) => {
-        // Ensure fonts are loaded in the cloned document
         const head = document.head;
         const fontLinks = document.querySelectorAll('link[href*="fonts.googleapis.com"]');
         fontLinks.forEach(link => head.appendChild(link.cloneNode(true)));
       }
     }).then((canvas) => {
-      // Restore hidden elements
       elementsToHide.forEach(el => (el as HTMLElement).style.display = '');
 
       const imgData = canvas.toDataURL('image/png');
@@ -135,17 +142,20 @@ export default function PortfolioClientContent({
       const canvasWidth = canvas.width;
       const canvasHeight = canvas.height;
       const ratio = canvasWidth / canvasHeight;
-      const width = pdfWidth;
-      const height = width / ratio;
+      let height = width / ratio;
+      let width = pdfWidth;
 
-      // If the content is taller than one page, split it.
+      if (height > pdfHeight) {
+        height = pdfHeight;
+        width = height * ratio;
+      }
+      
       let position = 0;
       let remainingHeight = canvasHeight;
 
       while(remainingHeight > 0) {
         const pageCanvas = document.createElement('canvas');
         pageCanvas.width = canvasWidth;
-        // Calculate the height of the slice to fit one PDF page
         const pageCanvasHeight = (canvasWidth * pdfHeight) / pdfWidth;
         pageCanvas.height = Math.min(pageCanvasHeight, remainingHeight);
         
@@ -168,13 +178,9 @@ export default function PortfolioClientContent({
   
   const handleProfileUpdate = (updatedStudent: Student) => {
     setStudent(updatedStudent);
-    // Also update the user in the auth context if they are the one being edited
     if (loggedInUser && loggedInUser.id === updatedStudent.id) {
-        // This is a bit of a hack, in a real app you'd have a proper updateUser method in your context
-        // For demo purposes, we can re-trigger a "login" to update the context state
-        // This assumes your login function can update the user without password check if already logged in
         if(loggedInUser.email) {
-            login(loggedInUser.email, '123456'); // Pass dummy password, logic is in auth-context
+            login(loggedInUser.email, '123456');
         }
     }
     setIsEditDialogOpen(false);
@@ -216,6 +222,23 @@ export default function PortfolioClientContent({
                     </DialogContent>
                 </Dialog>
             )}
+            <Dialog open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
+                <DialogTrigger asChild>
+                    <Button variant="outline">
+                        <Mail className="mr-2 h-4 w-4" />
+                        Contact
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-lg">
+                    <DialogHeader>
+                        <DialogTitle>Contact {student.name}</DialogTitle>
+                        <DialogDescription>
+                            Fill out the form below to reach out about an opportunity. An AI-assistant can help you draft a professional email.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <ContactForm studentName={student.name} studentEmail={student.email} onSend={() => setIsContactDialogOpen(false)} />
+                </DialogContent>
+            </Dialog>
             <Button variant="outline" onClick={handleShare}>
                 <Share2 className="mr-2 h-4 w-4" />
                 Share
@@ -331,5 +354,3 @@ export default function PortfolioClientContent({
     </>
   )
 }
-
-    
