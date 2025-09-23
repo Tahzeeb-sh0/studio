@@ -1,4 +1,11 @@
-import InterviewCoach from "./interview-coach";
+
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const InterviewCoach = dynamic(() => import('./interview-coach'), {
+    loading: () => <Skeleton className="h-64 w-full" />,
+});
+
 
 export default function InterviewCoachPage() {
   return (

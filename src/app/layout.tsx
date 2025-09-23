@@ -1,10 +1,23 @@
 
 import type { Metadata } from 'next';
+import { PT_Sans, Poppins } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/header';
 import { cn } from '@/lib/utils';
 import { AuthProvider } from '@/context/auth-context';
+
+const ptSans = PT_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-pt-sans',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-poppins',
+});
 
 export const metadata: Metadata = {
   title: 'StuVerse',
@@ -17,12 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="en" className={`${ptSans.variable} ${poppins.variable}`}>
       <body className={cn("font-body antialiased")}>
         <AuthProvider>
           <div className="flex flex-col min-h-screen">

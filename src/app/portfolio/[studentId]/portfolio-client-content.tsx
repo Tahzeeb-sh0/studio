@@ -19,8 +19,8 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Bot, Award, Share2, Download, Github, Edit } from 'lucide-react';
-import { Activity, ActivityCategory, Student } from '@/lib/types';
-import CoverLetterGenerator from '../cover-letter-generator';
+import { Activity, Student } from '@/lib/types';
+import dynamic from 'next/dynamic';
 import { format } from 'date-fns';
 import { useAuth } from '@/context/auth-context';
 import { academicRecord } from '@/lib/mock-data';
@@ -28,13 +28,25 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import ProfileEditForm from './profile-edit-form';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const CoverLetterGenerator = dynamic(() => import('../cover-letter-generator'), {
+    loading: () => <Skeleton className="h-64 w-full" />,
+});
+
+const ProfileEditForm = dynamic(() => import('./profile-edit-form'), {
+    loading: () => <div className="space-y-4">
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+    </div>
+});
 
 interface PortfolioClientContentProps {
     student: Student;
     approvedActivities: Activity[];
     totalActivityCredits: number;
-    groupedActivities: Record<ActivityCategory, Activity[]>;
+    groupedActivities: Record<string, Activity[]>;
 }
 
 export default function PortfolioClientContent({ 
@@ -286,4 +298,3 @@ export default function PortfolioClientContent({
     </>
   )
 }
-

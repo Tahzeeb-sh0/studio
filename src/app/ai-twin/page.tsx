@@ -1,4 +1,11 @@
-import Chat from "./chat";
+
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const Chat = dynamic(() => import('./chat'), {
+    loading: () => <Skeleton className="h-[75vh] w-full max-w-3xl mx-auto" />,
+    ssr: false,
+});
 
 export default function AiTwinPage() {
   return (

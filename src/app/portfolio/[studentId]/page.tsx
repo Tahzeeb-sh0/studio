@@ -1,27 +1,17 @@
 
-import Image from 'next/image';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import { users, academicRecord, activities, activityCategories } from '@/lib/mock-data';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Share2, Download, Github, Award } from 'lucide-react';
-import { Activity, ActivityCategory } from '@/lib/types';
-import { format } from 'date-fns';
-import Link from 'next/link';
+
+import { users, activities } from '@/lib/mock-data';
 import { notFound } from 'next/navigation';
-import PortfolioClientContent from './portfolio-client-content';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const PortfolioClientContent = dynamic(() => import('./portfolio-client-content'), {
+    loading: () => <div className="space-y-8">
+        <Skeleton className="h-24 w-full" />
+        <Skeleton className="h-[60vh] w-full" />
+    </div>,
+    ssr: false
+});
 
 export default function PortfolioPage({ params }: { params: { studentId: string } }) {
   const student = users.find(u => u.id === params.studentId);
@@ -39,13 +29,16 @@ export default function PortfolioPage({ params }: { params: { studentId: string 
     0
   );
 
-  const groupedActivities = activityCategories.reduce((acc, category) => {
-      const categoryActivities = approvedActivities.filter(act => act.category === category);
-      if (categoryActivities.length > 0) {
-          acc[category] = categoryActivities;
-      }
-      return acc;
-  }, {} as Record<ActivityCategory, Activity[]>);
+  // Grouping logic remains on the server
+  const groupedActivities = approvedActivities.reduce((acc, act) => {
+    const category = act.category;
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(act);
+    return acc;
+  }, {} as Record<string, any[]>);
+
 
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">

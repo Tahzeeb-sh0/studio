@@ -19,8 +19,21 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { activities, student } from '@/lib/mock-data';
 import { Activity } from '@/lib/types';
-import NewActivityForm from './new-activity-form';
+import dynamic from 'next/dynamic';
 import { format } from 'date-fns';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const NewActivityForm = dynamic(() => import('./new-activity-form'), {
+    loading: () => <div className="space-y-4">
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-20 w-full" />
+        <Skeleton className="h-10 w-full" />
+    </div>,
+    ssr: false
+});
+
 
 const getStatusVariant = (status: Activity['status']) => {
   switch (status) {
