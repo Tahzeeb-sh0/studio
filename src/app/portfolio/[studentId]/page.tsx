@@ -1,16 +1,7 @@
 
 import { users, activities } from '@/lib/mock-data';
 import { notFound } from 'next/navigation';
-import dynamic from 'next/dynamic';
-import { Skeleton } from '@/components/ui/skeleton';
-
-const PortfolioClientContent = dynamic(() => import('./portfolio-client-content'), {
-    loading: () => <div className="space-y-8">
-        <Skeleton className="h-24 w-full" />
-        <Skeleton className="h-[60vh] w-full" />
-    </div>,
-    ssr: false
-});
+import PortfolioClientContent from './portfolio-client-content';
 
 export default async function PortfolioPage({ params }: { params: { studentId: string } }) {
   const student = users.find(u => u.id === params.studentId);
