@@ -43,6 +43,10 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  devIndicators: {
+    buildActivity: false,
+    allowedDevOrigins: ['**'],
+  },
 };
 
 export default nextConfig;
