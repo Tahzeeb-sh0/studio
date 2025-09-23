@@ -19,8 +19,9 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { users, activities } from '@/lib/mock-data';
-import { Trophy, Award } from 'lucide-react';
+import { Trophy, Award, Crown } from 'lucide-react';
 import { Student } from '@/lib/types';
+import { cn } from '@/lib/utils';
 
 interface LeaderboardEntry {
   student: Student;
@@ -83,29 +84,73 @@ export default function LeaderboardPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {topThree.map((entry, index) => (
-          <Card key={entry.student.id} className={`border-2 ${
-              index === 0 ? 'border-yellow-400' : index === 1 ? 'border-gray-400' : 'border-yellow-600'
-          }`}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+        {/* Rank 2 */}
+        {topThree[1] && (
+          <Card key={topThree[1].student.id} className="border-2 border-gray-400 relative overflow-hidden">
             <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
-              <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(entry.rank)}`}>
-                  {entry.rank}
+              <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(topThree[1].rank)}`}>
+                {topThree[1].rank}
               </div>
               <Avatar className="w-24 h-24 mb-4 border-4 border-muted">
-                <AvatarImage src={entry.student.avatarUrl} alt={entry.student.name} />
-                <AvatarFallback>{entry.student.name.charAt(0)}</AvatarFallback>
+                <AvatarImage src={topThree[1].student.avatarUrl} alt={topThree[1].student.name} />
+                <AvatarFallback>{topThree[1].student.name.charAt(0)}</AvatarFallback>
               </Avatar>
-              <h3 className="text-xl font-bold">{entry.student.name}</h3>
-              <p className="text-sm text-muted-foreground">{entry.student.major}</p>
+              <h3 className="text-xl font-bold">{topThree[1].student.name}</h3>
+              <p className="text-sm text-muted-foreground">{topThree[1].student.major}</p>
               <div className="mt-4 flex items-center gap-2 text-2xl font-bold text-primary">
                 <Award className="h-6 w-6"/>
-                <span>{entry.totalCredits}</span>
+                <span>{topThree[1].totalCredits}</span>
               </div>
-               <p className="text-xs text-muted-foreground">Total Credits</p>
+              <p className="text-xs text-muted-foreground">Total Credits</p>
             </CardContent>
           </Card>
-        ))}
+        )}
+
+        {/* Rank 1 */}
+        {topThree[0] && (
+          <Card key={topThree[0].student.id} className="border-2 border-yellow-400 relative overflow-hidden transform md:scale-110 bg-gradient-to-br from-card to-yellow-400/10">
+            <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
+                <Crown className="absolute -top-1 left-1/2 -translate-x-1/2 h-10 w-10 text-yellow-400 -rotate-12" />
+              <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(topThree[0].rank)}`}>
+                {topThree[0].rank}
+              </div>
+              <Avatar className="w-28 h-28 mb-4 border-4 border-yellow-400/50">
+                <AvatarImage src={topThree[0].student.avatarUrl} alt={topThree[0].student.name} />
+                <AvatarFallback>{topThree[0].student.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <h3 className="text-2xl font-bold">{topThree[0].student.name}</h3>
+              <p className="text-sm text-muted-foreground">{topThree[0].student.major}</p>
+              <div className="mt-4 flex items-center gap-2 text-3xl font-bold text-primary">
+                <Award className="h-7 w-7"/>
+                <span>{topThree[0].totalCredits}</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Total Credits</p>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Rank 3 */}
+        {topThree[2] && (
+          <Card key={topThree[2].student.id} className="border-2 border-yellow-600 relative overflow-hidden">
+            <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
+              <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(topThree[2].rank)}`}>
+                {topThree[2].rank}
+              </div>
+              <Avatar className="w-24 h-24 mb-4 border-4 border-muted">
+                <AvatarImage src={topThree[2].student.avatarUrl} alt={topThree[2].student.name} />
+                <AvatarFallback>{topThree[2].student.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <h3 className="text-xl font-bold">{topThree[2].student.name}</h3>
+              <p className="text-sm text-muted-foreground">{topThree[2].student.major}</p>
+              <div className="mt-4 flex items-center gap-2 text-2xl font-bold text-primary">
+                <Award className="h-6 w-6"/>
+                <span>{topThree[2].totalCredits}</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Total Credits</p>
+            </CardContent>
+          </Card>
+        )}
       </div>
 
 
@@ -152,4 +197,5 @@ export default function LeaderboardPage() {
       </Card>
     </div>
   );
-}
+
+    
