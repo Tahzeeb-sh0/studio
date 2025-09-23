@@ -4,6 +4,7 @@
   "/dashboard/page": "app/dashboard/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/icon.svg/route": "app/icon.svg/route.js",
+  "/jobs/page": "app/jobs/page.js",
   "/page": "app/page.js",
   "/portfolio/[studentId]/page": "app/portfolio/[studentId]/page.js"
 }

@@ -70,5 +70,6 @@ export type Job = {
     type: 'Full-time' | 'Internship' | 'Part-time';
     tags: string[];
     description: string;
+    responsibilities?: string[];
     datePosted: Date;
 };

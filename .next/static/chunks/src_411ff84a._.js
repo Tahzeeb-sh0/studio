@@ -1083,7 +1083,7 @@ const users = [
         ],
         skillRank: 1
     },
-    ...generatedUsers
+    ...generatedUsers.filter((u)=>u.id !== 'STU-001')
 ];
 const student = users[0]; // Default to Tahzeeb for existing components that rely on a single student
 const facultyUser = users[1];
@@ -1396,7 +1396,13 @@ const jobs = [
             'TypeScript',
             'CSS'
         ],
-        description: 'Join our team to build and improve our user-facing features. Ideal for students passionate about UI/UX.',
+        description: 'Join our dynamic team to build and improve our user-facing features. This is a great opportunity for students passionate about UI/UX and modern web technologies.',
+        responsibilities: [
+            'Develop new user-facing features using React.js and TypeScript.',
+            'Build reusable components and front-end libraries for future use.',
+            'Translate designs and wireframes into high-quality code.',
+            'Optimize components for maximum performance across a vast array of web-capable devices and browsers.'
+        ],
         datePosted: new Date('2024-05-20')
     },
     {
@@ -1410,7 +1416,12 @@ const jobs = [
             'Python',
             'AWS'
         ],
-        description: 'Looking for recent graduates to join our backend engineering team. You will work on scalable, cloud-based services.',
+        description: 'We are seeking talented and motivated recent graduates to join our backend engineering team. You will work on scalable, cloud-based services that power our core products.',
+        responsibilities: [
+            'Design, develop, test, deploy, maintain and improve software.',
+            'Manage individual project priorities, deadlines and deliverables.',
+            'Contribute to a culture of high-quality, professional software engineering.'
+        ],
         datePosted: new Date('2024-05-18')
     },
     {
@@ -1424,7 +1435,12 @@ const jobs = [
             'SQL',
             'Machine Learning'
         ],
-        description: 'Analyze large datasets to extract meaningful insights and contribute to our predictive modeling projects.',
+        description: 'As a Data Science Intern, you will have the opportunity to analyze large datasets, extract meaningful insights, and contribute to our predictive modeling projects.',
+        responsibilities: [
+            'Work with large, complex data sets to solve business problems.',
+            'Develop and deploy machine learning models.',
+            'Create data visualizations to communicate findings to stakeholders.'
+        ],
         datePosted: new Date('2024-05-15')
     },
     {
@@ -1438,7 +1454,12 @@ const jobs = [
             'Linux',
             'Node.js'
         ],
-        description: 'Manage and scale our cloud infrastructure. Experience with containerization (Docker, Kubernetes) is a plus.',
+        description: 'We are looking for a Cloud Engineer to help manage and scale our cloud infrastructure. Experience with containerization technologies like Docker and Kubernetes is a plus.',
+        responsibilities: [
+            'Deploy, manage, and operate scalable, highly available, and fault-tolerant systems on AWS.',
+            'Implement and control the flow of data to and from AWS.',
+            'Select the appropriate AWS service based on compute, data, or security requirements.'
+        ],
         datePosted: new Date('2024-05-12')
     },
     {
@@ -1452,7 +1473,12 @@ const jobs = [
             'UI/UX Design',
             'User Research'
         ],
-        description: 'Work alongside our design team to create wireframes, prototypes, and high-fidelity mockups for our mobile app.',
+        description: 'Work alongside our talented design team to create intuitive and engaging user experiences. You will be involved in all stages of the design process, from research to high-fidelity mockups.',
+        responsibilities: [
+            'Create wireframes, storyboards, user flows, and site maps.',
+            'Conduct user research and evaluate user feedback.',
+            'Design and deliver high-fidelity mockups and prototypes for our mobile app.'
+        ],
         datePosted: new Date('2024-05-10')
     },
     {
@@ -1466,8 +1492,95 @@ const jobs = [
             'Social Media',
             'SEO'
         ],
-        description: 'Develop and execute marketing campaigns across multiple channels to drive user acquisition and engagement.',
+        description: 'As a Marketing Associate, you will develop and execute innovative marketing campaigns across multiple channels to drive user acquisition and engagement.',
+        responsibilities: [
+            'Manage and grow our social media presence.',
+            'Develop content for blogs, newsletters, and other marketing materials.',
+            'Analyze campaign performance and optimize for conversions.'
+        ],
         datePosted: new Date('2024-05-08')
+    },
+    {
+        id: 'JOB-007',
+        title: 'Backend Engineer',
+        company: 'DataStream Solutions',
+        location: 'Chicago, IL',
+        type: 'Full-time',
+        tags: [
+            'Node.js',
+            'PostgreSQL',
+            'GraphQL'
+        ],
+        description: 'We are looking for a backend engineer to build and maintain the APIs that power our data platform. You will work with a modern stack and have a significant impact on our product.',
+        responsibilities: [
+            'Design and implement RESTful and GraphQL APIs.',
+            'Write clean, maintainable, and well-tested code.',
+            'Collaborate with front-end developers to integrate user-facing elements.',
+            'Manage and optimize database performance.'
+        ],
+        datePosted: new Date('2024-05-22')
+    },
+    {
+        id: 'JOB-008',
+        title: 'DevOps Engineer Intern',
+        company: 'ScaleGrid',
+        location: 'Remote',
+        type: 'Internship',
+        tags: [
+            'Docker',
+            'Kubernetes',
+            'CI/CD',
+            'Terraform'
+        ],
+        description: 'Join our infrastructure team to learn and implement DevOps best practices. This internship will provide hands-on experience with automation, containerization, and cloud infrastructure.',
+        responsibilities: [
+            'Assist in managing and improving our CI/CD pipeline.',
+            'Work with Docker and Kubernetes to containerize and orchestrate applications.',
+            'Use infrastructure-as-code tools like Terraform to manage cloud resources.',
+            'Monitor system performance and troubleshoot issues.'
+        ],
+        datePosted: new Date('2024-05-21')
+    },
+    {
+        id: 'JOB-009',
+        title: 'Product Manager (Associate)',
+        company: 'Agile Innovations',
+        location: 'Seattle, WA',
+        type: 'Full-time',
+        tags: [
+            'Product Management',
+            'Agile',
+            'JIRA'
+        ],
+        description: 'We are seeking a junior Product Manager to help define and execute the product roadmap for our flagship product. You will work closely with engineering, design, and marketing teams.',
+        responsibilities: [
+            'Gather and prioritize product and customer requirements.',
+            'Define the product vision and strategy.',
+            'Work with cross-functional teams to deliver new features and products.',
+            'Analyze market data and user feedback to inform product decisions.'
+        ],
+        datePosted: new Date('2024-05-19')
+    },
+    {
+        id: 'JOB-010',
+        title: 'Full Stack Developer',
+        company: 'NexGen Solutions',
+        location: 'Remote',
+        type: 'Part-time',
+        tags: [
+            'React',
+            'Node.js',
+            'TypeScript',
+            'MongoDB'
+        ],
+        description: 'We are looking for a versatile Full Stack Developer to join our team on a part-time basis. You will be responsible for developing both front-end and back-end components of our web applications.',
+        responsibilities: [
+            'Develop and maintain web applications using the MERN stack.',
+            'Write clean, reusable, and efficient code.',
+            'Participate in code reviews and contribute to a collaborative development environment.',
+            'Troubleshoot and debug applications.'
+        ],
+        datePosted: new Date('2024-05-17')
     }
 ];
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
