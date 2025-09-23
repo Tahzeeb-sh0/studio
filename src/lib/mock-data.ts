@@ -22,7 +22,7 @@ export const activityCategories: ActivityCategory[] = [
     'Other',
 ];
 
-const majors = [
+export const allMajors = [
     'Computer Science', 'Data Science', 'Electrical Engineering', 'Business Administration', 
     'Mechanical Engineering', 'Marketing', 'Physics', 'Biology'
 ];
@@ -46,7 +46,7 @@ const createMockData = () => {
   const generatedUsers: Student[] = [];
   let studentIdCounter = 10;
 
-  for (const major of majors) {
+  for (const major of allMajors) {
     for (let i = 0; i < 100; i++) {
       const firstName = firstNames[(studentIdCounter + i) % firstNames.length];
       const lastName = lastNames[(studentIdCounter + i) % lastNames.length];
@@ -563,4 +563,5 @@ export const jobs: Job[] = [
 
 
     
+
 

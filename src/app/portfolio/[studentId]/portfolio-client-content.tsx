@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Bot, Award, Share2, Download, Github } from 'lucide-react';
+import { Bot, Award, Share2, Download, Github, Edit } from 'lucide-react';
 import { Activity, ActivityCategory, Student } from '@/lib/types';
 import CoverLetterGenerator from '../cover-letter-generator';
 import { format } from 'date-fns';
@@ -27,6 +27,8 @@ import { academicRecord } from '@/lib/mock-data';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { useToast } from '@/hooks/use-toast';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import ProfileEditForm from './profile-edit-form';
 
 interface PortfolioClientContentProps {
     student: Student;
@@ -36,15 +38,17 @@ interface PortfolioClientContentProps {
 }
 
 export default function PortfolioClientContent({ 
-    student,
+    student: initialStudent,
     approvedActivities,
     totalActivityCredits,
     groupedActivities,
 }: PortfolioClientContentProps) {
   const { user: loggedInUser } = useAuth();
   const { toast } = useToast();
+  const [student, setStudent] = useState(initialStudent);
   const isOwner = loggedInUser && loggedInUser.id === student.id;
   const portfolioRef = useRef<HTMLDivElement>(null);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
   const handleShareLink = () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -120,6 +124,16 @@ export default function PortfolioClientContent({
       pdf.save(`${student.name.replace(' ', '_')}_Portfolio.pdf`);
     });
   };
+  
+  const handleProfileUpdate = (updatedStudent: Student) => {
+    setStudent(updatedStudent);
+    setIsEditDialogOpen(false);
+    toast({
+        title: 'Profile Updated',
+        description: 'Your profile information has been successfully updated.',
+    });
+  };
+
 
   return (
     <>
@@ -132,7 +146,26 @@ export default function PortfolioClientContent({
             A verified record of academic and co-curricular journey.
           </p>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex gap-2' data-pdf-hide="true">
+            {isOwner && (
+                 <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
+                    <DialogTrigger asChild>
+                        <Button variant="outline">
+                            <Edit className="mr-2 h-4 w-4" />
+                            Edit Profile
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                            <DialogTitle>Edit Profile</DialogTitle>
+                            <DialogDescription>
+                                Make changes to your profile here. Click save when you're done.
+                            </DialogDescription>
+                        </DialogHeader>
+                        <ProfileEditForm student={student} onSave={handleProfileUpdate} />
+                    </DialogContent>
+                </Dialog>
+            )}
             <Button variant="outline" onClick={handleShareLink}>
                 <Share2 className="mr-2 h-4 w-4" />
                 Share Link
@@ -151,7 +184,7 @@ export default function PortfolioClientContent({
               alt={student.name}
               width={120}
               height={120}
-              className="rounded-full border-4 border-background shadow-md"
+              className="rounded-full border-4 border-primary/20 shadow-md"
               data-ai-hint="portrait person"
               crossOrigin="anonymous"
             />
@@ -253,3 +286,4 @@ export default function PortfolioClientContent({
     </>
   )
 }
+
