@@ -16,18 +16,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import {
-  Bar,
-  BarChart,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Legend,
-  ChartContainer,
-  ChartTooltipContent,
-  ChartTooltip
-} from '@/components/ui/chart';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { activities } from '@/lib/mock-data';
@@ -38,23 +26,6 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
-
-const activityCategoryCounts = activities.reduce((acc, activity) => {
-  acc[activity.category] = (acc[activity.category] || 0) + 1;
-  return acc;
-}, {} as Record<string, number>);
-
-const chartData = Object.entries(activityCategoryCounts).map(([name, count]) => ({
-  name,
-  count,
-}));
-
-const chartConfig = {
-  count: {
-    label: "Submissions",
-    color: "hsl(var(--primary))",
-  },
-};
 
 
 export default function ApprovalsPage() {
@@ -217,34 +188,6 @@ export default function ApprovalsPage() {
           </CardContent>
         </Card>
       </div>
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <BarChart3 />
-            Activity Submission Analytics
-          </CardTitle>
-          <CardDescription>
-            Overview of submitted activities by category.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-            <ChartContainer config={chartConfig} className="h-72 w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={chartData} layout="vertical" margin={{ left: 80, right: 20 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis type="number" />
-                      <YAxis dataKey="name" type="category" tickLine={false} axisLine={false} />
-                       <ChartTooltip
-                        cursor={{fill: 'hsl(var(--muted))'}}
-                        content={<ChartTooltipContent />}
-                      />
-                      <Legend />
-                      <Bar dataKey="count" fill="var(--color-count)" radius={[0, 4, 4, 0]} />
-                  </BarChart>
-              </ResponsiveContainer>
-            </ChartContainer>
-        </CardContent>
-      </Card>
     </div>
   );
 }
