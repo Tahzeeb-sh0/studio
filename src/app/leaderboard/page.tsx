@@ -21,7 +21,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { users, activities } from '@/lib/mock-data';
 import { Trophy, Award } from 'lucide-react';
 import { Student } from '@/lib/types';
-import Image from 'next/image';
 
 interface LeaderboardEntry {
   student: Student;
