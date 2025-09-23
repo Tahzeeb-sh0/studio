@@ -20,6 +20,8 @@ import {
 import { useState } from 'react';
 import { getVisionBoardSuggestionsAction } from './actions';
 import { useToast } from '@/hooks/use-toast';
+import { Badge } from '@/components/ui/badge';
+
 
 type GoalCategory = 'Communication' | 'Leadership' | 'Problem Solving';
 
