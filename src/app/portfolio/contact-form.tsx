@@ -82,23 +82,17 @@ export default function ContactForm({ studentName, studentEmail, onSend }: Conta
     setIsGenerating(false);
   };
   
-  const onSubmit = () => {
-    setIsSending(true);
-    // In a real app, this would send an email.
-    // For this demo, we'll simulate it.
-    setTimeout(() => {
-        setIsSending(false);
-        toast({
-            title: 'Message Sent!',
-            description: `Your message has been sent to ${studentName}.`,
-        });
-        onSend(); // Close the dialog
-    }, 1500);
-  }
+  const handleSendMessageClick = () => {
+    const values = form.getValues();
+    const subject = `Opportunity from ${values.companyName}: ${values.jobTitle}`;
+    const mailtoLink = `mailto:taizibshaikh34@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(generatedEmail)}`;
+    window.location.href = mailtoLink;
+    onSend();
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <FormField
             control={form.control}
@@ -188,7 +182,7 @@ export default function ContactForm({ studentName, studentEmail, onSend }: Conta
             </Card>
         )}
 
-        <Button type="submit" className="w-full" disabled={!generatedEmail || isSending}>
+        <Button type="button" onClick={handleSendMessageClick} className="w-full" disabled={!generatedEmail || isSending}>
           {isSending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
           Send Message to {studentName}
         </Button>
