@@ -27,7 +27,7 @@ export default function Header() {
               <GraduationCap className="h-5 w-5" />
             </div>
             <span className="font-headline text-xl font-semibold text-primary">
-              StuVerse
+              AchieveMe
             </span>
           </Link>
           {user && <Navigation />}
@@ -95,5 +95,3 @@ export default function Header() {
     </header>
   );
 }
-
-    
