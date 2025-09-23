@@ -16,24 +16,65 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Legend,
+  ChartContainer,
+  ChartTooltipContent
+} from '@/components/ui/chart';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { activities } from '@/lib/mock-data';
-import { Check, X, ListChecks, CheckCircle2, Clock, Activity, ShieldAlert } from 'lucide-react';
+import { Check, X, ListChecks, CheckCircle2, Clock, Activity, ShieldAlert, BarChart3 } from 'lucide-react';
 import { format, isToday } from 'date-fns';
 import { useAuth } from '@/context/auth-context';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { useToast } from '@/hooks/use-toast';
+
+const activityCategoryCounts = activities.reduce((acc, activity) => {
+  acc[activity.category] = (acc[activity.category] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+const chartData = Object.entries(activityCategoryCounts).map(([name, count]) => ({
+  name,
+  count,
+}));
+
+const chartConfig = {
+  count: {
+    label: "Submissions",
+    color: "hsl(var(--primary))",
+  },
+};
+
 
 export default function ApprovalsPage() {
   const { user } = useAuth();
   const router = useRouter();
+  const { toast } = useToast();
 
   useEffect(() => {
     if (user?.role !== 'faculty') {
       router.push('/auth/login');
     }
   }, [user, router]);
+
+  const handleAction = (action: 'Approved' | 'Rejected', activityTitle: string) => {
+    toast({
+        title: `Action: ${action}`,
+        description: `The activity "${activityTitle}" has been marked as ${action}.`,
+    });
+    // In a real app, you would re-fetch data or update state here.
+  }
 
 
   if (user?.role !== 'faculty') {
@@ -56,7 +97,7 @@ export default function ApprovalsPage() {
     (act) => act.status === 'Approved' || act.status === 'Rejected'
   );
   const approvedToday = activities.filter(
-    (act) => act.status === 'Approved' && isToday(act.date)
+    (act) => act.status === 'Approved' && isToday(new Date(act.date))
   );
 
   return (
@@ -128,18 +169,20 @@ export default function ApprovalsPage() {
                 {pendingActivities.map((activity) => (
                   <TableRow key={activity.id}>
                     <TableCell className="font-medium">
-                      {activity.studentName}
+                      <Link href={`/portfolio/${activity.studentId}`} className="hover:underline text-primary">
+                        {activity.studentName}
+                      </Link>
                     </TableCell>
                     <TableCell>{activity.title}</TableCell>
                     <TableCell>{activity.category}</TableCell>
                     <TableCell>{format(activity.date, 'PPP')}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
-                        <Button variant="outline" size="icon" className="h-8 w-8 text-green-600 hover:text-green-600">
+                        <Button variant="outline" size="icon" className="h-8 w-8 text-green-600 hover:text-green-600" onClick={() => handleAction('Approved', activity.title)}>
                           <Check className="h-4 w-4" />
                           <span className="sr-only">Approve</span>
                         </Button>
-                        <Button variant="outline" size="icon" className="h-8 w-8 text-red-600 hover:text-red-600">
+                        <Button variant="outline" size="icon" className="h-8 w-8 text-red-600 hover:text-red-600" onClick={() => handleAction('Rejected', activity.title)}>
                           <X className="h-4 w-4" />
                           <span className="sr-only">Reject</span>
                         </Button>
@@ -174,6 +217,31 @@ export default function ApprovalsPage() {
           </CardContent>
         </Card>
       </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <BarChart3 />
+            Activity Submission Analytics
+          </CardTitle>
+          <CardDescription>
+            Overview of submitted activities by category.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+            <ChartContainer config={chartConfig} className="h-72 w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={chartData} layout="vertical" margin={{ left: 80, right: 20 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis type="number" />
+                      <YAxis dataKey="name" type="category" tickLine={false} axisLine={false} />
+                      <Tooltip cursor={{fill: 'hsl(var(--muted))'}} content={<ChartTooltipContent />} />
+                      <Legend />
+                      <Bar dataKey="count" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
+                  </BarChart>
+              </ResponsiveContainer>
+            </ChartContainer>
+        </CardContent>
+      </Card>
     </div>
   );
 }
