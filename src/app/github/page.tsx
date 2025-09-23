@@ -33,7 +33,7 @@ export default function GithubPage() {
         </p>
       </div>
 
-      <Card className="lg:col-span-3 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+      <Card className="lg:col-span-3">
         <CardHeader>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <div>
@@ -95,7 +95,7 @@ export default function GithubPage() {
         </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {githubProjects.map((project) => (
-                <Card key={project.id} className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20 flex flex-col">
+                <Card key={project.id} className="flex flex-col">
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                           <BookOpen className="h-5 w-5 text-primary" />

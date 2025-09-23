@@ -143,7 +143,7 @@ export default function PortfolioClientContent({
             </Button>
         </div>
       </div>
-      <Card ref={portfolioRef} className="overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
+      <Card ref={portfolioRef} className="overflow-hidden">
         <div className="bg-muted/30 p-8">
           <div className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
             <Image
@@ -213,7 +213,7 @@ export default function PortfolioClientContent({
             )}
           </div>
           <aside className="space-y-8">
-            <Card className="transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
+            <Card>
                 <CardHeader>
                     <CardTitle className="font-headline">Education</CardTitle>
                 </CardHeader>
@@ -225,7 +225,7 @@ export default function PortfolioClientContent({
                     <p className="text-sm mt-2">Current GPA: {academicRecord.gpa.toFixed(2)}</p>
                 </CardContent>
             </Card>
-             <Card className="transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
+             <Card>
                 <CardHeader>
                     <CardTitle className="font-headline">Skills</CardTitle>
                 </CardHeader>
@@ -237,7 +237,7 @@ export default function PortfolioClientContent({
                     </div>
                 </CardContent>
             </Card>
-             <Card className="transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
+             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium">Activity Credits</CardTitle>
                 <Award className="h-4 w-4 text-muted-foreground" />

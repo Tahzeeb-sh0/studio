@@ -71,7 +71,7 @@ export default function ApprovalsPage() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Pending Approvals</CardTitle>
             <Clock className="h-4 w-4 text-muted-foreground" />
@@ -81,7 +81,7 @@ export default function ApprovalsPage() {
             <p className="text-xs text-muted-foreground">Activities awaiting your review.</p>
           </CardContent>
         </Card>
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Total Processed</CardTitle>
             <ListChecks className="h-4 w-4 text-muted-foreground" />
@@ -91,7 +91,7 @@ export default function ApprovalsPage() {
             <p className="text-xs text-muted-foreground">Total activities reviewed.</p>
           </CardContent>
         </Card>
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card>
            <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Approved Today</CardTitle>
             <CheckCircle2 className="h-4 w-4 text-muted-foreground" />
@@ -104,7 +104,7 @@ export default function ApprovalsPage() {
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="lg:col-span-2 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Pending Submissions</CardTitle>
             <CardDescription>
@@ -151,7 +151,7 @@ export default function ApprovalsPage() {
             </Table>
           </CardContent>
         </Card>
-        <Card className="lg:col-span-1 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card className="lg:col-span-1">
           <CardHeader>
             <CardTitle>Recently Processed</CardTitle>
             <CardDescription>

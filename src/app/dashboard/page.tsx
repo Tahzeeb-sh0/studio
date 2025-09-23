@@ -89,7 +89,7 @@ export default async function DashboardPage() {
         </p>
       </div>
 
-       <Card className="w-full transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+       <Card>
         <CardContent className="p-6 flex flex-col sm:flex-row items-center gap-6">
           <Image
             src={defaultStudent.avatarUrl}
@@ -118,7 +118,7 @@ export default async function DashboardPage() {
       </Card>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">GPA</CardTitle>
             <GraduationCap className="h-4 w-4 text-muted-foreground" />
@@ -128,7 +128,7 @@ export default async function DashboardPage() {
             <p className="text-xs text-muted-foreground">Your current Grade Point Average.</p>
           </CardContent>
         </Card>
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Attendance</CardTitle>
             <CalendarClock className="h-4 w-4 text-muted-foreground" />
@@ -138,7 +138,7 @@ export default async function DashboardPage() {
             <p className="text-xs text-muted-foreground">Your overall attendance rate.</p>
           </CardContent>
         </Card>
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card>
            <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Activity Credits</CardTitle>
             <Award className="h-4 w-4 text-muted-foreground" />
@@ -148,7 +148,7 @@ export default async function DashboardPage() {
             <p className="text-xs text-muted-foreground">Credits from approved activities.</p>
           </CardContent>
         </Card>
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card>
            <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Degree Progress</CardTitle>
             <Target className="h-4 w-4 text-muted-foreground" />
@@ -165,7 +165,7 @@ export default async function DashboardPage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-5">
-        <Card className="lg:col-span-3 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card className="lg:col-span-3">
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -190,7 +190,7 @@ export default async function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card className="lg:col-span-2 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Activity Breakdown</CardTitle>
             <CardDescription>

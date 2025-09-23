@@ -91,5 +91,3 @@ export default function CoverLetterGenerator({ studentId, studentName }: { stude
     </div>
   );
 }
-
-    

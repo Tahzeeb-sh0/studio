@@ -168,7 +168,7 @@ export default function LeaderboardPage() {
         </h1>
       </div>
 
-      <Card className="transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
+      <Card>
         <CardContent className="p-4">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-grow">
@@ -244,7 +244,7 @@ export default function LeaderboardPage() {
             {topThree.map((entry, index) => (
               <Link key={entry.student.id} href={`/portfolio/${entry.student.id}`} className="block">
                 <Card
-                  className={`transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 border-2 h-full ${
+                  className={`border-2 h-full ${
                     showRank && index === 0
                       ? 'border-yellow-400'
                       : showRank && index === 1
@@ -291,7 +291,7 @@ export default function LeaderboardPage() {
         )}
       </div>
 
-      <Card className="transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
+      <Card>
         <CardHeader>
           <CardTitle>All Rankings</CardTitle>
           <CardDescription>

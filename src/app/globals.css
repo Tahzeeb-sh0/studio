@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 
 @layer base {
@@ -14,22 +14,22 @@ body {
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 231 48% 54%; /* #3F51B5 */
+    --primary: 231 48% 54%; /* #3F51B5 - Deep Blue */
     --primary-foreground: 210 40% 98%;
     --secondary: 225 27% 94%;
     --secondary-foreground: 231 48% 54%;
     --muted: 225 27% 94%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 45 100% 51%; /* #FFC107 */
-    --accent-foreground: 24 9.8% 10%;
+    --accent: 170 75% 40%; /* #20B2AA - Teal */
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 231 48% 54%;
     --chart-1: 231 48% 54%;
-    --chart-2: 45 100% 51%;
-    --chart-3: 180 80% 45%;
+    --chart-2: 170 75% 40%;
+    --chart-3: 45 100% 51%;
     --chart-4: 350 85% 65%;
     --chart-5: 280 85% 65%;
     --radius: 0.75rem;
@@ -48,16 +48,16 @@ body {
     --secondary-foreground: 210 40% 98%;
     --muted: 222 47% 15%;
     --muted-foreground: 215 20% 65%;
-    --accent: 45 100% 51%;
-    --accent-foreground: 24 9.8% 10%;
+    --accent: 170 75% 40%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 63% 40%;
     --destructive-foreground: 210 40% 98%;
     --border: 217 32% 20%;
     --input: 217 32% 20%;
     --ring: 231 48% 54%;
     --chart-1: 231 48% 54%;
-    --chart-2: 45 100% 51%;
-    --chart-3: 180 80% 45%;
+    --chart-2: 170 75% 40%;
+    --chart-3: 45 100% 51%;
     --chart-4: 350 85% 65%;
     --chart-5: 280 85% 65%;
   }
@@ -70,4 +70,13 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+    .card {
+        @apply transition-all duration-300 ease-in-out;
+    }
+    .card:hover {
+        @apply shadow-2xl shadow-primary/10 scale-[1.02];
+    }
 }

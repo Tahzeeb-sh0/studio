@@ -86,7 +86,7 @@ export default function InterviewCoach() {
 
   return (
     <div className="space-y-8">
-      <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+      <Card>
         <CardHeader>
           <CardTitle>Generate Your Questions</CardTitle>
           <CardDescription>Paste a job description below to get a list of tailored interview questions.</CardDescription>
@@ -116,7 +116,7 @@ export default function InterviewCoach() {
       </Card>
       
       {state.questions && state.questions.length > 0 && (
-        <Card className="transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20">
+        <Card>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Sparkles className="text-primary" />
