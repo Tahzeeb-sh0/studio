@@ -28,16 +28,19 @@ export default function Chat() {
   // Initial greeting from AI Twin
   useEffect(() => {
     async function getInitialGreeting() {
-        setIsLoading(true);
-        const result = await askAiTwinAction([]);
-        if (result.message) {
-            setMessages([{role: 'model', content: `Hi ${student.name.split(' ')[0]}! I'm your AI Twin. ${result.message}`}]);
-        } else if (result.error) {
-            setMessages([{role: 'model', content: result.error}]);
+        if (messages.length === 0 && !isLoading) {
+            setIsLoading(true);
+            const result = await askAiTwinAction([]);
+            if (result.message) {
+                setMessages([{role: 'model', content: `Hi ${student.name.split(' ')[0]}! I'm your AI Twin. ${result.message}`}]);
+            } else if (result.error) {
+                setMessages([{role: 'model', content: result.error}]);
+            }
+            setIsLoading(false);
         }
-        setIsLoading(false);
     }
     getInitialGreeting();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [student.name]);
 
 
