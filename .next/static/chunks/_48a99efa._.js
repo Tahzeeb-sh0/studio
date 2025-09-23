@@ -543,7 +543,7 @@ function LeaderboardPage() {
                                         placeholder: "Search by student name...",
                                         value: searchQuery,
                                         onChange: (e)=>setSearchQuery(e.target.value),
-                                        className: "pl-10 w-full text-base md:text-sm"
+                                        className: "pl-10 w-full"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
                                         lineNumber: 178,

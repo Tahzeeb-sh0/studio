@@ -180,7 +180,7 @@ export default function LeaderboardPage() {
                 placeholder="Search by student name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 w-full text-base md:text-sm"
+                className="pl-10 w-full"
               />
             </div>
             <div className="flex gap-2">
