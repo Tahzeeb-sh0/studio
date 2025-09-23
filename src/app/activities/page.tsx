@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -72,7 +73,7 @@ export default function ActivitiesPage() {
               <CardTitle>My Submitted Activities</CardTitle>
               <CardDescription>
                 A record of all your submitted achievements and their approval status.
-              </Aide-memoire>
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
