@@ -40,6 +40,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface LeaderboardEntry {
   student: Student;
@@ -107,6 +108,7 @@ const allMajors = [
 const MAX_SKILLS_DISPLAY = 3;
 
 export default function LeaderboardPage() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
   const [selectedMajors, setSelectedMajors] = useState<string[]>(['Computer Science']);
@@ -244,6 +246,7 @@ export default function LeaderboardPage() {
             {topThree.map((entry, index) => (
               <Link key={entry.student.id} href={`/portfolio/${entry.student.id}`} className="block">
                 <Card
+                  key={entry.student.id}
                   className={`border-2 h-full ${
                     showRank && index === 0
                       ? 'border-yellow-400'
@@ -310,18 +313,15 @@ export default function LeaderboardPage() {
             </TableHeader>
             <TableBody>
               {runnersUp.map((entry) => (
-                <TableRow key={entry.student.id} className="cursor-pointer hover:bg-muted/50">
+                <TableRow key={entry.student.id} className="cursor-pointer hover:bg-muted/50" onClick={() => router.push(`/portfolio/${entry.student.id}`)}>
                    {showRank && (
                       <TableCell>
-                         <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
                           <Badge variant="secondary" className="text-lg">
                             {entry.rank}
                           </Badge>
-                         </Link>
                       </TableCell>
                    )}
                   <TableCell>
-                    <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
                       <div className="flex items-center gap-4">
                         <Avatar className="h-9 w-9">
                           <AvatarImage
@@ -337,15 +337,11 @@ export default function LeaderboardPage() {
                         </Avatar>
                         <span className="font-medium">{entry.student.name}</span>
                       </div>
-                    </Link>
                   </TableCell>
                   <TableCell className="text-muted-foreground">
-                    <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
                       {entry.student.major}
-                    </Link>
                   </TableCell>
                   <TableCell>
-                    <Link href={`/portfolio/${entry.student.id}`} className="block w-full h-full">
                       <div className="flex flex-wrap gap-1">
                         {entry.student.skills
                           ?.slice(0, MAX_SKILLS_DISPLAY)
@@ -376,7 +372,6 @@ export default function LeaderboardPage() {
                             </TooltipProvider>
                           )}
                       </div>
-                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
