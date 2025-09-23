@@ -155,6 +155,18 @@
       "description": "Image for problem-solving goal.",
       "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZW9wbGUlMjBjb2xsYWJvcmF0aW5nfGVufDB8fHx8MTc1ODYyMTg4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "people collaborating"
+    },
+    {
+      "id": "vision-technical",
+      "description": "Image for technical skills goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d1469c98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtYW4lMjBjb2Rpbmd8ZW58MHx8fHwxNzU4NjIyMTM5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man coding"
+    },
+    {
+      "id": "vision-networking",
+      "description": "Image for professional networking goal.",
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBuZXR3b3JraW5nfGVufDB8fHx8MTc1ODYyMjI4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional networking"
     }
   ]
 }

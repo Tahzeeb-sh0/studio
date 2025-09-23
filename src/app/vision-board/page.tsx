@@ -16,13 +16,15 @@ import {
   Lightbulb,
   Loader2,
   Sparkles,
+  Code,
+  Network,
 } from 'lucide-react';
 import { useState } from 'react';
 import { getVisionBoardSuggestionsAction } from './actions';
 import { useToast } from '@/hooks/use-toast';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-type GoalCategory = 'Communication' | 'Leadership' | 'Problem Solving';
+type GoalCategory = 'Communication' | 'Leadership' | 'Problem Solving' | 'Technical' | 'Networking';
 
 type Suggestion = {
   title: string;
@@ -32,6 +34,8 @@ type Suggestion = {
 const communicationImage = PlaceHolderImages.find(p => p.id === 'vision-communication');
 const leadershipImage = PlaceHolderImages.find(p => p.id === 'vision-leadership');
 const problemSolvingImage = PlaceHolderImages.find(p => p.id === 'vision-problem-solving');
+const technicalImage = PlaceHolderImages.find(p => p.id === 'vision-technical');
+const networkingImage = PlaceHolderImages.find(p => p.id === 'vision-networking');
 
 const goals = [
   {
@@ -67,6 +71,28 @@ const goals = [
     prompt:
       'Suggest 3-4 specific activities at a university for improving problem-solving skills, such as coding challenges, innovation contests, or case study competitions.',
   },
+  {
+    category: 'Technical' as GoalCategory,
+    title: 'Technical Proficiency',
+    description:
+      'Deepen your expertise in cutting-edge technologies and programming languages.',
+    icon: Code,
+    imageUrl: technicalImage?.imageUrl,
+    imageHint: technicalImage?.imageHint,
+    prompt:
+      'Suggest 3-4 university-related activities to improve technical skills, such as joining a specialized tech club, contributing to open-source projects, or attending advanced workshops.',
+  },
+  {
+    category: 'Networking' as GoalCategory,
+    title: 'Professional Networking',
+    description:
+      'Build meaningful professional connections with peers, faculty, and industry experts.',
+    icon: Network,
+    imageUrl: networkingImage?.imageUrl,
+    imageHint: networkingImage?.imageHint,
+    prompt:
+      'Suggest 3-4 ways to build a professional network at a university, like attending career fairs, joining alumni mentorship programs, or participating in industry-specific seminars.',
+  },
 ];
 
 export default function VisionBoardPage() {
@@ -74,12 +100,16 @@ export default function VisionBoardPage() {
     Communication: false,
     Leadership: false,
     'Problem Solving': false,
+    'Technical': false,
+    'Networking': false,
   });
   
   const [suggestions, setSuggestions] = useState<Record<GoalCategory, Suggestion[] | null>>({
     Communication: null,
     Leadership: null,
     'Problem Solving': null,
+    'Technical': null,
+    'Networking': null,
   });
 
   const { toast } = useToast();
@@ -112,7 +142,7 @@ export default function VisionBoardPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {goals.map((goal) => (
           <Card
             key={goal.category}
