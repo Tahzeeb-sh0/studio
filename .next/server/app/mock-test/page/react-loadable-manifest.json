@@ -1,0 +1,10 @@
+{
+  "[project]/src/app/mock-test/mock-test.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/app/mock-test/mock-test.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_6b4014ba._.js",
+      "static/chunks/src_6397e160._.js",
+      "static/chunks/src_app_mock-test_mock-test_tsx_96f63dd4._.js"
+    ]
+  }
+}

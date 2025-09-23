@@ -1,0 +1,16 @@
+{
+  "node": {
+    "400839a4bbe4604075d40dccd45278cd3c9cfdf777": {
+      "workers": {
+        "app/mock-test/page": {
+          "moduleId": "[project]/.next-internal/server/app/mock-test/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/mock-test/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/mock-test/page": "action-browser"
+      }
+    }
+  },
+  "edge": {}
+}

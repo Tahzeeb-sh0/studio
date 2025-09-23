@@ -3,7 +3,7 @@
     "id": "[project]/src/app/portfolio/cover-letter-generator.tsx [app-client] (ecmascript, next/dynamic entry)",
     "files": [
       "static/chunks/_f25934ad._.js",
-      "static/chunks/src_app_portfolio_cover-letter-generator_tsx_f50fcb17._.js"
+      "static/chunks/src_app_portfolio_cover-letter-generator_tsx_42d8a785._.js"
     ]
   },
   "[project]/src/app/portfolio/[studentId]/profile-edit-form.tsx [app-client] (ecmascript, next/dynamic entry)": {
@@ -11,7 +11,7 @@
     "files": [
       "static/chunks/node_modules_c5faf750._.js",
       "static/chunks/src_93544f18._.js",
-      "static/chunks/src_app_portfolio_[studentId]_profile-edit-form_tsx_f50fcb17._.js"
+      "static/chunks/src_app_portfolio_[studentId]_profile-edit-form_tsx_42d8a785._.js"
     ]
   },
   "[project]/src/app/portfolio/contact-form.tsx [app-client] (ecmascript, next/dynamic entry)": {
@@ -19,7 +19,7 @@
     "files": [
       "static/chunks/node_modules_75d75257._.js",
       "static/chunks/src_7fc45259._.js",
-      "static/chunks/src_app_portfolio_contact-form_tsx_f50fcb17._.js"
+      "static/chunks/src_app_portfolio_contact-form_tsx_42d8a785._.js"
     ]
   }
 }
