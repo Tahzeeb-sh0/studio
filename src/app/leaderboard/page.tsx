@@ -21,13 +21,26 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { users, activities } from '@/lib/mock-data';
 import { Trophy, Award, Crown } from 'lucide-react';
 import { Student } from '@/lib/types';
-import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 interface LeaderboardEntry {
   student: Student;
   totalCredits: number;
   rank: number;
 }
+
+const certificationBadges: { [key: string]: { icon: string; label: string; className: string } } = {
+  'AWS': {
+    icon: '/aws-logo.png',
+    label: 'AWS Certified',
+    className: 'bg-orange-500/10 text-orange-500 border-orange-500/30',
+  },
+  'Red Hat': {
+    icon: '/redhat-logo.png',
+    label: 'Red Hat Certified',
+    className: 'bg-red-500/10 text-red-500 border-red-500/30',
+  },
+};
 
 const calculateLeaderboard = (): LeaderboardEntry[] => {
   const studentCredits: { [key: string]: number } = {};
@@ -102,7 +115,21 @@ export default function LeaderboardPage() {
                 <Award className="h-6 w-6"/>
                 <span>{topThree[1].totalCredits}</span>
               </div>
-              <p className="text-xs text-muted-foreground">Total Credits</p>
+              <p className="text-xs text-muted-foreground mb-4">Total Credits</p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {topThree[1].student.skills?.map(skill => {
+                  if (certificationBadges[skill]) {
+                    const badge = certificationBadges[skill];
+                    return (
+                      <Badge key={skill} className={badge.className}>
+                        <Image src={badge.icon} alt={badge.label} width={12} height={12} className="mr-1.5" />
+                        {badge.label}
+                      </Badge>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
             </CardContent>
           </Card>
         )}
@@ -125,7 +152,21 @@ export default function LeaderboardPage() {
                 <Award className="h-7 w-7"/>
                 <span>{topThree[0].totalCredits}</span>
               </div>
-              <p className="text-xs text-muted-foreground">Total Credits</p>
+              <p className="text-xs text-muted-foreground mb-4">Total Credits</p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {topThree[0].student.skills?.map(skill => {
+                  if (certificationBadges[skill]) {
+                    const badge = certificationBadges[skill];
+                    return (
+                      <Badge key={skill} className={badge.className}>
+                        <Image src={badge.icon} alt={badge.label} width={12} height={12} className="mr-1.5" />
+                        {badge.label}
+                      </Badge>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
             </CardContent>
           </Card>
         )}
@@ -147,7 +188,21 @@ export default function LeaderboardPage() {
                 <Award className="h-6 w-6"/>
                 <span>{topThree[2].totalCredits}</span>
               </div>
-              <p className="text-xs text-muted-foreground">Total Credits</p>
+              <p className="text-xs text-muted-foreground mb-4">Total Credits</p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {topThree[2].student.skills?.map(skill => {
+                  if (certificationBadges[skill]) {
+                    const badge = certificationBadges[skill];
+                    return (
+                      <Badge key={skill} className={badge.className}>
+                        <Image src={badge.icon} alt={badge.label} width={12} height={12} className="mr-1.5" />
+                        {badge.label}
+                      </Badge>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
             </CardContent>
           </Card>
         )}
@@ -199,3 +254,4 @@ export default function LeaderboardPage() {
   );
 
     
+}

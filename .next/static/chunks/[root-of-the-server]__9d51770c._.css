@@ -720,6 +720,10 @@ body {
   margin-top: 1.5rem;
 }
 
+.mr-1\.5 {
+  margin-right: .375rem;
+}
+
 .line-clamp-3 {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -1488,6 +1492,14 @@ body {
   border-color: #facc1580;
 }
 
+.border-orange-500\/30 {
+  border-color: #f973164d;
+}
+
+.border-red-500\/30 {
+  border-color: #ef44444d;
+}
+
 .border-l-transparent {
   border-left-color: #0000;
 }
@@ -1577,6 +1589,14 @@ body {
 .bg-yellow-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(202 138 4 / var(--tw-bg-opacity, 1));
+}
+
+.bg-orange-500\/10 {
+  background-color: #f973161a;
+}
+
+.bg-red-500\/10 {
+  background-color: #ef44441a;
 }
 
 .bg-\[url\(\"https\:\/\/images\.unsplash\.com\/photo-1522071820081-009f0129c71c\?w\=800\"\)\] {
@@ -2005,6 +2025,16 @@ body {
 .text-yellow-400 {
   --tw-text-opacity: 1;
   color: rgb(250 204 21 / var(--tw-text-opacity, 1));
+}
+
+.text-orange-500 {
+  --tw-text-opacity: 1;
+  color: rgb(249 115 22 / var(--tw-text-opacity, 1));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
 
 .underline {
