@@ -1,10 +1,15 @@
 {
+  "/activities/page": "app/activities/page.js",
   "/ai-twin/page": "app/ai-twin/page.js",
   "/auth/login/page": "app/auth/login/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/icon.svg/route": "app/icon.svg/route.js",
+  "/interview-coach/page": "app/interview-coach/page.js",
   "/jobs/page": "app/jobs/page.js",
+  "/leaderboard/page": "app/leaderboard/page.js",
   "/page": "app/page.js",
-  "/portfolio/[studentId]/page": "app/portfolio/[studentId]/page.js"
+  "/portfolio/[studentId]/page": "app/portfolio/[studentId]/page.js",
+  "/portfolio/page": "app/portfolio/page.js",
+  "/vision-board/page": "app/vision-board/page.js"
 }

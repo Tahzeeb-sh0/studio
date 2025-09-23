@@ -1,1 +1,10 @@
-{}
+{
+  "[project]/src/app/activities/new-activity-form.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/app/activities/new-activity-form.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_ab5de6b3._.js",
+      "static/chunks/src_15c8ebc1._.js",
+      "static/chunks/src_app_activities_new-activity-form_tsx_447625f4._.js"
+    ]
+  }
+}

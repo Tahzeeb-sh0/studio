@@ -6,7 +6,7 @@ import { generateQuestionsAction, getQuestionAudioAction } from './actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Sparkles, Wand2, Lightbulb, Volume2, Play } from 'lucide-react';
+import { Loader2, Sparkles, Wand2, Lightbulb, Play } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';

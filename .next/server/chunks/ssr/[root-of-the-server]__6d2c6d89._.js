@@ -425,7 +425,7 @@ async function textToSpeech(text) {
 
 var { g: global, __dirname } = __turbopack_context__;
 {
-__turbopack_context__.v(JSON.parse("{\"placeholderImages\":[{\"id\":\"student-avatar\",\"description\":\"Avatar for the main student profile.\",\"imageUrl\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFflR6_AHLZU-gxKZpA_7tFroS69bZk_uw_Q&s\",\"imageHint\":\"woman smiling\"},{\"id\":\"faculty-avatar\",\"description\":\"Avatar for a faculty profile.\",\"imageUrl\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ9MDVv40uh_jarDEdHhQq6eUz4mmmIxaZW5iq52TcvsAt2ZGECeJTCyh670EPe7E0Aek&usqp=CAU\",\"imageHint\":\"professional woman\"},{\"id\":\"student-avatar-2\",\"description\":\"Avatar for a second student profile.\",\"imageUrl\":\"https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTAzL3Jhd3BpeGVsX29mZmljZV8zMV9waG90b19vZl9oaWdoX3NjaG9vbF9icml0aXNoX2hhbGZfaW5kaWFuX2dpcl82MmE3NzU0Ny00M2Q4LTQ0MTgtYThkYS0zZjJiNTdmNjFlNDMtbThwdmhxbXIucG5n.png\",\"imageHint\":\"woman smiling\"},{\"id\":\"student-avatar-3\",\"description\":\"Avatar for a third student profile.\",\"imageUrl\":\"https://i.imgur.com/E1oQ53A.jpeg\",\"imageHint\":\"man professional\"},{\"id\":\"student-avatar-4\",\"description\":\"Avatar for a fourth student profile.\",\"imageUrl\":\"https://i.imgur.com/rN5MvIe.jpeg\",\"imageHint\":\"woman looking\"},{\"id\":\"student-avatar-5\",\"description\":\"Avatar for a fifth student profile.\",\"imageUrl\":\"https://i.imgur.com/4l6tP5y.jpeg\",\"imageHint\":\"man casual\"},{\"id\":\"student-avatar-6\",\"description\":\"Avatar for a sixth student profile.\",\"imageUrl\":\"https://i.imgur.com/1fSzgN8.jpeg\",\"imageHint\":\"woman on street\"},{\"id\":\"student-avatar-7\",\"description\":\"Avatar for a seventh student profile.\",\"imageUrl\":\"https://i.imgur.com/uDbL22n.jpeg\",\"imageHint\":\"man thinking\"},{\"id\":\"student-avatar-8\",\"description\":\"Avatar for an eighth student profile.\",\"imageUrl\":\"https://i.imgur.com/h5L4J0x.jpeg\",\"imageHint\":\"woman outdoors\"},{\"id\":\"student-avatar-9\",\"description\":\"Avatar for a ninth student profile.\",\"imageUrl\":\"https://i.imgur.com/I2AwVqA.jpeg\",\"imageHint\":\"woman black and white\"},{\"id\":\"student-avatar-10\",\"description\":\"Avatar for a tenth student profile.\",\"imageUrl\":\"https://i.imgur.com/z2gs21E.jpeg\",\"imageHint\":\"man smiling\"},{\"id\":\"student-avatar-11\",\"description\":\"Avatar for a eleventh student profile.\",\"imageUrl\":\"https://i.imgur.com/sC56wA0.jpeg\",\"imageHint\":\"woman happy\"},{\"id\":\"student-avatar-12\",\"description\":\"Avatar for a twelfth student profile.\",\"imageUrl\":\"https://i.imgur.com/hP3y6x3.jpeg\",\"imageHint\":\"man glasses\"},{\"id\":\"student-avatar-13\",\"description\":\"Avatar for a thirteenth student profile.\",\"imageUrl\":\"https://i.imgur.com/T0S22B5.jpeg\",\"imageHint\":\"woman glasses\"},{\"id\":\"student-avatar-14\",\"description\":\"Avatar for a fourteenth student profile.\",\"imageUrl\":\"https://i.imgur.com/7DmGoC9.jpeg\",\"imageHint\":\"man portrait\"},{\"id\":\"student-avatar-15\",\"description\":\"Avatar for a fifteenth student profile.\",\"imageUrl\":\"https://i.imgur.com/w1kKON3.jpeg\",\"imageHint\":\"woman portrait\"},{\"id\":\"student-avatar-16\",\"description\":\"Avatar for a sixteenth student profile.\",\"imageUrl\":\"https://i.imgur.com/tVw4RjS.jpeg\",\"imageHint\":\"man city\"},{\"id\":\"student-avatar-17\",\"description\":\"Avatar for a seventeenth student profile.\",\"imageUrl\":\"https://i.imgur.com/lIun22p.jpeg\",\"imageHint\":\"woman nature\"},{\"id\":\"student-avatar-18\",\"description\":\"Avatar for an eighteenth student profile.\",\"imageUrl\":\"https://i.imgur.com/zJg4A2W.jpeg\",\"imageHint\":\"man suit\"},{\"id\":\"student-avatar-19\",\"description\":\"Avatar for a nineteenth student profile.\",\"imageUrl\":\"https://i.imgur.com/b5sC4A1.jpeg\",\"imageHint\":\"woman urban\"},{\"id\":\"student-avatar-20\",\"description\":\"Avatar for a twentieth student profile.\",\"imageUrl\":\"https://i.imgur.com/N3c7p2S.jpeg\",\"imageHint\":\"man serious\"},{\"id\":\"github-icon\",\"description\":\"Icon for GitHub integration.\",\"imageUrl\":\"https://images.unsplash.com/photo-1635220035691-9473364b4476?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxnaXRodWIlMjBsb2dvfGVufDB8fHx8MTc1ODYzNTk1Mnww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"github logo\"},{\"id\":\"vision-success\",\"description\":\"Image symbolizing success and achievement.\",\"imageUrl\":\"https://images.unsplash.com/photo-1454496522488-7a8e488e8606?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb3VudGFpbiUyMHBlYWt8ZW58MHx8fHwxNzU4NTk1NTU5fDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"mountain peak\"},{\"id\":\"vision-growth\",\"description\":\"Image symbolizing personal growth.\",\"imageUrl\":\"https://images.unsplash.com/photo-1649255717215-cbc24b661bbb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzcHJvdXRpbmclMjBwbGFudHxlbnwwfHx8fDE3NTg2MzU5NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"sprouting plant\"},{\"id\":\"vision-travel\",\"description\":\"Image symbolizing travel and adventure.\",\"imageUrl\":\"https://images.unsplash.com/photo-1524661135-423995f22d0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b3JsZCUyMG1hcHxlbnwwfHx8fDE3NTg1ODYwOTh8MA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"world map\"},{\"id\":\"vision-career\",\"description\":\"Image symbolizing career achievements.\",\"imageUrl\":\"https://images.unsplash.com/photo-1559136555-9303baea8ebd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2V8ZW58MHx8fHwxNzU4NTg4NTUxfDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"modern office\"},{\"id\":\"vision-health\",\"description\":\"Image symbolizing a healthy lifestyle.\",\"imageUrl\":\"https://images.unsplash.com/photo-1613454320437-0c228c8b1723?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmcmVzaCUyMGZvb2R8ZW58MHx8fHwxNzU4NjA4ODkzfDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"fresh food\"},{\"id\":\"vision-wealth\",\"description\":\"Image symbolizing wealth and abundance.\",\"imageUrl\":\"https://images.unsplash.com/photo-1633484188188-3d985053a572?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnb2xkJTIwY29pbnN8ZW58MHx8fHwxNzU4NTkyODgzfDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"gold coins\"},{\"id\":\"vision-education\",\"description\":\"Image symbolizing education and learning.\",\"imageUrl\":\"https://images.unsplash.com/photo-1568667256531-7d5ac92eaa7a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxib29rcyUyMGxpYnJhcnl8ZW58MHx8fHwxNzU4NTg1MTA5fDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"books library\"},{\"id\":\"vision-relationships\",\"description\":\"Image symbolizing relationships and love.\",\"imageUrl\":\"https://images.unsplash.com/photo-1536010305525-f7aa0834e2c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmcmllbmRzJTIwbGF1Z2hpbmd8ZW58MHx8fHwxNzU4NTkzNzU3fDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"friends laughing\"},{\"id\":\"vision-mindfulness\",\"description\":\"Image symbolizing mindfulness and balance.\",\"imageUrl\":\"https://images.unsplash.com/photo-1635617240041-c95219c05542?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtZWRpdGF0aW9uJTIwc3Vuc2V0fGVufDB8fHx8MTc1ODYxNDUxN3ww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"meditation sunset\"}]}"));}}),
+__turbopack_context__.v(JSON.parse("{\"placeholderImages\":[{\"id\":\"student-avatar\",\"description\":\"Avatar for the main student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1712298682916-fa04c18156b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d29tYW4lMjBzbWlsaW5nfGVufDB8fHx8MTc1ODY1NTM3OXww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman smiling\"},{\"id\":\"faculty-avatar\",\"description\":\"Avatar for a faculty profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjB3b21hbnxlbnwwfHx8fDE3NTg1ODY0NjB8MA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"professional woman\"},{\"id\":\"student-avatar-1\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHNtaWxpbmd8ZW58MHx8fHwxNzU4NjU1Mzc5fDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman smiling\"},{\"id\":\"student-avatar-2\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1706645571146-8684302501a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcHJvZmVzc2lvbmFsfGVufDB8fHx8MTc1ODU4Nzk0Nnww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"man professional\"},{\"id\":\"student-avatar-3\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1548702721-31cc4c74bf25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21hbiUyMGxvb2tpbmd8ZW58MHx8fHwxNzU4NjM4OTg5fDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman looking\"},{\"id\":\"student-avatar-4\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1692220438331-01d572e4d26c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBjYXN1YWx8ZW58MHx8fHwxNzU4NjAzMDU4fDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"man casual\"},{\"id\":\"student-avatar-5\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1667849521050-aeaefe5d82fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMG9uJTIwc3RyZWV0fGVufDB8fHx8MTc1ODY1ODk5MXww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman on street\"},{\"id\":\"student-avatar-6\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1592827086844-b20636fd80c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwdGhpbmtpbmd8ZW58MHx8fHwxNzU4NTk2NzYzfDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"man thinking\"},{\"id\":\"student-avatar-7\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1692933216024-8de20c41321a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b21hbiUyMG91dGRvb3JzfGVufDB8fHx8MTc1ODU5MzUzOHww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman outdoors\"},{\"id\":\"student-avatar-8\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1536924430914-91f9e2041b83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHx8fHwxNzU4NjEyMjI4fDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman black and white\"},{\"id\":\"student-avatar-9\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBzbWlsaW5nfGVufDB8fHx8MTc1ODU4NDAyMHww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"man smiling\"},{\"id\":\"student-avatar-10\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1542596594-649edbc13630?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b21hbiUyMGhhcHB5fGVufDB8fHx8MTc1ODU4NDM5NXww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman happy\"},{\"id\":\"student-avatar-11\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBnbGFzc2VzfGVufDB8fHx8MTc1ODU4NDkzN3ww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"man glasses\"},{\"id\":\"student-avatar-12\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1513673054901-2b5f51551112?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b21hbiUyMGdsYXNzZXN8ZW58MHx8fHwxNzU4NTg3OTQ3fDA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman glasses\"},{\"id\":\"student-avatar-13\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTg1ODI4MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"man portrait\"},{\"id\":\"student-avatar-14\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1609505848912-b7c3b8b4beda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc1ODY0MDczOHww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman portrait\"},{\"id\":\"student-avatar-15\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1686846071236-6e0c5bc092e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtYW4lMjBjaXR5fGVufDB8fHx8MTc1ODYxMDA2OXww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"man city\"},{\"id\":\"student-avatar-16\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1484627147104-f5197bcd6651?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21hbiUyMG5hdHVyZXxlbnwwfHx8fDE3NTg1OTI2MTl8MA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman nature\"},{\"id\":\"student-avatar-17\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYW4lMjBzdWl0fGVufDB8fHx8MTc1ODU5NTYzMXww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"man suit\"},{\"id\":\"student-avatar-18\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1589377627850-fec1498300df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d29tYW4lMjB1cmJhbnxlbnwwfHx8fDE3NTg2MDY2MzR8MA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman urban\"},{\"id\":\"student-avatar-19\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1609853935854-ef4ad65e0bdd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYW4lMjBzZXJpb3VzfGVufDB8fHx8MTc1ODYwNDQzMnww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"man serious\"},{\"id\":\"student-avatar-20\",\"description\":\"Avatar for a student profile.\",\"imageUrl\":\"https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHByb2Zlc3Npb25hbHxlbnwwfHx8fDE3NTg1ODUzNDN8MA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"woman professional\"},{\"id\":\"github-icon\",\"description\":\"Icon for GitHub integration.\",\"imageUrl\":\"https://images.unsplash.com/photo-1663868891817-8853b9eb83f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxnaXRodWIlMjBsb2dvfGVufDB8fHx8MTc1ODYzNTk1Mnww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"github logo\"},{\"id\":\"vision-communication\",\"description\":\"Image for communication goal.\",\"imageUrl\":\"https://images.unsplash.com/photo-1568992687947-868a62a9f521?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZW9wbGUlMjB0YWxraW5nfGVufDB8fHx8MTc1ODYwNzMwMXww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"people talking\"},{\"id\":\"vision-leadership\",\"description\":\"Image for leadership goal.\",\"imageUrl\":\"https://images.unsplash.com/photo-1681949103006-70066fb25dfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0ZWFtJTIwbWVldGluZ3xlbnwwfHx8fDE3NTg1NzMzNzl8MA&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"team meeting\"},{\"id\":\"vision-problem-solving\",\"description\":\"Image for problem-solving goal.\",\"imageUrl\":\"https://images.unsplash.com/photo-1531482615713-2afd69097998?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZW9wbGUlMjBjb2xsYWJvcmF0aW5nfGVufDB8fHx8MTc1ODYyMTg4Nnww&ixlib=rb-4.1.0&q=80&w=1080\",\"imageHint\":\"people collaborating\"}]}"));}}),
 "[project]/src/lib/placeholder-images.ts [app-rsc] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
@@ -614,7 +614,7 @@ const createMockData = ()=>{
             if (id === 'STU-001') continue;
             const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${i}@example.com`;
             const avatarIndex = studentIdCounter % 20;
-            const avatarId = `student-avatar-${avatarIndex + 2}`;
+            const avatarId = `student-avatar-${avatarIndex + 1}`;
             const avatarUrl = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$placeholder$2d$images$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["PlaceHolderImages"].find((img)=>img.id === avatarId)?.imageUrl;
             const studentSkills = skillsByMajor[major] || [];
             const numSkills = (studentIdCounter + i) % 3 + 2; // 2 to 4 skills
@@ -804,7 +804,7 @@ const users = [
         ],
         skillRank: 1
     },
-    ...generatedUsers
+    ...generatedUsers.filter((u)=>u.id !== 'STU-001')
 ];
 const student = users[0]; // Default to Tahzeeb for existing components that rely on a single student
 const facultyUser = users[1];
@@ -1117,7 +1117,13 @@ const jobs = [
             'TypeScript',
             'CSS'
         ],
-        description: 'Join our team to build and improve our user-facing features. Ideal for students passionate about UI/UX.',
+        description: 'Join our dynamic team to build and improve our user-facing features. This is a great opportunity for students passionate about UI/UX and modern web technologies.',
+        responsibilities: [
+            'Develop new user-facing features using React.js and TypeScript.',
+            'Build reusable components and front-end libraries for future use.',
+            'Translate designs and wireframes into high-quality code.',
+            'Optimize components for maximum performance across a vast array of web-capable devices and browsers.'
+        ],
         datePosted: new Date('2024-05-20')
     },
     {
@@ -1131,7 +1137,12 @@ const jobs = [
             'Python',
             'AWS'
         ],
-        description: 'Looking for recent graduates to join our backend engineering team. You will work on scalable, cloud-based services.',
+        description: 'We are seeking talented and motivated recent graduates to join our backend engineering team. You will work on scalable, cloud-based services that power our core products.',
+        responsibilities: [
+            'Design, develop, test, deploy, maintain and improve software.',
+            'Manage individual project priorities, deadlines and deliverables.',
+            'Contribute to a culture of high-quality, professional software engineering.'
+        ],
         datePosted: new Date('2024-05-18')
     },
     {
@@ -1145,7 +1156,12 @@ const jobs = [
             'SQL',
             'Machine Learning'
         ],
-        description: 'Analyze large datasets to extract meaningful insights and contribute to our predictive modeling projects.',
+        description: 'As a Data Science Intern, you will have the opportunity to analyze large datasets, extract meaningful insights, and contribute to our predictive modeling projects.',
+        responsibilities: [
+            'Work with large, complex data sets to solve business problems.',
+            'Develop and deploy machine learning models.',
+            'Create data visualizations to communicate findings to stakeholders.'
+        ],
         datePosted: new Date('2024-05-15')
     },
     {
@@ -1159,7 +1175,12 @@ const jobs = [
             'Linux',
             'Node.js'
         ],
-        description: 'Manage and scale our cloud infrastructure. Experience with containerization (Docker, Kubernetes) is a plus.',
+        description: 'We are looking for a Cloud Engineer to help manage and scale our cloud infrastructure. Experience with containerization technologies like Docker and Kubernetes is a plus.',
+        responsibilities: [
+            'Deploy, manage, and operate scalable, highly available, and fault-tolerant systems on AWS.',
+            'Implement and control the flow of data to and from AWS.',
+            'Select the appropriate AWS service based on compute, data, or security requirements.'
+        ],
         datePosted: new Date('2024-05-12')
     },
     {
@@ -1173,7 +1194,12 @@ const jobs = [
             'UI/UX Design',
             'User Research'
         ],
-        description: 'Work alongside our design team to create wireframes, prototypes, and high-fidelity mockups for our mobile app.',
+        description: 'Work alongside our talented design team to create intuitive and engaging user experiences. You will be involved in all stages of the design process, from research to high-fidelity mockups.',
+        responsibilities: [
+            'Create wireframes, storyboards, user flows, and site maps.',
+            'Conduct user research and evaluate user feedback.',
+            'Design and deliver high-fidelity mockups and prototypes for our mobile app.'
+        ],
         datePosted: new Date('2024-05-10')
     },
     {
@@ -1187,8 +1213,95 @@ const jobs = [
             'Social Media',
             'SEO'
         ],
-        description: 'Develop and execute marketing campaigns across multiple channels to drive user acquisition and engagement.',
+        description: 'As a Marketing Associate, you will develop and execute innovative marketing campaigns across multiple channels to drive user acquisition and engagement.',
+        responsibilities: [
+            'Manage and grow our social media presence.',
+            'Develop content for blogs, newsletters, and other marketing materials.',
+            'Analyze campaign performance and optimize for conversions.'
+        ],
         datePosted: new Date('2024-05-08')
+    },
+    {
+        id: 'JOB-007',
+        title: 'Backend Engineer',
+        company: 'DataStream Solutions',
+        location: 'Chicago, IL',
+        type: 'Full-time',
+        tags: [
+            'Node.js',
+            'PostgreSQL',
+            'GraphQL'
+        ],
+        description: 'We are looking for a backend engineer to build and maintain the APIs that power our data platform. You will work with a modern stack and have a significant impact on our product.',
+        responsibilities: [
+            'Design and implement RESTful and GraphQL APIs.',
+            'Write clean, maintainable, and well-tested code.',
+            'Collaborate with front-end developers to integrate user-facing elements.',
+            'Manage and optimize database performance.'
+        ],
+        datePosted: new Date('2024-05-22')
+    },
+    {
+        id: 'JOB-008',
+        title: 'DevOps Engineer Intern',
+        company: 'ScaleGrid',
+        location: 'Remote',
+        type: 'Internship',
+        tags: [
+            'Docker',
+            'Kubernetes',
+            'CI/CD',
+            'Terraform'
+        ],
+        description: 'Join our infrastructure team to learn and implement DevOps best practices. This internship will provide hands-on experience with automation, containerization, and cloud infrastructure.',
+        responsibilities: [
+            'Assist in managing and improving our CI/CD pipeline.',
+            'Work with Docker and Kubernetes to containerize and orchestrate applications.',
+            'Use infrastructure-as-code tools like Terraform to manage cloud resources.',
+            'Monitor system performance and troubleshoot issues.'
+        ],
+        datePosted: new Date('2024-05-21')
+    },
+    {
+        id: 'JOB-009',
+        title: 'Product Manager (Associate)',
+        company: 'Agile Innovations',
+        location: 'Seattle, WA',
+        type: 'Full-time',
+        tags: [
+            'Product Management',
+            'Agile',
+            'JIRA'
+        ],
+        description: 'We are seeking a junior Product Manager to help define and execute the product roadmap for our flagship product. You will work closely with engineering, design, and marketing teams.',
+        responsibilities: [
+            'Gather and prioritize product and customer requirements.',
+            'Define the product vision and strategy.',
+            'Work with cross-functional teams to deliver new features and products.',
+            'Analyze market data and user feedback to inform product decisions.'
+        ],
+        datePosted: new Date('2024-05-19')
+    },
+    {
+        id: 'JOB-010',
+        title: 'Full Stack Developer',
+        company: 'NexGen Solutions',
+        location: 'Remote',
+        type: 'Part-time',
+        tags: [
+            'React',
+            'Node.js',
+            'TypeScript',
+            'MongoDB'
+        ],
+        description: 'We are looking for a versatile Full Stack Developer to join our team on a part-time basis. You will be responsible for developing both front-end and back-end components of our web applications.',
+        responsibilities: [
+            'Develop and maintain web applications using the MERN stack.',
+            'Write clean, reusable, and efficient code.',
+            'Participate in code reviews and contribute to a collaborative development environment.',
+            'Troubleshoot and debug applications.'
+        ],
+        datePosted: new Date('2024-05-17')
     }
 ];
 }}),

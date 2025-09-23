@@ -54,6 +54,39 @@
       "layer": {
         "app/ai-twin/page": "action-browser"
       }
+    },
+    "60c86158980b575310c75a0c84f27b232186402917": {
+      "workers": {
+        "app/interview-coach/page": {
+          "moduleId": "[project]/.next-internal/server/app/interview-coach/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/interview-coach/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/interview-coach/page": "action-browser"
+      }
+    },
+    "40ce7f8bab8ce8a688e0435811e820a2cda219e8c3": {
+      "workers": {
+        "app/interview-coach/page": {
+          "moduleId": "[project]/.next-internal/server/app/interview-coach/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/interview-coach/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/interview-coach/page": "action-browser"
+      }
+    },
+    "4025321ba4a4d3a4a773354924f443264f175114d2": {
+      "workers": {
+        "app/vision-board/page": {
+          "moduleId": "[project]/.next-internal/server/app/vision-board/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/vision-board/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/vision-board/page": "action-browser"
+      }
     }
   },
   "edge": {},
