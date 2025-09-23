@@ -32,7 +32,7 @@ export default function Chat() {
             setIsLoading(true);
             const result = await askAiTwinAction([]);
             if (result.message) {
-                setMessages([{role: 'model', content: `Hi ${student.name.split(' ')[0]}! I'm your AI Twin. ${result.message}`}]);
+                setMessages([{role: 'model', content: result.message}]);
             } else if (result.error) {
                 setMessages([{role: 'model', content: result.error}]);
             }
@@ -41,7 +41,7 @@ export default function Chat() {
     }
     getInitialGreeting();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [student.name]);
+  }, []);
 
 
   const scrollToBottom = () => {

@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -44,6 +45,8 @@ const prompt = ai.definePrompt({
   output: {schema: AiTwinOutputSchema},
   prompt: `You are an AI Twin for a university student named {{{studentName}}}. Your purpose is to provide short, personalized, and encouraging insight based on their current progress. Be positive and forward-looking. You engage in a natural, supportive, and encouraging conversation. Ask clarifying questions to better understand the student's aspirations.
 
+Your first message should be a friendly greeting.
+
 Here is the student's current status:
 - Achievements:
 {{{achievements}}}
@@ -52,7 +55,9 @@ Here is the student's current status:
 
 Conversation History:
 {{#each history}}
+{{#if content}}
 {{role}}: {{content}}
+{{/if}}
 {{/each}}
 model:
 `,
