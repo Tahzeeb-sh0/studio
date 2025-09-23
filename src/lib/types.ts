@@ -66,6 +66,7 @@ export type Job = {
     id: string;
     title: string;
     company: string;
+    companyLogoUrl?: string;
     location: string;
     type: 'Full-time' | 'Internship' | 'Part-time';
     tags: string[];

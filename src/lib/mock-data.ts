@@ -526,11 +526,18 @@ export const activities: Activity[] = [
   ...generatedActivities,
 ];
 
+const jobLogo1 = PlaceHolderImages.find(p => p.id === 'job-logo-1')?.imageUrl;
+const jobLogo2 = PlaceHolderImages.find(p => p.id === 'job-logo-2')?.imageUrl;
+const jobLogo3 = PlaceHolderImages.find(p => p.id === 'job-logo-3')?.imageUrl;
+const jobLogo4 = PlaceHolderImages.find(p => p.id === 'job-logo-4')?.imageUrl;
+const jobLogo5 = PlaceHolderImages.find(p => p.id === 'job-logo-5')?.imageUrl;
+
 export const jobs: Job[] = [
     {
         id: 'JOB-001',
         title: 'Frontend Developer Intern',
         company: 'Innovate Inc.',
+        companyLogoUrl: jobLogo1,
         location: 'Remote',
         type: 'Internship',
         tags: ['React', 'TypeScript', 'CSS'],
@@ -547,6 +554,7 @@ export const jobs: Job[] = [
         id: 'JOB-002',
         title: 'Software Engineer (New Grad)',
         company: 'Tech Solutions LLC',
+        companyLogoUrl: jobLogo2,
         location: 'New York, NY',
         type: 'Full-time',
         tags: ['Java', 'Python', 'AWS'],
@@ -562,6 +570,7 @@ export const jobs: Job[] = [
         id: 'JOB-003',
         title: 'Data Science Intern',
         company: 'Data Insights Co.',
+        companyLogoUrl: jobLogo3,
         location: 'San Francisco, CA',
         type: 'Internship',
         tags: ['Python', 'SQL', 'Machine Learning'],
@@ -577,6 +586,7 @@ export const jobs: Job[] = [
         id: 'JOB-004',
         title: 'Cloud Engineer',
         company: 'Cloudways',
+        companyLogoUrl: jobLogo4,
         location: 'Austin, TX',
         type: 'Full-time',
         tags: ['AWS', 'Linux', 'Node.js'],
@@ -592,6 +602,7 @@ export const jobs: Job[] = [
         id: 'JOB-005',
         title: 'UI/UX Design Intern',
         company: 'Creative Minds',
+        companyLogoUrl: jobLogo5,
         location: 'Remote',
         type: 'Internship',
         tags: ['Figma', 'UI/UX Design', 'User Research'],
@@ -607,6 +618,7 @@ export const jobs: Job[] = [
         id: 'JOB-006',
         title: 'Marketing Associate',
         company: 'Growth Gurus',
+        companyLogoUrl: jobLogo1,
         location: 'Boston, MA',
         type: 'Full-time',
         tags: ['Marketing', 'Social Media', 'SEO'],
@@ -622,6 +634,7 @@ export const jobs: Job[] = [
         id: 'JOB-007',
         title: 'Backend Engineer',
         company: 'DataStream Solutions',
+        companyLogoUrl: jobLogo2,
         location: 'Chicago, IL',
         type: 'Full-time',
         tags: ['Node.js', 'PostgreSQL', 'GraphQL'],
@@ -638,6 +651,7 @@ export const jobs: Job[] = [
         id: 'JOB-008',
         title: 'DevOps Engineer Intern',
         company: 'ScaleGrid',
+        companyLogoUrl: jobLogo3,
         location: 'Remote',
         type: 'Internship',
         tags: ['Docker', 'Kubernetes', 'CI/CD', 'Terraform'],
@@ -654,6 +668,7 @@ export const jobs: Job[] = [
         id: 'JOB-009',
         title: 'Product Manager (Associate)',
         company: 'Agile Innovations',
+        companyLogoUrl: jobLogo4,
         location: 'Seattle, WA',
         type: 'Full-time',
         tags: ['Product Management', 'Agile', 'JIRA'],
@@ -670,6 +685,7 @@ export const jobs: Job[] = [
         id: 'JOB-010',
         title: 'Full Stack Developer',
         company: 'NexGen Solutions',
+        companyLogoUrl: jobLogo5,
         location: 'Remote',
         type: 'Part-time',
         tags: ['React', 'Node.js', 'TypeScript', 'MongoDB'],

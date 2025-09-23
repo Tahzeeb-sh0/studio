@@ -26,6 +26,7 @@ import { Search, MapPin, Briefcase, Clock, X, Building, Calendar, ClipboardList 
 import { formatDistanceToNow } from 'date-fns';
 import { useToast } from '@/hooks/use-toast';
 import { Job } from '@/lib/types';
+import Image from 'next/image';
 
 export default function JobsPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -84,9 +85,19 @@ export default function JobsPage() {
                 <Dialog key={job.id}>
                     <DialogTrigger asChild>
                         <Card className="flex flex-col cursor-pointer hover:border-primary transition-colors duration-200">
-                            <CardHeader>
-                                <CardTitle className="text-lg">{job.title}</CardTitle>
-                                <CardDescription className="text-primary font-medium">{job.company}</CardDescription>
+                            <CardHeader className="flex-row items-start gap-4">
+                                <div className="relative h-12 w-12 flex-shrink-0">
+                                  <Image
+                                    src={job.companyLogoUrl || 'https://picsum.photos/seed/placeholder-logo/100/100'}
+                                    alt={`${job.company} logo`}
+                                    fill
+                                    className="object-contain rounded-md"
+                                  />
+                                </div>
+                                <div>
+                                    <CardTitle className="text-lg">{job.title}</CardTitle>
+                                    <CardDescription className="text-primary font-medium">{job.company}</CardDescription>
+                                </div>
                             </CardHeader>
                             <CardContent className="flex-grow space-y-4">
                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -114,15 +125,27 @@ export default function JobsPage() {
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
-                            <DialogTitle className="font-headline text-2xl">{job.title}</DialogTitle>
-                            <DialogDescription className="text-base">
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1 text-muted-foreground mt-2">
-                                    <div className="flex items-center gap-2"><Building className="h-4 w-4 text-primary" />{job.company}</div>
-                                    <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" />{job.location}</div>
-                                    <div className="flex items-center gap-2"><Briefcase className="h-4 w-4 text-primary" />{job.type}</div>
-                                    <div className="flex items-center gap-2"><Calendar className="h-4 w-4 text-primary" />Posted {formatDistanceToNow(job.datePosted, { addSuffix: true })}</div>
+                            <div className="flex items-start gap-4">
+                                <div className="relative h-16 w-16 flex-shrink-0">
+                                      <Image
+                                        src={job.companyLogoUrl || 'https://picsum.photos/seed/placeholder-logo/100/100'}
+                                        alt={`${job.company} logo`}
+                                        fill
+                                        className="object-contain rounded-md"
+                                      />
+                                    </div>
+                                <div>
+                                    <DialogTitle className="font-headline text-2xl">{job.title}</DialogTitle>
+                                    <DialogDescription className="text-base">
+                                        <div className="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1 text-muted-foreground mt-2">
+                                            <div className="flex items-center gap-2"><Building className="h-4 w-4 text-primary" />{job.company}</div>
+                                            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" />{job.location}</div>
+                                            <div className="flex items-center gap-2"><Briefcase className="h-4 w-4 text-primary" />{job.type}</div>
+                                            <div className="flex items-center gap-2"><Calendar className="h-4 w-4 text-primary" />Posted {formatDistanceToNow(job.datePosted, { addSuffix: true })}</div>
+                                        </div>
+                                    </DialogDescription>
                                 </div>
-                            </DialogDescription>
+                            </div>
                         </DialogHeader>
                         <div className="space-y-6 py-4">
                             <div className="flex flex-wrap gap-2">

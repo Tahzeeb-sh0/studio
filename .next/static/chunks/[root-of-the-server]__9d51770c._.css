@@ -991,6 +991,10 @@ body {
   width: 50%;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
 .min-w-0 {
   min-width: 0;
 }
@@ -1572,6 +1576,10 @@ body {
 
 .fill-current {
   fill: currentColor;
+}
+
+.object-contain {
+  object-fit: contain;
 }
 
 .p-0 {
