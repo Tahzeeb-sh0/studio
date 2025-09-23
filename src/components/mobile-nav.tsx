@@ -20,6 +20,7 @@ import {
   Building2,
   View,
   Briefcase,
+  ClipboardCheck,
 } from 'lucide-react';
 
 const studentMenuItems = [
@@ -62,6 +63,11 @@ const studentMenuItems = [
     href: '/interview-coach',
     label: 'Interview Coach',
     icon: BrainCircuit,
+  },
+  {
+    href: '/mock-test',
+    label: 'Mock Test',
+    icon: ClipboardCheck,
   },
   {
     href: '/github',

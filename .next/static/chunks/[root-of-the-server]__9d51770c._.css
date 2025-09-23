@@ -871,6 +871,10 @@ body {
   height: 7rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .max-h-96 {
   max-height: 24rem;
 }
@@ -1013,6 +1017,10 @@ body {
 
 .w-28 {
   width: 7rem;
+}
+
+.w-\[60\%\] {
+  width: 60%;
 }
 
 .min-w-0 {
@@ -1500,6 +1508,11 @@ body {
   border-color: #ef44444d;
 }
 
+.border-green-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 197 94 / var(--tw-border-opacity, 1));
+}
+
 .border-l-transparent {
   border-left-color: #0000;
 }
@@ -1597,6 +1610,14 @@ body {
 
 .bg-red-500\/10 {
   background-color: #ef44441a;
+}
+
+.bg-destructive\/10 {
+  background-color: hsl(var(--destructive) / .1);
+}
+
+.bg-green-500\/10 {
+  background-color: #22c55e1a;
 }
 
 .bg-\[url\(\"https\:\/\/images\.unsplash\.com\/photo-1522071820081-009f0129c71c\?w\=800\"\)\] {
@@ -2037,8 +2058,17 @@ body {
   color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
 
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity, 1));
+}
+
 .underline {
   text-decoration-line: underline;
+}
+
+.line-through {
+  text-decoration-line: line-through;
 }
 
 .underline-offset-4 {

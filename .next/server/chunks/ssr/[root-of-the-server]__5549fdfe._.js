@@ -365,7 +365,8 @@ const allSkills = [
     'Red Hat',
     'Linux',
     'Marketing',
-    'UI/UX Design'
+    'UI/UX Design',
+    'CEH'
 ];
 const activityCategories = [
     'Conference',
@@ -991,6 +992,17 @@ const activities = [
         description: 'Completed an online certification course on Agile and Scrum methodologies.',
         status: 'Approved',
         credits: 3
+    },
+    {
+        id: 'ACT-024',
+        studentId: 'STU-010',
+        name: 'Judy Williams',
+        title: 'Advanced Python Workshop',
+        category: 'Workshop',
+        date: new Date('2024-04-18'),
+        description: 'Completed an advanced workshop on Python for data science.',
+        status: 'Approved',
+        credits: 2
     },
     ...generatedActivities
 ];

@@ -9,5 +9,6 @@ import '@/ai/flows/ai-twin.ts';
 import '@/ai/flows/github-verifier.ts';
 import '@/ai/flows/vision-board-suggestion-generator.ts';
 import '@/ai/flows/contact-student-generator.ts';
+import '@/ai/flows/mock-test-generator.ts';
 
 
