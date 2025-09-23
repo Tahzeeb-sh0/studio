@@ -151,7 +151,7 @@ export default function PortfolioClientContent({
               alt={student.name}
               width={120}
               height={120}
-              className="rounded-full border-4 border-background shadow-md"
+              className="rounded-full border-4 border-primary/20 shadow-md"
               data-ai-hint="portrait person"
               crossOrigin="anonymous"
             />
