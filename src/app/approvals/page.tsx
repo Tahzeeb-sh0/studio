@@ -19,7 +19,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { activities } from '@/lib/mock-data';
-import { Check, X, ListChecks, CheckCircle2, Clock, Activity, ShieldAlert, BarChart3 } from 'lucide-react';
+import { Check, X, ListChecks, CheckCircle2, Clock, Activity, ShieldAlert } from 'lucide-react';
 import { format, isToday } from 'date-fns';
 import { useAuth } from '@/context/auth-context';
 import { useEffect } from 'react';
