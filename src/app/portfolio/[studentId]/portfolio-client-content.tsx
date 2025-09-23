@@ -1,6 +1,9 @@
 
 'use client';
 
+import { useRef } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   Card,
   CardContent,
@@ -14,12 +17,15 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Bot, Award } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Bot, Award, Share2, Download, Github } from 'lucide-react';
 import { Activity, ActivityCategory, Student } from '@/lib/types';
 import CoverLetterGenerator from '../cover-letter-generator';
 import { format } from 'date-fns';
 import { useAuth } from '@/context/auth-context';
 import { academicRecord } from '@/lib/mock-data';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 interface PortfolioClientContentProps {
     student: Student;
@@ -36,9 +42,120 @@ export default function PortfolioClientContent({
 }: PortfolioClientContentProps) {
   const { user: loggedInUser } = useAuth();
   const isOwner = loggedInUser && loggedInUser.id === student.id;
+  const portfolioRef = useRef<HTMLDivElement>(null);
+
+  const handleDownloadPdf = () => {
+    const input = portfolioRef.current;
+    if (!input) return;
+
+    // Temporarily remove owner-only elements for PDF generation
+    const elementsToHide = input.querySelectorAll('[data-pdf-hide="true"]');
+    elementsToHide.forEach(el => (el as HTMLElement).style.display = 'none');
+
+    html2canvas(input, {
+      scale: 2, // Higher scale for better quality
+      useCORS: true,
+      onclone: (document) => {
+        // Ensure fonts are loaded in the cloned document
+        const head = document.head;
+        const fontLinks = document.querySelectorAll('link[href*="fonts.googleapis.com"]');
+        fontLinks.forEach(link => head.appendChild(link.cloneNode(true)));
+      }
+    }).then((canvas) => {
+      // Restore hidden elements
+      elementsToHide.forEach(el => (el as HTMLElement).style.display = '');
+
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
+      const ratio = canvasWidth / canvasHeight;
+      const width = pdfWidth;
+      const height = width / ratio;
+
+      // If the content is taller than one page, split it.
+      let position = 0;
+      let remainingHeight = canvasHeight;
+
+      while(remainingHeight > 0) {
+        const pageCanvas = document.createElement('canvas');
+        pageCanvas.width = canvasWidth;
+        // Calculate the height of the slice to fit one PDF page
+        const pageCanvasHeight = (canvasWidth * pdfHeight) / pdfWidth;
+        pageCanvas.height = Math.min(pageCanvasHeight, remainingHeight);
+        
+        const pageCtx = pageCanvas.getContext('2d');
+        pageCtx?.drawImage(canvas, 0, position, canvasWidth, pageCanvas.height, 0, 0, canvasWidth, pageCanvas.height);
+        
+        const pageImgData = pageCanvas.toDataURL('image/png');
+        if (position > 0) {
+          pdf.addPage();
+        }
+        pdf.addImage(pageImgData, 'PNG', 0, 0, pdfWidth, (pdfWidth * pageCanvas.height) / canvasWidth);
+        
+        remainingHeight -= pageCanvas.height;
+        position += pageCanvas.height;
+      }
+      
+      pdf.save(`${student.name.replace(' ', '_')}_Portfolio.pdf`);
+    });
+  };
 
   return (
-    <div className="grid gap-8 p-8 md:grid-cols-3">
+    <>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 className="font-headline text-3xl font-bold tracking-tight">
+            {student.name}'s Digital Portfolio
+          </h1>
+          <p className="text-muted-foreground">
+            A verified record of academic and co-curricular journey.
+          </p>
+        </div>
+        <div className='flex gap-2'>
+            <Button variant="outline">
+                <Share2 className="mr-2 h-4 w-4" />
+                Share Link
+            </Button>
+            <Button onClick={handleDownloadPdf}>
+                <Download className="mr-2 h-4 w-4" />
+                Download PDF
+            </Button>
+        </div>
+      </div>
+      <Card ref={portfolioRef} className="overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/20">
+        <div className="bg-muted/30 p-8">
+          <div className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
+            <Image
+              src={student.avatarUrl}
+              alt={student.name}
+              width={120}
+              height={120}
+              className="rounded-full border-4 border-background shadow-md"
+              data-ai-hint="portrait person"
+              crossOrigin="anonymous"
+            />
+            <div className='flex-1'>
+              <h2 className="font-headline text-4xl font-bold text-primary">
+                {student.name}
+              </h2>
+              <p className="text-lg font-medium">{student.major}</p>
+              <p className="text-muted-foreground">{student.email}</p>
+            </div>
+             {student.githubUsername && (
+              <Button asChild variant="outline">
+                <Link href={`https://github.com/${student.githubUsername}`} target="_blank">
+                  <Github className="mr-2 h-4 w-4" />
+                  View GitHub
+                </Link>
+              </Button>
+            )}
+          </div>
+        </div>
+        
+        <div className="grid gap-8 p-8 md:grid-cols-3">
           <div className="md:col-span-2 space-y-8">
             <section>
               <h3 className="font-headline text-2xl font-semibold mb-4 border-b pb-2">Verified Achievements</h3>
@@ -68,7 +185,7 @@ export default function PortfolioClientContent({
               )}
             </section>
              {isOwner && (
-              <section>
+              <section data-pdf-hide="true">
                 <h3 className="flex items-center gap-2 font-headline text-2xl font-semibold mb-4 border-b pb-2">
                   <Bot />
                   AI Cover Letter Generator
@@ -114,5 +231,7 @@ export default function PortfolioClientContent({
             </Card>
           </aside>
         </div>
+      </Card>
+    </>
   )
 }
