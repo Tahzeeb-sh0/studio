@@ -78,9 +78,16 @@ export default function PortfolioClientContent({
           title: 'Portfolio Shared!',
           description: 'The portfolio was successfully shared.',
         });
-      } catch (err) {
-        console.error('Failed to share:', err);
+      } catch (err: any) {
         // Silently fail if user cancels share dialog
+        if (err.name !== 'AbortError') {
+            console.error('Failed to share:', err);
+            toast({
+                variant: 'destructive',
+                title: 'Sharing Failed',
+                description: 'An unexpected error occurred while trying to share.',
+            });
+        }
       }
     } else {
       // Fallback for browsers that don't support the Web Share API
@@ -324,3 +331,5 @@ export default function PortfolioClientContent({
     </>
   )
 }
+
+    
