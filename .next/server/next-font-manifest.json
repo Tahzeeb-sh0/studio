@@ -1,94 +1,28 @@
 {
   "app": {
-    "[project]/src/app/activities/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/ai-twin/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
     "[project]/src/app/approvals/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
       "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
+      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
+      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2",
+      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2"
     ],
     "[project]/src/app/auth/login/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
       "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/auth/signup/page": [
       "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
+      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2",
+      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2"
     ],
     "[project]/src/app/dashboard/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
       "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/github/page": [
       "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/interview-coach/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/jobs/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/leaderboard/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/mock-test/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
+      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2",
+      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2"
     ],
     "[project]/src/app/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
       "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/portfolio/[studentId]/page": [
       "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/portfolio/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
-    ],
-    "[project]/src/app/vision-board/page": [
-      "static/media/jizfRExUiTo99u79B_mh0O6tLR8a8zI-s.p.e13adb20.woff2",
-      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2",
-      "static/media/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk-s.p.d95035ce.woff2",
-      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2"
+      "static/media/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk-s.p.dd0b3887.woff2",
+      "static/media/jizaRExUiTo99u79D0KExcOPIDU-s.p.937000da.woff2"
     ]
   },
   "appUsingSizeAdjust": true,

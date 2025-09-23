@@ -27,8 +27,16 @@ import {
   ChartTooltip,
   ChartTooltipContent
 } from '@/components/ui/chart';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from '@/components/ui/dialog';
 import { Activity } from '@/lib/types';
-import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, MessageSquareHeart, Briefcase } from 'lucide-react';
+import { Award, BookOpen, CalendarClock, GraduationCap, Target, Bot, MessageSquareHeart, Briefcase, ShieldCheck } from 'lucide-react';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import { student as defaultStudent } from '@/lib/mock-data';
@@ -79,6 +87,10 @@ const chartColors = [
 
 export default async function DashboardPage() {
 
+  const approvedCertifications = activities.filter(
+    (act) => act.studentId === student.id && act.status === 'Approved' && act.category === 'Certification'
+  );
+
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
       <div>
@@ -114,7 +126,7 @@ export default async function DashboardPage() {
         </CardContent>
       </Card>
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">GPA</CardTitle>
@@ -145,6 +157,41 @@ export default async function DashboardPage() {
             <p className="text-xs text-muted-foreground">Credits from approved activities.</p>
           </CardContent>
         </Card>
+        <Dialog>
+            <DialogTrigger asChild>
+                 <Card className="cursor-pointer hover:border-primary transition-colors">
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                        <CardTitle className="text-sm font-medium">Verified Certifications</CardTitle>
+                        <ShieldCheck className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold">{approvedCertifications.length}</div>
+                        <p className="text-xs text-muted-foreground">Your approved professional certifications.</p>
+                    </CardContent>
+                </Card>
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Verified Certifications</DialogTitle>
+                    <DialogDescription>A list of your successfully verified professional certifications.</DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                    {approvedCertifications.length > 0 ? approvedCertifications.map(cert => (
+                        <div key={cert.id} className="flex items-start gap-4">
+                             <div className="bg-primary/10 text-primary p-2 rounded-full">
+                                <ShieldCheck className="h-5 w-5" />
+                            </div>
+                            <div>
+                                <p className="font-semibold">{cert.title}</p>
+                                <p className="text-sm text-muted-foreground">Verified on: {format(cert.date, 'PPP')}</p>
+                            </div>
+                        </div>
+                    )) : (
+                        <p className="text-muted-foreground text-center">No verified certifications found.</p>
+                    )}
+                </div>
+            </DialogContent>
+        </Dialog>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-5">

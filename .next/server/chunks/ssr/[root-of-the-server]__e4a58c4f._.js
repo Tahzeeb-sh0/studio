@@ -1096,7 +1096,7 @@ const activities = [
         category: 'Certification',
         date: new Date('2024-01-10'),
         description: 'Earned the Associate Cloud Engineer certification from Google Cloud.',
-        status: 'Pending',
+        status: 'Approved',
         credits: 4
     },
     {
@@ -1296,6 +1296,17 @@ const activities = [
         description: 'Completed an online certification course on Agile and Scrum methodologies.',
         status: 'Approved',
         credits: 3
+    },
+    {
+        id: 'ACT-025',
+        studentId: 'STU-001',
+        studentName: 'Tahzeeb',
+        title: 'Certified Ethical Hacker (CEH)',
+        category: 'Certification',
+        date: new Date('2024-03-25'),
+        description: 'Earned the CEH certification, demonstrating knowledge of ethical hacking and network security.',
+        status: 'Approved',
+        credits: 5
     },
     {
         id: 'ACT-024',
