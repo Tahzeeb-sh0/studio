@@ -1,6 +1,4 @@
 
-'use client';
-
 import { users, activities } from '@/lib/mock-data';
 import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
