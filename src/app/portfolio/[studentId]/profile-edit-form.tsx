@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,7 +16,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Student } from '@/lib/types';
-import { allSkills, users, allMajors } from '@/lib/mock-data';
+import { allMajors, users } from '@/lib/mock-data';
 import {
   Select,
   SelectContent,
@@ -24,9 +25,10 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { verifyGithubUsername } from '@/ai/flows/github-verifier';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface ProfileEditFormProps {
   student: Student;
@@ -38,10 +40,12 @@ const formSchema = z.object({
   major: z.string({ required_error: 'Please select a major.' }),
   year: z.coerce.number().min(1).max(5),
   githubUsername: z.string().optional(),
+  avatar: z.any().optional(),
 });
 
 export default function ProfileEditForm({ student, onSave }: ProfileEditFormProps) {
   const [isVerifying, setIsVerifying] = useState(false);
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(student.avatarUrl);
   const { toast } = useToast();
   
   const form = useForm<z.infer<typeof formSchema>>({
@@ -54,8 +58,35 @@ export default function ProfileEditForm({ student, onSave }: ProfileEditFormProp
     },
   });
 
+  const avatarFile = form.watch('avatar');
+  useEffect(() => {
+    if (avatarFile && avatarFile.length > 0) {
+      const file = avatarFile[0];
+      const previewUrl = URL.createObjectURL(file);
+      setAvatarPreview(previewUrl);
+
+      return () => URL.revokeObjectURL(previewUrl);
+    }
+  }, [avatarFile]);
+
+  const fileToDataUrl = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    let updatedStudent = { ...student, ...values };
+    let updatedStudent: Student = { ...student, ...values };
+
+    if (values.avatar && values.avatar.length > 0) {
+        const file = values.avatar[0];
+        const dataUrl = await fileToDataUrl(file);
+        updatedStudent.avatarUrl = dataUrl;
+    }
+
 
     if (values.githubUsername && values.githubUsername !== student.githubUsername) {
       setIsVerifying(true);
@@ -105,6 +136,32 @@ export default function ProfileEditForm({ student, onSave }: ProfileEditFormProp
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="avatar"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Profile Photo</FormLabel>
+              <div className="flex items-center gap-4">
+                <Avatar className="h-16 w-16">
+                  <AvatarImage src={avatarPreview || student.avatarUrl} alt={student.name} />
+                   <AvatarFallback>
+                      {student.name.split(' ').map((n) => n[0]).join('')}
+                    </AvatarFallback>
+                </Avatar>
+                <FormControl>
+                    <Input 
+                        type="file" 
+                        accept="image/*"
+                        onChange={(e) => field.onChange(e.target.files)}
+                    />
+                </FormControl>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="name"
@@ -179,3 +236,4 @@ export default function ProfileEditForm({ student, onSave }: ProfileEditFormProp
     </Form>
   );
 }
+

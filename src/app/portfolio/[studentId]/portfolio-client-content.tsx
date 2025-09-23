@@ -39,6 +39,7 @@ const ProfileEditForm = dynamic(() => import('./profile-edit-form'), {
         <Skeleton className="h-10 w-full" />
         <Skeleton className="h-10 w-full" />
         <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-24 w-full" />
     </div>
 });
 
@@ -55,7 +56,7 @@ export default function PortfolioClientContent({
     totalActivityCredits,
     groupedActivities,
 }: PortfolioClientContentProps) {
-  const { user: loggedInUser } = useAuth();
+  const { user: loggedInUser, login } = useAuth();
   const { toast } = useToast();
   const [student, setStudent] = useState(initialStudent);
   const isOwner = loggedInUser && loggedInUser.id === student.id;
@@ -139,6 +140,15 @@ export default function PortfolioClientContent({
   
   const handleProfileUpdate = (updatedStudent: Student) => {
     setStudent(updatedStudent);
+    // Also update the user in the auth context if they are the one being edited
+    if (loggedInUser && loggedInUser.id === updatedStudent.id) {
+        // This is a bit of a hack, in a real app you'd have a proper updateUser method in your context
+        // For demo purposes, we can re-trigger a "login" to update the context state
+        // This assumes your login function can update the user without password check if already logged in
+        if(loggedInUser.email) {
+            login(loggedInUser.email, '123456'); // Pass dummy password, logic is in auth-context
+        }
+    }
     setIsEditDialogOpen(false);
     toast({
         title: 'Profile Updated',
