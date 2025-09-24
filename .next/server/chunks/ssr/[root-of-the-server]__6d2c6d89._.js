@@ -476,7 +476,8 @@ const allSkills = [
     'Red Hat',
     'Linux',
     'Marketing',
-    'UI/UX Design'
+    'UI/UX Design',
+    'CEH'
 ];
 const activityCategories = [
     'Conference',
@@ -606,7 +607,7 @@ const createMockData = ()=>{
     const generatedUsers = [];
     let studentIdCounter = 10;
     for (const major of allMajors){
-        for(let i = 0; i < 100; i++){
+        for(let i = 0; i < 20; i++){
             const firstName = firstNames[(studentIdCounter + i) % firstNames.length];
             const lastName = lastNames[(studentIdCounter + i) % lastNames.length];
             const name = `${firstName} ${lastName}`;
@@ -807,7 +808,7 @@ const users = [
     ...generatedUsers.filter((u)=>u.id !== 'STU-001')
 ];
 const student = users[0]; // Default to Tahzeeb for existing components that rely on a single student
-const facultyUser = users[1];
+const facultyUser = users.find((u)=>u.role === 'faculty');
 const academicRecord = {
     gpa: 3.8,
     attendance: 95,
@@ -902,7 +903,7 @@ const activities = [
         category: 'Certification',
         date: new Date('2024-01-10'),
         description: 'Earned the Associate Cloud Engineer certification from Google Cloud.',
-        status: 'Pending',
+        status: 'Approved',
         credits: 4
     },
     {
@@ -1102,6 +1103,28 @@ const activities = [
         description: 'Completed an online certification course on Agile and Scrum methodologies.',
         status: 'Approved',
         credits: 3
+    },
+    {
+        id: 'ACT-025',
+        studentId: 'STU-001',
+        studentName: 'Tahzeeb',
+        title: 'Certified Ethical Hacker (CEH)',
+        category: 'Certification',
+        date: new Date('2024-03-25'),
+        description: 'Earned the CEH certification, demonstrating knowledge of ethical hacking and network security.',
+        status: 'Approved',
+        credits: 5
+    },
+    {
+        id: 'ACT-024',
+        studentId: 'STU-010',
+        name: 'Judy Williams',
+        title: 'Advanced Python Workshop',
+        category: 'Workshop',
+        date: new Date('2024-04-18'),
+        description: 'Completed an advanced workshop on Python for data science.',
+        status: 'Approved',
+        credits: 2
     },
     ...generatedActivities
 ];
