@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // Redirect if user is not logged in and trying to access protected routes
   useEffect(() => {
-    const protectedRoutes = ['/dashboard', '/activities', '/portfolio', '/leaderboard', '/ai-twin', '/interview-coach', '/github', '/approvals', '/vision-board', '/jobs'];
+    const protectedRoutes = ['/dashboard', '/activities', '/leaderboard', '/ai-twin', '/interview-coach', '/github', '/approvals', '/vision-board', '/jobs'];
     const authPages = ['/auth/login', '/auth/signup'];
     
     if (!user && protectedRoutes.some(route => pathname.startsWith(route)) && !authPages.includes(pathname)) {

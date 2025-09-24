@@ -1612,7 +1612,6 @@ const AuthProvider = ({ children })=>{
         const protectedRoutes = [
             '/dashboard',
             '/activities',
-            '/portfolio',
             '/leaderboard',
             '/ai-twin',
             '/interview-coach',
