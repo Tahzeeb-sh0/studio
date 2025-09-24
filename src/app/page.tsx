@@ -241,9 +241,9 @@ export default function LeaderboardPage() {
           Featured Students
         </h2>
         {topThree.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+          <div className={`grid grid-cols-1 ${topThree.length > 1 ? 'md:grid-cols-3' : 'md:grid-cols-1'} gap-8 items-end`}>
             {topThree.length > 1 && topThree[1] && (
-               <Link key={topThree[1].student.id} href={`/portfolio/${topThree[1].student.id}`} className="block">
+               <Link key={topThree[1].student.id} href={`/portfolio/${topThree[1].student.id}`} className="block h-full">
                 <Card className="border-2 border-gray-400 relative overflow-hidden h-full">
                   <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
                     {showRank && <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(topThree[1].rank)}`}>
@@ -261,8 +261,8 @@ export default function LeaderboardPage() {
             )}
 
             {topThree[0] && (
-               <Link key={topThree[0].student.id} href={`/portfolio/${topThree[0].student.id}`} className="block">
-                <Card className="border-2 border-yellow-400 relative overflow-hidden transform md:scale-110 bg-gradient-to-br from-card to-yellow-400/10 h-full">
+               <Link key={topThree[0].student.id} href={`/portfolio/${topThree[0].student.id}`} className="block h-full">
+                <Card className={`border-2 border-yellow-400 relative overflow-hidden ${topThree.length > 1 ? 'transform md:scale-110' : ''} bg-gradient-to-br from-card to-yellow-400/10 h-full`}>
                   <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
                     {showRank && <Crown className="absolute -top-1 left-1/2 -translate-x-1/2 h-10 w-10 text-yellow-400 -rotate-12" />}
                     {showRank && <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(topThree[0].rank)}`}>
@@ -280,7 +280,7 @@ export default function LeaderboardPage() {
             )}
 
             {topThree.length > 2 && topThree[2] && (
-              <Link key={topThree[2].student.id} href={`/portfolio/${topThree[2].student.id}`} className="block">
+              <Link key={topThree[2].student.id} href={`/portfolio/${topThree[2].student.id}`} className="block h-full">
                 <Card className="border-2 border-yellow-600 relative overflow-hidden h-full">
                   <CardContent className="relative flex flex-col items-center justify-center p-6 text-center">
                     {showRank && <div className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-lg font-bold ${getRankColor(topThree[2].rank)}`}>
@@ -296,9 +296,6 @@ export default function LeaderboardPage() {
                 </Card>
               </Link>
             )}
-            
-            { topThree.length === 1 && !topThree[0] && <p>No featured students.</p>}
-
           </div>
         ) : (
           <p className="text-muted-foreground text-center py-8">
