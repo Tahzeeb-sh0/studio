@@ -121,7 +121,7 @@ export default function LeaderboardPage() {
         .includes(searchQuery.toLowerCase());
       const matchesSkills =
         selectedSkills.length === 0 ||
-        selectedSkills.every((skill) =>
+        selectedSkills.some((skill) =>
           entry.student.skills?.includes(skill)
         );
       const matchesMajors =
@@ -158,8 +158,8 @@ export default function LeaderboardPage() {
 
   const showRank =
     searchQuery === '' &&
-    (selectedMajors.length === 0 || selectedMajors.length === 1) &&
-    (selectedSkills.length === 0 || selectedSkills.length === 1);
+    selectedMajors.length === 0 &&
+    selectedSkills.length === 0;
   
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
@@ -392,3 +392,5 @@ export default function LeaderboardPage() {
     </div>
   );
 }
+
+    

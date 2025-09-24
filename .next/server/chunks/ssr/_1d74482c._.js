@@ -394,7 +394,7 @@ function LeaderboardPage() {
     const filteredLeaderboard = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
         return leaderboard.filter((entry)=>{
             const matchesSearch = entry.student.name.toLowerCase().includes(searchQuery.toLowerCase());
-            const matchesSkills = selectedSkills.length === 0 || selectedSkills.every((skill)=>entry.student.skills?.includes(skill));
+            const matchesSkills = selectedSkills.length === 0 || selectedSkills.some((skill)=>entry.student.skills?.includes(skill));
             const matchesMajors = selectedMajors.length === 0 || selectedMajors.includes(entry.student.major);
             return matchesSearch && matchesSkills && matchesMajors;
         });
@@ -423,7 +423,7 @@ function LeaderboardPage() {
         setSelectedSkills([]);
         setSelectedMajors([]);
     };
-    const showRank = searchQuery === '' && (selectedMajors.length === 0 || selectedMajors.length === 1) && (selectedSkills.length === 0 || selectedSkills.length === 1);
+    const showRank = searchQuery === '' && selectedMajors.length === 0 && selectedSkills.length === 0;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "flex flex-col gap-8 animate-fade-in-up",
         children: [
